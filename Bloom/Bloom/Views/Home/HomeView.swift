@@ -33,84 +33,127 @@ class HomeViewModel: ObservableObject {
     }
 }
 
+struct SearchTextField: View {
+    @Binding var text: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(Colors.black)
+            
+            ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text("소중한 사람에게 장미를🌹")
+                        .foregroundColor(Colors.gray3)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 4)
+                        .font(.pretendardRegular(size: 15))
+                }
+                TextField("", text: $text)
+                    .padding(.vertical, 8)
+            }
+        }
+        .padding(.horizontal, 15)
+        .frame(width: 299, height: 44)
+        .background(Color(.systemGray6))
+        .cornerRadius(8)
+    }
+}
+
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    Button(action: {
-                        // 지역 선택 액션 추가
-                    }) {
-                        HStack {
-                            Image(systemName: "map")
-                            Text("서울시 강남구")
-                            Image(systemName: "chevron.down")
-                        }
-                    }
-                    Spacer()
-                }
-                .padding(.horizontal, 20)
-                
-                HStack {
-                    TextField("소중한 사람에게 장미를 🌸", text: $viewModel.searchText)
-                        .padding(.horizontal)
-                        .frame(height: 40)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                    
-                    Button(action: {
-                        // 필터 모달 추가
-                    }) {
-                        Image(systemName: "slider.horizontal.3")
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(8)
-                    }
-                }
-                .padding(.horizontal)
-                
-                List(viewModel.markets) { market in
-                    VStack(alignment: .leading) {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 200)
-                            .clipped()
-                            .cornerRadius(10)
-                        
-                        HStack {
-                            Text(market.name)
-                                .font(.headline)
-                            Spacer()
-                            Text(market.status)
-                                .font(.caption)
-                                .foregroundColor(market.status == "운영중" ? .blue : .red)
-                                .padding(4)
-                                .background(market.status == "운영중" ? Color.blue.opacity(0.2) : Color.red.opacity(0.2))
-                                .cornerRadius(5)
-                        }
-                        Text(market.location)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        Text(market.price)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                // 관심 목록 추가/삭제 액션
-                            }) {
-                                Image(systemName: "heart")
-                                    .padding()
-                                    .background(Color(.systemGray6))
-                                    .cornerRadius(8)
+            ZStack {
+                VStack {
+                    HStack {
+                        Button(action: {
+                            // 지역 선택 액션 추가
+                        }) {
+                            HStack {
+                                Image("bloom-icon")
+                                Text("서울시 강남구")
+                                    .foregroundStyle(Colors.pointOrange)
+                                    .font(.pretendardBold(size: 20))
+                                Image(systemName: "chevron.down")
+                                    .foregroundColor(Colors.pointOrange)
                             }
                         }
+                        Spacer()
                     }
-                    .padding(.vertical, 8)
+                    .padding(.horizontal, 20)
+                    
+                    HStack {
+                        SearchTextField(text: $viewModel.searchText)
+                        
+                        Button(action: {
+                            // 필터 모달 추가
+                        }) {
+                            Image("filter-icon")
+                                .frame(width: 44, height: 44)
+                                .background(Colors.baseYellow)
+                                .foregroundColor(Colors.pointOrange)
+                                .cornerRadius(8)
+                                .padding(.leading, 5)
+                        }
+                    }
+                    .padding(.horizontal)
+                    
+                    List(viewModel.markets) { market in
+                        VStack(alignment: .leading) {
+                            ZStack(alignment: .topTrailing) {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(height: 200)
+                                    .clipped()
+                                    .cornerRadius(10)
+                                    .padding(.bottom, 8)
+                                
+                                Button(action: {
+                                    // 관심 목록 추가/삭제 액션
+                                }) {
+                                    Image(systemName: "heart.fill")
+                                        .padding(10)
+                                        .background(.white)
+                                        .foregroundStyle(Colors.pointOrange)
+                                        .clipShape(Circle())
+                                }
+                                .padding(10)
+                            }
+                            
+                            HStack {
+                                Text(market.name)
+                                    .font(.pretendardSemiBold(size: 18))
+                                
+                                Spacer()
+                                
+                                Text(market.status)
+                                    .padding(4)
+                                    .font(.pretendardRegular(size: 12))
+                                    .foregroundColor(market.status == "운영중" ? Colors.operating : Colors.preparing)
+                                    .frame(width: 51, height: 22)
+                                    .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
+                                    .cornerRadius(99)
+                            }
+                            
+                            HStack(alignment: .center, content: {
+                                Text(market.location)
+                                    .font(.pretendardRegular(size: 15))
+                                    .foregroundColor(Colors.gray2)
+                                
+                                Spacer()
+                                
+                                Text(market.price)
+                                    .font(.pretendardRegular(size: 14))
+                                    .foregroundColor(Colors.gray3)
+                            })
+                        }
+                        .padding(.vertical, 3)
+                        .listRowSeparator(.hidden)
+                    }
+                    .listStyle(PlainListStyle())
                 }
             }
             .navigationBarTitle("")
