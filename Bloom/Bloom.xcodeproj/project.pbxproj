@@ -26,6 +26,7 @@
 		3E9AA0812C11A3CC0099E093 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0782C11A3CC0099E093 /* Pretendard-Regular.ttf */; };
 		3E9AA0822C11A3CC0099E093 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0792C11A3CC0099E093 /* Pretendard-Light.ttf */; };
 		3E9AA0832C11A3CC0099E093 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */; };
+		3E9AA0882C11A7B20099E093 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0872C11A7B20099E093 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		3E9AA0792C11A3CC0099E093 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
 		3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.ttf"; sourceTree = "<group>"; };
 		3E9AA0842C11A4220099E093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3E9AA0872C11A7B20099E093 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				3E9AA0532C118DF80099E093 /* ContentView.swift */,
 				3E9AA05F2C11A11E0099E093 /* Colors.swift */,
 				3E9AA0612C11A1D50099E093 /* Models */,
+				3E9AA0852C11A7920099E093 /* Views */,
 				3E9AA0682C11A2040099E093 /* Utilities */,
 				3E9AA06E2C11A2590099E093 /* Resources */,
 				3E9AA0552C118DFA0099E093 /* Assets.xcassets */,
@@ -152,6 +155,22 @@
 				3E9AA0732C11A3CB0099E093 /* Pretendard-Thin.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3E9AA0852C11A7920099E093 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA0862C11A7A80099E093 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3E9AA0862C11A7A80099E093 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA0872C11A7B20099E093 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9AA0882C11A7B20099E093 /* HomeView.swift in Sources */,
 				3E9AA0632C11A1E00099E093 /* User.swift in Sources */,
 				3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */,
 				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
