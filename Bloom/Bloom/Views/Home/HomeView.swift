@@ -132,8 +132,8 @@ struct HomeView: View {
                                 Text(market.status)
                                     .padding(4)
                                     .font(.pretendardRegular(size: 12))
-                                    .foregroundColor(market.status == "운영중" ? Colors.operating : Colors.preparing)
                                     .frame(width: 51, height: 22)
+                                    .foregroundColor(market.status == "운영중" ? Colors.operating : Colors.preparing)
                                     .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                                     .cornerRadius(99)
                             }
