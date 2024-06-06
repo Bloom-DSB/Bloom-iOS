@@ -11,6 +11,21 @@
 		3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0532C118DF80099E093 /* ContentView.swift */; };
 		3E9AA0562C118DFA0099E093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0552C118DFA0099E093 /* Assets.xcassets */; };
 		3E9AA0592C118DFA0099E093 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0582C118DFA0099E093 /* Preview Assets.xcassets */; };
+		3E9AA0602C11A11E0099E093 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA05F2C11A11E0099E093 /* Colors.swift */; };
+		3E9AA0632C11A1E00099E093 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0622C11A1E00099E093 /* User.swift */; };
+		3E9AA0652C11A1EC0099E093 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0642C11A1EC0099E093 /* Flower.swift */; };
+		3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0662C11A1FD0099E093 /* Market.swift */; };
+		3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA06A2C11A2230099E093 /* Color+Extensions.swift */; };
+		3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA06F2C11A3A30099E093 /* Font+Extensions.swift */; };
+		3E9AA07B2C11A3CC0099E093 /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0722C11A3CB0099E093 /* Pretendard-ExtraLight.ttf */; };
+		3E9AA07C2C11A3CC0099E093 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0732C11A3CB0099E093 /* Pretendard-Thin.ttf */; };
+		3E9AA07D2C11A3CC0099E093 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0742C11A3CB0099E093 /* Pretendard-Bold.ttf */; };
+		3E9AA07E2C11A3CC0099E093 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0752C11A3CB0099E093 /* Pretendard-ExtraBold.ttf */; };
+		3E9AA07F2C11A3CC0099E093 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0762C11A3CB0099E093 /* Pretendard-Medium.ttf */; };
+		3E9AA0802C11A3CC0099E093 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0772C11A3CC0099E093 /* Pretendard-SemiBold.ttf */; };
+		3E9AA0812C11A3CC0099E093 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0782C11A3CC0099E093 /* Pretendard-Regular.ttf */; };
+		3E9AA0822C11A3CC0099E093 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0792C11A3CC0099E093 /* Pretendard-Light.ttf */; };
+		3E9AA0832C11A3CC0099E093 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +34,22 @@
 		3E9AA0532C118DF80099E093 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3E9AA0552C118DFA0099E093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E9AA0582C118DFA0099E093 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3E9AA05F2C11A11E0099E093 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3E9AA0622C11A1E00099E093 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3E9AA0642C11A1EC0099E093 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
+		3E9AA0662C11A1FD0099E093 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		3E9AA06A2C11A2230099E093 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		3E9AA06F2C11A3A30099E093 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		3E9AA0722C11A3CB0099E093 /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
+		3E9AA0732C11A3CB0099E093 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.ttf"; sourceTree = "<group>"; };
+		3E9AA0742C11A3CB0099E093 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
+		3E9AA0752C11A3CB0099E093 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
+		3E9AA0762C11A3CB0099E093 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
+		3E9AA0772C11A3CC0099E093 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
+		3E9AA0782C11A3CC0099E093 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		3E9AA0792C11A3CC0099E093 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
+		3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.ttf"; sourceTree = "<group>"; };
+		3E9AA0842C11A4220099E093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +82,13 @@
 		3E9AA0502C118DF80099E093 /* Bloom */ = {
 			isa = PBXGroup;
 			children = (
+				3E9AA0842C11A4220099E093 /* Info.plist */,
 				3E9AA0512C118DF80099E093 /* BloomApp.swift */,
 				3E9AA0532C118DF80099E093 /* ContentView.swift */,
+				3E9AA05F2C11A11E0099E093 /* Colors.swift */,
+				3E9AA0612C11A1D50099E093 /* Models */,
+				3E9AA0682C11A2040099E093 /* Utilities */,
+				3E9AA06E2C11A2590099E093 /* Resources */,
 				3E9AA0552C118DFA0099E093 /* Assets.xcassets */,
 				3E9AA0572C118DFA0099E093 /* Preview Content */,
 			);
@@ -65,6 +101,57 @@
 				3E9AA0582C118DFA0099E093 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3E9AA0612C11A1D50099E093 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA0622C11A1E00099E093 /* User.swift */,
+				3E9AA0642C11A1EC0099E093 /* Flower.swift */,
+				3E9AA0662C11A1FD0099E093 /* Market.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3E9AA0682C11A2040099E093 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA0692C11A2140099E093 /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3E9AA0692C11A2140099E093 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA06A2C11A2230099E093 /* Color+Extensions.swift */,
+				3E9AA06F2C11A3A30099E093 /* Font+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3E9AA06E2C11A2590099E093 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA0712C11A3B20099E093 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3E9AA0712C11A3B20099E093 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */,
+				3E9AA0742C11A3CB0099E093 /* Pretendard-Bold.ttf */,
+				3E9AA0752C11A3CB0099E093 /* Pretendard-ExtraBold.ttf */,
+				3E9AA0722C11A3CB0099E093 /* Pretendard-ExtraLight.ttf */,
+				3E9AA0792C11A3CC0099E093 /* Pretendard-Light.ttf */,
+				3E9AA0762C11A3CB0099E093 /* Pretendard-Medium.ttf */,
+				3E9AA0782C11A3CC0099E093 /* Pretendard-Regular.ttf */,
+				3E9AA0772C11A3CC0099E093 /* Pretendard-SemiBold.ttf */,
+				3E9AA0732C11A3CB0099E093 /* Pretendard-Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +212,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9AA0802C11A3CC0099E093 /* Pretendard-SemiBold.ttf in Resources */,
+				3E9AA0832C11A3CC0099E093 /* Pretendard-Black.ttf in Resources */,
+				3E9AA07C2C11A3CC0099E093 /* Pretendard-Thin.ttf in Resources */,
+				3E9AA07D2C11A3CC0099E093 /* Pretendard-Bold.ttf in Resources */,
+				3E9AA07B2C11A3CC0099E093 /* Pretendard-ExtraLight.ttf in Resources */,
+				3E9AA07E2C11A3CC0099E093 /* Pretendard-ExtraBold.ttf in Resources */,
+				3E9AA0812C11A3CC0099E093 /* Pretendard-Regular.ttf in Resources */,
 				3E9AA0592C118DFA0099E093 /* Preview Assets.xcassets in Resources */,
+				3E9AA07F2C11A3CC0099E093 /* Pretendard-Medium.ttf in Resources */,
+				3E9AA0822C11A3CC0099E093 /* Pretendard-Light.ttf in Resources */,
 				3E9AA0562C118DFA0099E093 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +233,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9AA0632C11A1E00099E093 /* User.swift in Sources */,
 				3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */,
+				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
+				3E9AA0652C11A1EC0099E093 /* Flower.swift in Sources */,
+				3E9AA0602C11A11E0099E093 /* Colors.swift in Sources */,
+				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
+				3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +379,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = CP9THWX4QS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Bloom/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -311,6 +414,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = CP9THWX4QS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Bloom/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
