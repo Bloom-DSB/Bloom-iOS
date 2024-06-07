@@ -69,6 +69,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E1B66EB2C12E94900305F5A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		3E8BC5A52C11E64C003320F1 /* MarketDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +187,7 @@
 		3E9AA0852C11A7920099E093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E1B66EB2C12E94900305F5A /* Common */,
 				3E9AA0862C11A7A80099E093 /* Home */,
 				3E8BC5A52C11E64C003320F1 /* MarketDetail */,
 				3E8BC5A62C11E690003320F1 /* ProductDetail */,
