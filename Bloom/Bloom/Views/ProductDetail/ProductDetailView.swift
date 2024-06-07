@@ -30,8 +30,8 @@ class ProductDetailViewModel: ObservableObject {
             name: "고백공격 장미꽃다발",
             price: "19,900원",
             imageName: "flower1",
-            description: "꽃에 대한 설명을 바바바박 적어요. 이 부분에는 글자수 제한이 있으면 좋을 것 같습니다! 다들 힘내서 프로젝트 잘 마무리하세요~~",
-            packagingMethod: "강남역 바로 옆 초 역세권 짱짱 꽃집이랍니다. 이 부분에는 글자수 제한이 있으면 좋을 것 같습니다!",
+            description: "꽃에 대한 설명을 바바바박 적어요.\n이 부분에는 글자수 제한이 있으면 좋을 것 같습니다!\n다들 힘내서 프로젝트 잘 마무리하세요~~",
+            packagingMethod: "강남역 바로 옆 초 역세권 짱짱 꽃집이랍니다.이 부분에는 글자수 제한이 있으면 좋을 것 같습니다!",
             storageMethod: "강남역 바로 옆 초 역세권 짱짱 꽃집이랍니다. 이 부분에는 글자수 제한이 있으면 좋을 것 같습니다!",
             caution: "강남역 바로 옆 초 역세권 짱짱 꽃집이랍니다. 이 부분에는 글자수 제한이 있으면 좋을 것 같습니다!",
             marketName: "가든 플라워 라우라",
@@ -48,7 +48,7 @@ struct ProductDetailView: View {
         VStack(spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    ZStack(alignment: .topTrailing) {
+                    ZStack(alignment: .bottomTrailing) {
                         Image(viewModel.product.imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -62,68 +62,75 @@ struct ProductDetailView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .padding()
-                                .background(Color.white)
+                                .foregroundStyle(Colors.pointOrange)
                                 .clipShape(Circle())
-                                .shadow(radius: 5)
                         }
                         .padding(10)
                     }
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text(viewModel.product.name)
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .font(.pretendardMedium(size: 22))
                         
                         Text(viewModel.product.price)
-                            .font(.title2)
-                            .fontWeight(.bold)
+                            .font(.pretendardBold(size: 20))
                         
                         Text(viewModel.product.description)
-                            .font(.body)
-                            .padding()
-                            .background(Color.yellow.opacity(0.3))
+                            .padding(.horizontal, 10)
+                            .frame(width: 353, height: 103)
+                            .font(.pretendardRegular(size: 14))
+                            .foregroundStyle(Colors.gray2)
+                            .background(Colors.baseYellow)
                             .cornerRadius(8)
+                            .lineSpacing(3)
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
                     
-                    Divider()
-                        .background(Color.gray)
+                    Rectangle()
+                        .frame(height: 6)
+                        .foregroundStyle(Colors.gray6)
+                        .background(Colors.gray6)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text("포장방식")
-                            .font(.headline)
+                            .font(.pretendardSemiBold(size: 16))
                         
                         Text(viewModel.product.packagingMethod)
-                            .font(.body)
-                            .foregroundColor(.gray)
+                            .font(.pretendardRegular(size: 14))
+                            .foregroundColor(Colors.gray3)
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 5)
                     
-                    Divider()
-                        .background(Color.gray)
+                    Rectangle()
+                        .frame(height: 6)
+                        .foregroundStyle(Colors.gray6)
+                        .background(Colors.gray6)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text("보관방식")
-                            .font(.headline)
+                            .font(.pretendardSemiBold(size: 16))
                         
                         Text(viewModel.product.storageMethod)
-                            .font(.body)
-                            .foregroundColor(.gray)
+                            .font(.pretendardRegular(size: 14))
+                            .foregroundColor(Colors.gray3)
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
                     
-                    Divider()
-                        .background(Color.gray)
+                    Rectangle()
+                        .frame(height: 6)
+                        .foregroundStyle(Colors.gray6)
+                        .background(Colors.gray6)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text("유의사항")
-                            .font(.headline)
+                            .font(.pretendardSemiBold(size: 16))
                         
                         Text(viewModel.product.caution)
-                            .font(.body)
-                            .foregroundColor(.gray)
+                            .font(.pretendardRegular(size: 14))
+                            .foregroundColor(Colors.gray3)
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
                 }
             }
             
@@ -132,28 +139,28 @@ struct ProductDetailView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text(viewModel.product.marketName)
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                    
-                    Spacer()
-                    
-                    Text(viewModel.product.marketStatus)
-                        .font(.caption)
-                        .foregroundColor(viewModel.product.marketStatus == "운영중" ? .blue : .red)
-                        .padding(4)
-                        .background(viewModel.product.marketStatus == "운영중" ? Color.blue.opacity(0.2) : Color.red.opacity(0.2))
-                        .cornerRadius(5)
-                }
-                
-                HStack {
-                    Image(systemName: "location")
-                        .foregroundColor(.gray)
-                    
-                    Text(viewModel.product.marketLocation)
-                        .font(.body)
-                        .foregroundColor(.gray)
-                    
+                    VStack(alignment: .leading) {
+                        Text(viewModel.product.marketName)
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        
+                        HStack {
+                            Text(viewModel.product.marketStatus)
+                                .font(.caption)
+                                .foregroundColor(viewModel.product.marketStatus == "운영중" ? .blue : .red)
+                                .padding(4)
+                                .background(viewModel.product.marketStatus == "운영중" ? Color.blue.opacity(0.2) : Color.red.opacity(0.2))
+                                .cornerRadius(5)
+                            
+                            Image(systemName: "location")
+                                .foregroundColor(.gray)
+                            
+                            Text(viewModel.product.marketLocation)
+                                .font(.body)
+                                .foregroundColor(.gray)
+                        }
+                    }
+
                     Spacer()
                     
                     Button(action: {
