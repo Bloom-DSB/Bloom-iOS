@@ -16,7 +16,6 @@
 		3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0532C118DF80099E093 /* ContentView.swift */; };
 		3E9AA0562C118DFA0099E093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0552C118DFA0099E093 /* Assets.xcassets */; };
 		3E9AA0592C118DFA0099E093 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0582C118DFA0099E093 /* Preview Assets.xcassets */; };
-		3E9AA0602C11A11E0099E093 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA05F2C11A11E0099E093 /* Colors.swift */; };
 		3E9AA0632C11A1E00099E093 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0622C11A1E00099E093 /* User.swift */; };
 		3E9AA0652C11A1EC0099E093 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0642C11A1EC0099E093 /* Flower.swift */; };
 		3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0662C11A1FD0099E093 /* Market.swift */; };
@@ -45,7 +44,6 @@
 		3E9AA0532C118DF80099E093 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3E9AA0552C118DFA0099E093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E9AA0582C118DFA0099E093 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3E9AA05F2C11A11E0099E093 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3E9AA0622C11A1E00099E093 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3E9AA0642C11A1EC0099E093 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
 		3E9AA0662C11A1FD0099E093 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				3E9AA0842C11A4220099E093 /* Info.plist */,
 				3E9AA0512C118DF80099E093 /* BloomApp.swift */,
 				3E9AA0532C118DF80099E093 /* ContentView.swift */,
-				3E9AA05F2C11A11E0099E093 /* Colors.swift */,
 				3E9AA0612C11A1D50099E093 /* Models */,
 				3E9AA0852C11A7920099E093 /* Views */,
 				3E9AA0682C11A2040099E093 /* Utilities */,
@@ -317,7 +314,6 @@
 				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
 				3E9AA0652C11A1EC0099E093 /* Flower.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
-				3E9AA0602C11A11E0099E093 /* Colors.swift in Sources */,
 				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
 				3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */,
