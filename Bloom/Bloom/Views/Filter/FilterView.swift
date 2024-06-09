@@ -135,10 +135,10 @@ struct FilterButton: View {
                 .frame(maxWidth: .infinity)
                 .font(.pretendardSemiBold(size: 14))
                 .fontWeight(isSelected ? .bold : .regular)
-                .foregroundColor(isSelected ? Colors.pointOrange : Colors.gray3)
+                .foregroundColor(isSelected ? Color.pointOrange : Color.gray3)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 8)
-                    .stroke(isSelected ? Colors.pointOrange : Colors.gray4, lineWidth: 1.3))
+                    .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
         }
         .padding(.horizontal, 1)
         .padding(.vertical, 2)
@@ -161,14 +161,14 @@ struct ColorButton: View {
                     
                     Text(colorName)
                         .font(.pretendardMedium(size: 14))
-                        .foregroundColor(Colors.gray3)
+                        .foregroundColor(Color.gray3)
                     Spacer()
                 }
             }
             .padding(12)
             .frame(maxWidth: .infinity, minHeight: 50) // 버튼의 크기 조절
             .background(RoundedRectangle(cornerRadius: 8)
-                .stroke(isSelected ? Colors.pointOrange : Colors.gray4, lineWidth: 1.3))
+                .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
         }
     }
 }

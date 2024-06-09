@@ -39,12 +39,12 @@ struct SearchTextField: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(Colors.black)
+                .foregroundStyle(Color.black)
             
             ZStack(alignment: .leading) {
                 if text.isEmpty {
                     Text("소중한 사람에게 장미를🌹")
-                        .foregroundColor(Colors.gray3)
+                        .foregroundColor(.gray3)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 4)
                         .font(.pretendardRegular(size: 15))
@@ -74,10 +74,10 @@ struct HomeView: View {
                             HStack {
                                 Image("bloom-icon")
                                 Text("서울시 강남구")
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                     .font(.pretendardBold(size: 20))
                                 Image(systemName: "chevron.down")
-                                    .foregroundColor(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                             }
                         }
                         Spacer()
@@ -92,8 +92,8 @@ struct HomeView: View {
                         }) {
                             Image("filter-icon")
                                 .frame(width: 44, height: 44)
-                                .background(Colors.baseYellow)
-                                .foregroundColor(Colors.pointOrange)
+                                .backgroundStyle(Color.baseYellow)
+                                .foregroundStyle(Color.pointOrange)
                                 .cornerRadius(8)
                                 .padding(.leading, 5)
                         }
@@ -117,7 +117,7 @@ struct HomeView: View {
                                     Image(systemName: "heart.fill")
                                         .padding(10)
                                         .background(.white)
-                                        .foregroundStyle(Colors.pointOrange)
+                                        .foregroundStyle(Color.pointOrange)
                                         .clipShape(Circle())
                                 }
                                 .padding(10)
@@ -133,7 +133,7 @@ struct HomeView: View {
                                     .padding(4)
                                     .font(.pretendardRegular(size: 12))
                                     .frame(width: 51, height: 22)
-                                    .foregroundColor(market.status == "운영중" ? Colors.operating : Colors.preparing)
+                                    .foregroundColor(market.status == "운영중" ? .operating : .preparing)
                                     .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                                     .cornerRadius(99)
                             }
@@ -141,13 +141,13 @@ struct HomeView: View {
                             HStack(alignment: .center, content: {
                                 Text(market.location)
                                     .font(.pretendardRegular(size: 15))
-                                    .foregroundColor(Colors.gray2)
+                                    .foregroundStyle(Color.gray2)
                                 
                                 Spacer()
                                 
                                 Text(market.price)
                                     .font(.pretendardRegular(size: 14))
-                                    .foregroundColor(Colors.gray3)
+                                    .foregroundStyle(Color.gray3)
                             })
                         }
                         .padding(.vertical, 3)
@@ -161,13 +161,6 @@ struct HomeView: View {
         }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
-
 
 #Preview {
     HomeView()

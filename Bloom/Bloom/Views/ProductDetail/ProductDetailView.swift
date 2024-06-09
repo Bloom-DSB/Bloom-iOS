@@ -62,7 +62,7 @@ struct ProductDetailView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .padding()
-                                .foregroundStyle(Colors.pointOrange)
+                                .foregroundStyle(Color.pointOrange)
                                 .clipShape(Circle())
                         }
                         .padding(10)
@@ -79,8 +79,8 @@ struct ProductDetailView: View {
                             .padding(.horizontal, 10)
                             .frame(width: 353, height: 103)
                             .font(.pretendardRegular(size: 14))
-                            .foregroundStyle(Colors.gray2)
-                            .background(Colors.baseYellow)
+                            .foregroundStyle(Color.gray2)
+                            .background(Color.baseYellow)
                             .cornerRadius(8)
                             .lineSpacing(3)
                     }
@@ -88,8 +88,8 @@ struct ProductDetailView: View {
                     
                     Rectangle()
                         .frame(height: 6)
-                        .foregroundStyle(Colors.gray6)
-                        .background(Colors.gray6)
+                        .foregroundStyle(Color.gray6)
+                        .background(Color.gray6)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text("포장방식")
@@ -97,15 +97,15 @@ struct ProductDetailView: View {
                         
                         Text(viewModel.product.packagingMethod)
                             .font(.pretendardRegular(size: 14))
-                            .foregroundColor(Colors.gray3)
+                            .foregroundColor(Color.gray3)
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 5)
                     
                     Rectangle()
                         .frame(height: 6)
-                        .foregroundStyle(Colors.gray6)
-                        .background(Colors.gray6)
+                        .foregroundStyle(Color.gray6)
+                        .background(Color.gray6)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text("보관방식")
@@ -113,14 +113,14 @@ struct ProductDetailView: View {
                         
                         Text(viewModel.product.storageMethod)
                             .font(.pretendardRegular(size: 14))
-                            .foregroundColor(Colors.gray3)
+                            .foregroundColor(Color.gray3)
                     }
                     .padding(.horizontal, 20)
                     
                     Rectangle()
                         .frame(height: 6)
-                        .foregroundStyle(Colors.gray6)
-                        .background(Colors.gray6)
+                        .foregroundStyle(Color.gray6)
+                        .background(Color.gray6)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text("유의사항")
@@ -128,7 +128,7 @@ struct ProductDetailView: View {
                         
                         Text(viewModel.product.caution)
                             .font(.pretendardRegular(size: 14))
-                            .foregroundColor(Colors.gray3)
+                            .foregroundColor(Color.gray3)
                     }
                     .padding(.horizontal, 20)
                 }
