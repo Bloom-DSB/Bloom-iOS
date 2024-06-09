@@ -12,7 +12,7 @@ struct MyPageView: View {
     @State private var email = "efiijqoadf@privaterlay.appleid.com"
     @State private var storeCount = 3
     @State private var productCount = 12
-
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -20,72 +20,76 @@ struct MyPageView: View {
                     .font(.pretendardMedium(size: 18))
                     .padding([.top, .leading, .trailing])
                     .frame(maxWidth: .infinity, alignment: .center)
-
+                
                 VStack(alignment: .leading) {
                     HStack {
                         Image("bloom-icon")
                             .frame(width: 21)
-
+                        
                         Text(userName)
                             .font(.pretendardExtraBold(size: 22))
                             .padding(.horizontal, 5)
-
+                        
                         NavigationLink(destination: ProfileEditView(initialUserName: $userName, email: $email)) {
                             Image(systemName: "chevron.right")
                                 .foregroundStyle(Color.gray4)
                         }
                     }
-
+                    
                     Text(email)
                         .font(.pretendardMedium(size: 14))
                         .foregroundStyle(Color.gray4)
                 }
                 .padding(.vertical, 20)
-
+                
                 HStack(spacing: 0) {
-                    VStack {
-                        Text("관심 마켓")
-                            .font(.pretendardMedium(size: 14))
-                            .foregroundStyle(Color.black)
-                            .padding(.bottom, 1)
-
-                        Text("\(storeCount)")
-                            .font(.pretendardSemiBold(size: 24))
-                            .foregroundStyle(Color.pointOrange)
+                    NavigationLink(destination: FavoriteMarketsView()) {
+                        VStack {
+                            Text("관심 마켓")
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundStyle(Color.black)
+                                .padding(.bottom, 1)
+                            
+                            Text("\(storeCount)")
+                                .font(.pretendardSemiBold(size: 24))
+                                .foregroundStyle(Color.pointOrange)
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
-
+                    
                     Rectangle()
                         .frame(width: 0.8, height: 48)
                         .foregroundStyle(Color.pointOrange)
-
-                    VStack {
-                        Text("관심 상품")
-                            .font(.pretendardMedium(size: 14))
-                            .foregroundStyle(Color.black)
-                            .padding(.bottom, 1)
-
-                        Text("\(productCount)")
-                            .font(.pretendardSemiBold(size: 24))
-                            .foregroundStyle(Color.pointOrange)
+                    
+                    NavigationLink(destination: FavoriteProductsView()) {
+                        VStack {
+                            Text("관심 상품")
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundStyle(Color.black)
+                                .padding(.bottom, 1)
+                            
+                            Text("\(productCount)")
+                                .font(.pretendardSemiBold(size: 24))
+                                .foregroundStyle(Color.pointOrange)
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
                 }
                 .frame(height: 107)
                 .background(Color.baseYellow)
                 .cornerRadius(8)
                 .padding(.bottom, 20)
-
+                
                 VStack(alignment: .leading) {
                     Text("기타")
                         .font(.pretendardSemiBold(size: 16))
                         .foregroundStyle(Color.black)
                         .padding(.bottom, 5)
-
+                    
                     Rectangle()
                         .foregroundStyle(Color.gray5)
                         .frame(width: .infinity, height: 1)
-
+                    
                     // NavigationLinks
                     NavigationLink(destination: DetailView(title: "앱 소개")) {
                         Image("appintro-icon")
@@ -96,11 +100,11 @@ struct MyPageView: View {
                             .padding(.leading, 5)
                     }
                     .padding(.vertical, 12)
-
+                    
                     Rectangle()
                         .foregroundStyle(Color.gray5)
                         .frame(width: .infinity, height: 1)
-
+                    
                     NavigationLink(destination: DetailView(title: "오픈소스 라이센스")) {
                         Image("opensource-icon")
                             .padding(.leading, 5)
@@ -110,11 +114,11 @@ struct MyPageView: View {
                             .padding(.leading, 5)
                     }
                     .padding(.vertical, 12)
-
+                    
                     Rectangle()
                         .foregroundStyle(Color.gray5)
                         .frame(width: .infinity, height: 1)
-
+                    
                     NavigationLink(destination: DetailView(title: "개발자 정보")) {
                         Image("developer-icon")
                             .padding(.leading, 5)
@@ -124,13 +128,13 @@ struct MyPageView: View {
                             .padding(.leading, 5)
                     }
                     .padding(.vertical, 12)
-
+                    
                     Rectangle()
                         .foregroundStyle(Color.gray5)
                         .frame(width: .infinity, height: 1)
                 }
                 .foregroundStyle(Color.black)
-
+                
                 Spacer()
             }
             .padding(.horizontal, 20)
@@ -142,7 +146,7 @@ struct MyPageView: View {
 
 struct DetailView: View {
     var title: String
-
+    
     var body: some View {
         Text(title)
             .font(.largeTitle)

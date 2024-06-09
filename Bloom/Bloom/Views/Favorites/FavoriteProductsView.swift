@@ -31,22 +31,23 @@ class FavoriteProductsViewModel: ObservableObject {
 
 struct FavoriteProductsView: View {
     @StateObject private var viewModel = FavoriteProductsViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    // 뒤로가기 액션
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)
+                        .padding()
                 }
-                .padding(.trailing, 7)
-                
+                Spacer()
                 Text("관심 상품")
                     .font(.system(size: 18, weight: .medium))
-                
                 Spacer()
+                Spacer() // 오른쪽 여백을 위한 Spacer
             }
             .padding()
             
@@ -63,16 +64,16 @@ struct FavoriteProductsView: View {
                                 .padding(.bottom, 1)
                             
                             Text(product.status)
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundColor(product.status == "운영중" ? Color.blue : Color.red)
+                                .font(.pretendardSemiBold(size: 11))
+                                .foregroundColor(product.status == "운영중" ? Color.operating : Color.preparing)
                             
                             Text(product.name)
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(Color.gray)
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundStyle(Color.gray2)
                                 .lineLimit(1)
                             
                             Text(product.price)
-                                .font(.system(size: 15, weight: .bold))
+                                .font(.pretendardBold(size: 15))
                         }
                     }
                 }

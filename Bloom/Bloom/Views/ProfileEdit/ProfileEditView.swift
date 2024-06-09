@@ -11,6 +11,7 @@ struct ProfileEditView: View {
     @Binding var initialUserName: String
     @State private var userName: String
     @Binding var email: String
+    @Environment(\.presentationMode) var presentationMode
     
     init(initialUserName: Binding<String>, email: Binding<String>) {
         self._initialUserName = initialUserName
@@ -22,7 +23,7 @@ struct ProfileEditView: View {
         VStack {
             HStack {
                 Button(action: {
-                    // 뒤로 가기 액션
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .resizable()
@@ -76,7 +77,6 @@ struct ProfileEditView: View {
             Spacer()
             
             Button(action: {
-                // 수정하기 액션
                 initialUserName = userName
             }) {
                 Text("수정하기")
@@ -92,12 +92,6 @@ struct ProfileEditView: View {
         .padding(.horizontal, 20)
         .navigationBarTitle("")
         .navigationBarHidden(true)
-    }
-}
-
-struct ProfileEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileEditView(initialUserName: .constant("다우니맛"), email: .constant("efiijqoadf@privaterlay.appleid.com"))
     }
 }
 
