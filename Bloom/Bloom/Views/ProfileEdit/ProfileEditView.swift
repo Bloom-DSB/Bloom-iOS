@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileEditView: View {
+    @State private var initialUserName = "다우니맛"
     @State private var userName = "다우니맛"
     @State private var email = "efiijqoadf@privaterlay.appleid.com"
     
@@ -40,6 +41,8 @@ struct ProfileEditView: View {
                         .padding(.vertical, 3)
                     
                     TextField("", text: $userName)
+                        .font(.pretendardMedium(size: 14))
+                        .foregroundStyle(Color.pointOrange)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 8)
@@ -74,11 +77,11 @@ struct ProfileEditView: View {
                         .font(.pretendardSemiBold(size: 18))
                         .foregroundStyle(.white)
                         .frame(width: 353, height: 61)
-                        .background(Color.pointOrange)
+                        .background(userName != initialUserName && !userName.isEmpty ? Color.pointOrange : Color.gray4)
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                 }
-                .disabled(userName.isEmpty)
+                .disabled(userName == initialUserName || userName.isEmpty)
             }
             .padding(.horizontal, 20)
             .navigationBarTitle("")
@@ -87,7 +90,8 @@ struct ProfileEditView: View {
     }
 }
 
-
-#Preview {
-    ProfileEditView()
+struct ProfileEditView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileEditView()
+    }
 }
