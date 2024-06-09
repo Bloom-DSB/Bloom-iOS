@@ -51,18 +51,18 @@ struct SearchResultsView: View {
                     // 뒤로가기 액션
                 }) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+                        .foregroundStyle(Color.black)
                 }
                 .padding(.trailing, 7)
                 
                 HStack {
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(.black)
+                        .foregroundStyle(Color.black)
                         .frame(width: 15, height: 15)
                     
                     TextField("검색어를 입력하세요", text: $viewModel.searchText)
                         .textFieldStyle(PlainTextFieldStyle())
-                        .foregroundColor(Colors.gray3)
+                        .foregroundColor(Color.gray3)
                         .padding(.horizontal, 4)
                         .font(.pretendardRegular(size: 15))
                 }
@@ -82,7 +82,7 @@ struct SearchResultsView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .inset(by: 0.5)
-                                .stroke(Colors.pointOrange)
+                                .stroke(Color.pointOrange)
                         )
                         .overlay(
                             Image("filter-icon")
@@ -94,19 +94,19 @@ struct SearchResultsView: View {
             HStack {
                 Text("상품 \(filteredProducts.count)개")
                     .font(.pretendardMedium(size: 14))
-                    .foregroundColor(Colors.gray2)
+                    .foregroundColor(Color.gray2)
                 
                 Spacer()
                 
                 HStack(spacing: 0) { // 간격을 없애기 위해 spacing을 0으로 설정
                     Text("운영 중인 가게만 보기")
                         .font(.pretendardMedium(size: 14))
-                        .foregroundColor(viewModel.showOnlyOperating ? Colors.operating : Colors.gray3)
+                        .foregroundColor(viewModel.showOnlyOperating ? Color.operating : Color.gray3)
                         .padding(.trailing, 10)
                     
                     Toggle("", isOn: $viewModel.showOnlyOperating)
                         .labelsHidden() // 라벨을 숨겨서 텍스트와 토글 사이의 간격을 제거
-                        .toggleStyle(SwitchToggleStyle(tint: Colors.operating))
+                        .toggleStyle(SwitchToggleStyle(tint: Color.operating))
                 }
             }
             .padding(.top, 10)
@@ -125,11 +125,11 @@ struct SearchResultsView: View {
                             
                             Text(product.status)
                                 .font(.pretendardSemiBold(size: 11))
-                                .foregroundColor(product.status == "운영중" ? Colors.operating : Colors.preparing)
+                                .foregroundColor(product.status == "운영중" ? Color.operating : Color.preparing)
                             
                             Text(product.name)
                                 .font(.pretendardMedium(size: 14))
-                                .foregroundStyle(Colors.gray2)
+                                .foregroundStyle(Color.gray2)
                                 .lineLimit(1)
                             
                             Text(product.price)

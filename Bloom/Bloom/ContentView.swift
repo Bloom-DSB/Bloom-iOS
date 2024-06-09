@@ -19,7 +19,7 @@ struct ContentView: View {
 
         }
         .padding()
-        .background(Colors.baseYellow)
+        .background(Color.baseYellow)
     }
 }
 

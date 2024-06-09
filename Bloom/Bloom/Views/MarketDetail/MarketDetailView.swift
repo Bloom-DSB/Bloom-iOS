@@ -66,7 +66,7 @@ struct MarketDetailView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .padding()
-                            .foregroundStyle(Colors.pointOrange)
+                            .foregroundStyle(Color.pointOrange)
                             .clipShape(Circle())
                     }
                     .padding(10)
@@ -77,7 +77,7 @@ struct MarketDetailView: View {
                         Text(viewModel.marketDetail.status)
                             .font(.pretendardMedium(size: 14))
                             .frame(width: 60, height: 24)
-                            .foregroundColor(viewModel.marketDetail.status == "운영중" ? Colors.operating : Colors.preparing)
+                            .foregroundColor(viewModel.marketDetail.status == "운영중" ? Color.operating : Color.preparing)
                             .background(viewModel.marketDetail.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                             .cornerRadius(99)
                         
@@ -90,7 +90,7 @@ struct MarketDetailView: View {
                     
                     Text(viewModel.marketDetail.description)
                         .font(.pretendardRegular(size: 14))
-                        .foregroundColor(Colors.gray3)
+                        .foregroundColor(Color.gray3)
                         .padding(.vertical, 5)
                     
                     HStack(alignment: .center, spacing: 25, content: {
@@ -100,16 +100,16 @@ struct MarketDetailView: View {
                             VStack {
                                 Image(systemName: "phone")
                                     .font(.title2)
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                 Text("전화")
                                     .font(.pretendardMedium(size: 11))
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                     .padding(.top, 1)
                             }
                         }
                         Rectangle()
                             .frame(width: 1, height: 34)
-                            .foregroundColor(Colors.pointOrange)
+                            .foregroundColor(Color.pointOrange)
                         
                         Button(action: {
                             // SNS 액션
@@ -117,16 +117,16 @@ struct MarketDetailView: View {
                             VStack {
                                 Image(systemName: "camera")
                                     .font(.title2)
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                 Text("SNS")
                                     .font(.pretendardMedium(size: 11))
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                     .padding(.top, 1)
                             }
                         }
                         Rectangle()
                             .frame(width: 1, height: 34)
-                            .foregroundColor(Colors.pointOrange)
+                            .foregroundColor(Color.pointOrange)
                         
                         Button(action: {
                             // 운영시간 액션
@@ -134,16 +134,16 @@ struct MarketDetailView: View {
                             VStack {
                                 Image(systemName: "clock")
                                     .font(.title2)
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                 Text("운영시간")
                                     .font(.pretendardMedium(size: 11))
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                     .padding(.top, 1)
                             }
                         }
                         Rectangle()
                             .frame(width: 1, height: 34)
-                            .foregroundColor(Colors.pointOrange)
+                            .foregroundColor(Color.pointOrange)
                         
                         Button(action: {
                             // 공유 액션
@@ -151,10 +151,10 @@ struct MarketDetailView: View {
                             VStack {
                                 Image(systemName: "square.and.arrow.up")
                                     .font(.title2)
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                 Text("공유")
                                     .font(.pretendardMedium(size: 11))
-                                    .foregroundStyle(Colors.pointOrange)
+                                    .foregroundStyle(Color.pointOrange)
                                     .padding(.top, 1)
                             }
                         }
@@ -169,8 +169,8 @@ struct MarketDetailView: View {
                 
                 Rectangle()
                     .frame(height: 6)
-                    .foregroundStyle(Colors.gray6)
-                    .background(Colors.gray6)
+                    .foregroundStyle(Color.gray6)
+                    .background(Color.gray6)
                 
                 HStack {
                     Text("판매 상품")
@@ -181,9 +181,9 @@ struct MarketDetailView: View {
                     HStack(spacing: 5) {
                         Text("전체보기")
                             .font(.pretendardMedium(size: 14))
-                            .foregroundStyle(Colors.gray4)
+                            .foregroundStyle(Color.gray4)
                         Image(systemName: "chevron.right")
-                            .foregroundStyle(Colors.gray4)
+                            .foregroundStyle(Color.gray4)
                             .frame(height: 5)
                     }
                 }
@@ -215,8 +215,8 @@ struct MarketDetailView: View {
                 
                 Rectangle()
                     .frame(height: 6)
-                    .foregroundStyle(Colors.gray6)
-                    .background(Colors.gray6)
+                    .foregroundStyle(Color.gray6)
+                    .background(Color.gray6)
                 
                 HStack {
                     Text("위치")
@@ -226,10 +226,10 @@ struct MarketDetailView: View {
                     
                     HStack(spacing: 5) {
                         Image(systemName: "location")
-                            .foregroundStyle(Colors.gray2)
+                            .foregroundStyle(Color.gray2)
                         Text(viewModel.marketDetail.location)
                             .font(.pretendardRegular(size: 15))
-                            .foregroundStyle(Colors.gray2)
+                            .foregroundStyle(Color.gray2)
                     }
                     
                 }
