@@ -102,9 +102,9 @@ struct FilterView: View {
                 }) {
                     Text("검색하기")
                         .font(.pretendardSemiBold(size: 18))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .frame(width: 353, height: 61)
-                        .background(Color.orange)
+                        .background(Color.pointOrange)
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                 }
