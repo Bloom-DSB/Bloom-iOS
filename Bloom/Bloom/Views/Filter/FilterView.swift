@@ -12,6 +12,8 @@ struct FilterView: View {
     @State private var selectedColors: Set<String> = []
     @State private var minPrice: Double = -10000
     @State private var maxPrice: Double = 100000
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var hideTabBar: Bool
     
     private let categories = ["꽃다발", "꽃바구니", "드라이플라워", "조화"]
     private let colors = [
@@ -37,7 +39,8 @@ struct FilterView: View {
                     Spacer()
                     
                     Button(action: {
-                        // 닫기 액션
+                        hideTabBar = false
+                        presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "xmark")
                             .foregroundStyle(Color(hex: "000001"))
@@ -110,9 +113,15 @@ struct FilterView: View {
                 }
                 
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
         }
+        .onAppear {
+            hideTabBar = true
+        }
+        .onDisappear {
+            hideTabBar = false
+        }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
     
     private func toggleColor(_ color: String) {
@@ -175,5 +184,5 @@ struct ColorButton: View {
 
 
 #Preview {
-    FilterView()
+    FilterView(hideTabBar: .constant(false))
 }

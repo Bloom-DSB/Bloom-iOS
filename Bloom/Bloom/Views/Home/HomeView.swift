@@ -54,6 +54,7 @@ struct SearchTextField: View {
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @Binding var hideTabBar: Bool
     
     var body: some View {
         NavigationView {
@@ -80,9 +81,7 @@ struct HomeView: View {
                     HStack {
                         SearchTextField(text: $viewModel.searchText)
                         
-                        Button(action: {
-                            // 필터 모달 추가
-                        }) {
+                        NavigationLink(destination: FilterView(hideTabBar: $hideTabBar)) {
                             Image("filter-icon")
                                 .frame(width: 44, height: 44)
                                 .background(Color.baseYellow)
@@ -125,8 +124,8 @@ struct HomeView: View {
                                     .padding(4)
                                     .font(.pretendardRegular(size: 12))
                                     .frame(width: 51, height: 22)
-                                    .foregroundStyle(market.status == "운영중" ? Color.operating : 
-                                            Color.preparing)
+                                    .foregroundStyle(market.status == "운영중" ? Color.operating :
+                                                        Color.preparing)
                                     .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                                     .cornerRadius(99)
                             }
@@ -156,5 +155,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(hideTabBar: .constant(false))
 }
