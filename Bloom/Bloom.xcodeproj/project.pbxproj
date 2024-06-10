@@ -39,6 +39,8 @@
 		3EA96E932C16994600E29A3D /* MarketProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E922C16994600E29A3D /* MarketProductsView.swift */; };
 		3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E952C16A12D00E29A3D /* LoginView.swift */; };
 		3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E982C16D78500E29A3D /* CustomTabBar.swift */; };
+		3EA96E9B2C16EA6400E29A3D /* CategoryFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E9A2C16EA6400E29A3D /* CategoryFilterButton.swift */; };
+		3EA96E9D2C16EAB200E29A3D /* ColorFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E9C2C16EAB200E29A3D /* ColorFilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		3EA96E952C16A12D00E29A3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3EA96E972C16A1A500E29A3D /* BloomDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BloomDebug.entitlements; sourceTree = "<group>"; };
 		3EA96E982C16D78500E29A3D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		3EA96E9A2C16EA6400E29A3D /* CategoryFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterButton.swift; sourceTree = "<group>"; };
+		3EA96E9C2C16EAB200E29A3D /* ColorFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				3E8BC5AC2C143578003320F1 /* FilterView.swift */,
+				3EA96E9C2C16EAB200E29A3D /* ColorFilterButton.swift */,
+				3EA96E9A2C16EA6400E29A3D /* CategoryFilterButton.swift */,
 				3E8BC5B42C144BAD003320F1 /* CustomRangeSlider.swift */,
 			);
 			path = Filter;
@@ -386,6 +392,7 @@
 				3E0525CF2C15F0000037EF35 /* FavoriteProductsView.swift in Sources */,
 				3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */,
 				3E0525D12C15F0420037EF35 /* FavoriteMarketsView.swift in Sources */,
+				3EA96E9D2C16EAB200E29A3D /* ColorFilterButton.swift in Sources */,
 				3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */,
 				3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */,
 				3E8BC5A82C11E6B8003320F1 /* MarketDetailView.swift in Sources */,
@@ -395,6 +402,7 @@
 				3E9AA0652C11A1EC0099E093 /* Product.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
 				3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */,
+				3EA96E9B2C16EA6400E29A3D /* CategoryFilterButton.swift in Sources */,
 				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
 				3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */,

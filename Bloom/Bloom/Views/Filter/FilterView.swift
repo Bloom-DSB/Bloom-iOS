@@ -54,7 +54,7 @@ struct FilterView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
                     ForEach(categories, id: \.self) { category in
-                        FilterButton(title: category, isSelected: selectedCategory == category) {
+                        CategoryFilterButton(title: category, isSelected: selectedCategory == category) {
                             selectedCategory = category
                         }
                     }
@@ -90,7 +90,7 @@ struct FilterView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
                     ForEach(colors, id: \.0) { color in
-                        ColorButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
+                        ColorFilterButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
                             toggleColor(color.0)
                         }
                         .frame(height: 50) // 버튼의 크기 조절
@@ -129,55 +129,6 @@ struct FilterView: View {
             selectedColors.remove(color)
         } else {
             selectedColors.insert(color)
-        }
-    }
-}
-
-struct FilterButton: View {
-    let title: String
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .frame(maxWidth: .infinity)
-                .font(.pretendardSemiBold(size: 14))
-                .fontWeight(isSelected ? .bold : .regular)
-                .foregroundStyle(isSelected ? Color.pointOrange : Color.gray3)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 8)
-                    .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
-        }
-        .padding(.horizontal, 1)
-        .padding(.vertical, 2)
-    }
-}
-
-struct ColorButton: View {
-    let colorName: String
-    let color: Color
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            VStack {
-                HStack {
-                    Circle()
-                        .fill(color)
-                        .frame(width: 24, height: 24)
-                    
-                    Text(colorName)
-                        .font(.pretendardMedium(size: 14))
-                        .foregroundStyle(Color.gray3)
-                    Spacer()
-                }
-            }
-            .padding(12)
-            .frame(maxWidth: .infinity, minHeight: 50) // 버튼의 크기 조절
-            .background(RoundedRectangle(cornerRadius: 8)
-                .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
         }
     }
 }
