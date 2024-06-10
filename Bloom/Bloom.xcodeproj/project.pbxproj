@@ -45,6 +45,7 @@
 		3EA96EA12C16EBFA00E29A3D /* AppIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA02C16EBFA00E29A3D /* AppIntroPage.swift */; };
 		3EA96EA32C16EC1B00E29A3D /* OpensourceLicensePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */; };
 		3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */; };
+		3EA96EA82C16FC4A00E29A3D /* AppleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA72C16FC4A00E29A3D /* AppleSigninButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		3EA96EA02C16EBFA00E29A3D /* AppIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntroPage.swift; sourceTree = "<group>"; };
 		3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensourceLicensePage.swift; sourceTree = "<group>"; };
 		3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperIntroPage.swift; sourceTree = "<group>"; };
+		3EA96EA72C16FC4A00E29A3D /* AppleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				3E9AA0532C118DF80099E093 /* ContentView.swift */,
 				3E9AA0612C11A1D50099E093 /* Models */,
 				3E9AA0852C11A7920099E093 /* Views */,
+				3EA96EA62C16EF6000E29A3D /* ViewModels */,
 				3E9AA0682C11A2040099E093 /* Utilities */,
 				3E9AA06E2C11A2590099E093 /* Resources */,
 				3E9AA0552C118DFA0099E093 /* Assets.xcassets */,
@@ -313,8 +316,16 @@
 			isa = PBXGroup;
 			children = (
 				3EA96E952C16A12D00E29A3D /* LoginView.swift */,
+				3EA96EA72C16FC4A00E29A3D /* AppleSigninButton.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		3EA96EA62C16EF6000E29A3D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +415,7 @@
 				3E0525CF2C15F0000037EF35 /* FavoriteProductsView.swift in Sources */,
 				3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */,
 				3E0525D12C15F0420037EF35 /* FavoriteMarketsView.swift in Sources */,
+				3EA96EA82C16FC4A00E29A3D /* AppleSigninButton.swift in Sources */,
 				3EA96E9D2C16EAB200E29A3D /* ColorFilterButton.swift in Sources */,
 				3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */,
 				3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */,
