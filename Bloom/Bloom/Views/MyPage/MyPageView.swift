@@ -90,7 +90,6 @@ struct MyPageView: View {
                         .foregroundStyle(Color.gray5)
                         .frame(width: .infinity, height: 1)
                     
-                    // NavigationLinks
                     NavigationLink(destination: DetailView(title: "앱 소개")) {
                         Image("appintro-icon")
                             .padding(.leading, 5)

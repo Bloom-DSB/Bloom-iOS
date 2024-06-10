@@ -16,7 +16,7 @@ struct ContentView: View {
                 if selectedTab == 0 {
                     HomeView()
                 } else if selectedTab == 1 {
-                    MapView()
+                    MarketDetailView()
                 } else if selectedTab == 2 {
                     MyPageView()
                 }
