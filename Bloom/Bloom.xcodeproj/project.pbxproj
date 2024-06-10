@@ -37,6 +37,7 @@
 		3E9AA0832C11A3CC0099E093 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */; };
 		3E9AA0882C11A7B20099E093 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0872C11A7B20099E093 /* HomeView.swift */; };
 		3EA96E932C16994600E29A3D /* MarketProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E922C16994600E29A3D /* MarketProductsView.swift */; };
+		3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E952C16A12D00E29A3D /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		3E9AA0842C11A4220099E093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3E9AA0872C11A7B20099E093 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3EA96E922C16994600E29A3D /* MarketProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductsView.swift; sourceTree = "<group>"; };
+		3EA96E952C16A12D00E29A3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3EA96E972C16A1A500E29A3D /* BloomDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BloomDebug.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,7 @@
 		3E9AA0502C118DF80099E093 /* Bloom */ = {
 			isa = PBXGroup;
 			children = (
+				3EA96E972C16A1A500E29A3D /* BloomDebug.entitlements */,
 				3E9AA0842C11A4220099E093 /* Info.plist */,
 				3E9AA0512C118DF80099E093 /* BloomApp.swift */,
 				3E9AA0532C118DF80099E093 /* ContentView.swift */,
@@ -252,6 +256,7 @@
 		3E9AA0852C11A7920099E093 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3EA96E942C16A11A00E29A3D /* Auth */,
 				3E1B66EB2C12E94900305F5A /* Common */,
 				3E9AA0862C11A7A80099E093 /* Home */,
 				3E0525C62C1595580037EF35 /* Map */,
@@ -281,6 +286,14 @@
 				3EA96E922C16994600E29A3D /* MarketProductsView.swift */,
 			);
 			path = MarketProducts;
+			sourceTree = "<group>";
+		};
+		3EA96E942C16A11A00E29A3D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3EA96E952C16A12D00E29A3D /* LoginView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +393,7 @@
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
 				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
+				3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */,
 				3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bloom/BloomDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
