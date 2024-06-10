@@ -8,23 +8,6 @@
 import SwiftUI
 import Combine
 
-class FavoriteMarketsViewModel: ObservableObject {
-    @Published var markets: [Market] = []
-    
-    init() {
-        loadFavoriteMarkets()
-    }
-    
-    func loadFavoriteMarkets() {
-        let dummyMarkets = [
-            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "운영중"),
-            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "준비중")
-        ]
-        self.markets = dummyMarkets
-    }
-}
-
-
 struct FavoriteMarketsView: View {
     @StateObject private var viewModel = FavoriteMarketsViewModel()
     @Environment(\.presentationMode) var presentationMode

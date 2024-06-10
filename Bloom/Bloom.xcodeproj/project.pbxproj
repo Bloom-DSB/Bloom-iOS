@@ -46,6 +46,13 @@
 		3EA96EA32C16EC1B00E29A3D /* OpensourceLicensePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */; };
 		3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */; };
 		3EA96EA82C16FC4A00E29A3D /* AppleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA72C16FC4A00E29A3D /* AppleSigninButton.swift */; };
+		3EA96EAA2C1715CD00E29A3D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA92C1715CD00E29A3D /* HomeViewModel.swift */; };
+		3EA96EAC2C17161400E29A3D /* FavoriteProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EAB2C17161400E29A3D /* FavoriteProductsViewModel.swift */; };
+		3EA96EAE2C17165A00E29A3D /* FavoriteMarketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EAD2C17165A00E29A3D /* FavoriteMarketsViewModel.swift */; };
+		3EA96EB02C17168E00E29A3D /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EAF2C17168E00E29A3D /* SearchResultsViewModel.swift */; };
+		3EA96EB22C1716AC00E29A3D /* MarketDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB12C1716AC00E29A3D /* MarketDetailViewModel.swift */; };
+		3EA96EB42C1716FB00E29A3D /* MarketProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB32C1716FB00E29A3D /* MarketProductsViewModel.swift */; };
+		3EA96EB62C17175C00E29A3D /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +98,13 @@
 		3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensourceLicensePage.swift; sourceTree = "<group>"; };
 		3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperIntroPage.swift; sourceTree = "<group>"; };
 		3EA96EA72C16FC4A00E29A3D /* AppleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninButton.swift; sourceTree = "<group>"; };
+		3EA96EA92C1715CD00E29A3D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3EA96EAB2C17161400E29A3D /* FavoriteProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductsViewModel.swift; sourceTree = "<group>"; };
+		3EA96EAD2C17165A00E29A3D /* FavoriteMarketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMarketsViewModel.swift; sourceTree = "<group>"; };
+		3EA96EAF2C17168E00E29A3D /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
+		3EA96EB12C1716AC00E29A3D /* MarketDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewModel.swift; sourceTree = "<group>"; };
+		3EA96EB32C1716FB00E29A3D /* MarketProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductsViewModel.swift; sourceTree = "<group>"; };
+		3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +338,13 @@
 		3EA96EA62C16EF6000E29A3D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3EA96EA92C1715CD00E29A3D /* HomeViewModel.swift */,
+				3EA96EAF2C17168E00E29A3D /* SearchResultsViewModel.swift */,
+				3EA96EAB2C17161400E29A3D /* FavoriteProductsViewModel.swift */,
+				3EA96EAD2C17165A00E29A3D /* FavoriteMarketsViewModel.swift */,
+				3EA96EB12C1716AC00E29A3D /* MarketDetailViewModel.swift */,
+				3EA96EB32C1716FB00E29A3D /* MarketProductsViewModel.swift */,
+				3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -410,18 +431,24 @@
 				3EA96E932C16994600E29A3D /* MarketProductsView.swift in Sources */,
 				3E9AA0882C11A7B20099E093 /* HomeView.swift in Sources */,
 				3E0525C82C15957C0037EF35 /* MapView.swift in Sources */,
+				3EA96EB62C17175C00E29A3D /* ProductDetailViewModel.swift in Sources */,
 				3E9AA0632C11A1E00099E093 /* User.swift in Sources */,
 				3E8BC5B52C144BAD003320F1 /* CustomRangeSlider.swift in Sources */,
+				3EA96EB22C1716AC00E29A3D /* MarketDetailViewModel.swift in Sources */,
 				3E0525CF2C15F0000037EF35 /* FavoriteProductsView.swift in Sources */,
 				3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */,
+				3EA96EB42C1716FB00E29A3D /* MarketProductsViewModel.swift in Sources */,
 				3E0525D12C15F0420037EF35 /* FavoriteMarketsView.swift in Sources */,
 				3EA96EA82C16FC4A00E29A3D /* AppleSigninButton.swift in Sources */,
 				3EA96E9D2C16EAB200E29A3D /* ColorFilterButton.swift in Sources */,
 				3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */,
+				3EA96EB02C17168E00E29A3D /* SearchResultsViewModel.swift in Sources */,
 				3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */,
+				3EA96EAC2C17161400E29A3D /* FavoriteProductsViewModel.swift in Sources */,
 				3E8BC5A82C11E6B8003320F1 /* MarketDetailView.swift in Sources */,
 				3EA96EA12C16EBFA00E29A3D /* AppIntroPage.swift in Sources */,
 				3E0525C52C1584C00037EF35 /* ProfileEditView.swift in Sources */,
+				3EA96EAA2C1715CD00E29A3D /* HomeViewModel.swift in Sources */,
 				3E0525C22C156D270037EF35 /* MyPageView.swift in Sources */,
 				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
 				3E9AA0652C11A1EC0099E093 /* Product.swift in Sources */,
@@ -435,6 +462,7 @@
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
 				3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */,
 				3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */,
+				3EA96EAE2C17165A00E29A3D /* FavoriteMarketsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

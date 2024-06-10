@@ -108,7 +108,6 @@ struct ProfileEditView: View {
     }
 }
 
-
 #Preview {
     ProfileEditView(initialUserName: .constant("다우니맛"), email: .constant("efiijqoadf@privaterlay.appleid.com"), hideTabBar: .constant(false))
 }

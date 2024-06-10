@@ -14,3 +14,13 @@ struct Market: Codable, Identifiable {
     let price: String
     let status: String
 }
+
+struct MarketDetail: Codable, Identifiable {
+    let id: UUID
+    let name: String
+    let status: String
+    let description: String
+    let products: [Product]
+    let location: String
+    let mapImageName: String
+}

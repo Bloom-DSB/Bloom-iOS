@@ -142,17 +142,6 @@ struct MyPageView: View {
     }
 }
 
-struct DetailView: View {
-    var title: String
-    
-    var body: some View {
-        Text(title)
-            .font(.largeTitle)
-            .fontWeight(.bold)
-            .navigationBarTitle(title, displayMode: .inline)
-    }
-}
-
 #Preview {
     MyPageView(hideTabBar: .constant(false))
 }

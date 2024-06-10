@@ -133,7 +133,6 @@ struct FilterView: View {
     }
 }
 
-
 #Preview {
     FilterView(hideTabBar: .constant(false))
 }
