@@ -8,14 +8,6 @@
 import SwiftUI
 import Combine
 
-struct Market: Identifiable {
-    let id: UUID
-    let name: String
-    let location: String
-    let price: String
-    let status: String
-}
-
 class HomeViewModel: ObservableObject {
     @Published var markets: [Market] = []
     @Published var searchText: String = ""
@@ -83,6 +75,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 20)
+                    .padding(.top, 10)
                     
                     HStack {
                         SearchTextField(text: $viewModel.searchText)
@@ -133,7 +126,8 @@ struct HomeView: View {
                                     .padding(4)
                                     .font(.pretendardRegular(size: 12))
                                     .frame(width: 51, height: 22)
-                                    .foregroundColor(market.status == "운영중" ? .operating : .preparing)
+                                    .foregroundStyle(market.status == "운영중" ? Color.operating : 
+                                            Color.preparing)
                                     .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                                     .cornerRadius(99)
                             }

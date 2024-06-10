@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct Product: Identifiable {
-    let id: UUID
-    let name: String
-    let price: String
-    let imageName: String
-    let status: String
-}
-
 class SearchResultsViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var searchText: String = ""
