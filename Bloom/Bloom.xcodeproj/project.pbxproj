@@ -41,6 +41,10 @@
 		3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E982C16D78500E29A3D /* CustomTabBar.swift */; };
 		3EA96E9B2C16EA6400E29A3D /* CategoryFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E9A2C16EA6400E29A3D /* CategoryFilterButton.swift */; };
 		3EA96E9D2C16EAB200E29A3D /* ColorFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E9C2C16EAB200E29A3D /* ColorFilterButton.swift */; };
+		3EA96E9F2C16EB7400E29A3D /* HomeSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E9E2C16EB7400E29A3D /* HomeSearchTextField.swift */; };
+		3EA96EA12C16EBFA00E29A3D /* AppIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA02C16EBFA00E29A3D /* AppIntroPage.swift */; };
+		3EA96EA32C16EC1B00E29A3D /* OpensourceLicensePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */; };
+		3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +85,10 @@
 		3EA96E982C16D78500E29A3D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		3EA96E9A2C16EA6400E29A3D /* CategoryFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterButton.swift; sourceTree = "<group>"; };
 		3EA96E9C2C16EAB200E29A3D /* ColorFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFilterButton.swift; sourceTree = "<group>"; };
+		3EA96E9E2C16EB7400E29A3D /* HomeSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchTextField.swift; sourceTree = "<group>"; };
+		3EA96EA02C16EBFA00E29A3D /* AppIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntroPage.swift; sourceTree = "<group>"; };
+		3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpensourceLicensePage.swift; sourceTree = "<group>"; };
+		3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperIntroPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				3E0525C12C156D270037EF35 /* MyPageView.swift */,
+				3EA96EA02C16EBFA00E29A3D /* AppIntroPage.swift */,
+				3EA96EA22C16EC1B00E29A3D /* OpensourceLicensePage.swift */,
+				3EA96EA42C16EC3500E29A3D /* DeveloperIntroPage.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -285,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				3E9AA0872C11A7B20099E093 /* HomeView.swift */,
+				3EA96E9E2C16EB7400E29A3D /* HomeSearchTextField.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -396,14 +408,18 @@
 				3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */,
 				3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */,
 				3E8BC5A82C11E6B8003320F1 /* MarketDetailView.swift in Sources */,
+				3EA96EA12C16EBFA00E29A3D /* AppIntroPage.swift in Sources */,
 				3E0525C52C1584C00037EF35 /* ProfileEditView.swift in Sources */,
 				3E0525C22C156D270037EF35 /* MyPageView.swift in Sources */,
 				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
 				3E9AA0652C11A1EC0099E093 /* Product.swift in Sources */,
+				3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
 				3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */,
 				3EA96E9B2C16EA6400E29A3D /* CategoryFilterButton.swift in Sources */,
 				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
+				3EA96EA32C16EC1B00E29A3D /* OpensourceLicensePage.swift in Sources */,
+				3EA96E9F2C16EB7400E29A3D /* HomeSearchTextField.swift in Sources */,
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
 				3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */,
 				3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */,

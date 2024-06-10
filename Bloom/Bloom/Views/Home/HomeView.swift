@@ -25,33 +25,6 @@ class HomeViewModel: ObservableObject {
     }
 }
 
-struct SearchTextField: View {
-    @Binding var text: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(Color.black)
-            
-            ZStack(alignment: .leading) {
-                if text.isEmpty {
-                    Text("소중한 사람에게 장미를🌹")
-                        .foregroundStyle(Color.gray3)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 4)
-                        .font(.pretendardRegular(size: 15))
-                }
-                TextField("", text: $text)
-                    .padding(.vertical, 8)
-            }
-        }
-        .padding(.horizontal, 15)
-        .frame(width: 299, height: 44)
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
-    }
-}
-
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @Binding var hideTabBar: Bool
@@ -79,7 +52,7 @@ struct HomeView: View {
                     .padding(.top, 10)
                     
                     HStack {
-                        SearchTextField(text: $viewModel.searchText)
+                        HomeSearchTextField(text: $viewModel.searchText)
                         
                         NavigationLink(destination: FilterView(hideTabBar: $hideTabBar)) {
                             Image("filter-icon")

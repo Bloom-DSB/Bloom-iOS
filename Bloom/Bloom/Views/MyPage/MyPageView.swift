@@ -90,7 +90,7 @@ struct MyPageView: View {
                     .foregroundStyle(Color.gray5)
                     .frame(width: .infinity, height: 1)
                 
-                NavigationLink(destination: DetailView(title: "앱 소개")) {
+                NavigationLink(destination: AppIntroPage()) {
                     Image("appintro-icon")
                         .padding(.leading, 5)
                     Text("앱 소개")
@@ -104,7 +104,7 @@ struct MyPageView: View {
                     .foregroundStyle(Color.gray5)
                     .frame(width: .infinity, height: 1)
                 
-                NavigationLink(destination: DetailView(title: "오픈소스 라이센스")) {
+                NavigationLink(destination: OpensourceLicensePage()) {
                     Image("opensource-icon")
                         .padding(.leading, 5)
                     Text("오픈소스 라이센스")
@@ -118,7 +118,7 @@ struct MyPageView: View {
                     .foregroundStyle(Color.gray5)
                     .frame(width: .infinity, height: 1)
                 
-                NavigationLink(destination: DetailView(title: "개발자 정보")) {
+                NavigationLink(destination: DeveloperIntroPage()) {
                     Image("developer-icon")
                         .padding(.leading, 5)
                     Text("개발자 정보")
