@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MyPageView: View {
-    @State private var userName = "다우니맛"
-    @State private var email = "efiijqoadf@privaterlay.appleid.com"
+    @State private var userName: String = UserDefaults.standard.string(forKey: "userName") ?? "Unknown"
+    @State private var email: String = UserDefaults.standard.string(forKey: "userEmail") ?? "unknown@example.com"
     @State private var storeCount = 3
     @State private var productCount = 12
     
