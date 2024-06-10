@@ -8,23 +8,6 @@
 import SwiftUI
 import Combine
 
-class FavoriteMarketsViewModel: ObservableObject {
-    @Published var markets: [Market] = []
-    
-    init() {
-        loadFavoriteMarkets()
-    }
-    
-    func loadFavoriteMarkets() {
-        let dummyMarkets = [
-            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "운영중"),
-            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "준비중")
-        ]
-        self.markets = dummyMarkets
-    }
-}
-
-
 struct FavoriteMarketsView: View {
     @StateObject private var viewModel = FavoriteMarketsViewModel()
     @Environment(\.presentationMode) var presentationMode
@@ -36,7 +19,7 @@ struct FavoriteMarketsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+                        .foregroundStyle(.black)
                         .padding()
                 }
                 Spacer()
@@ -64,7 +47,7 @@ struct FavoriteMarketsView: View {
                         Text(market.status)
                             .padding(4)
                             .font(.caption)
-                            .foregroundColor(market.status == "운영중" ? Color.operating : Color.preparing)
+                            .foregroundStyle(market.status == "운영중" ? Color.operating : Color.preparing)
                             .frame(width: 51, height: 22)
                             .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                             .cornerRadius(99)
@@ -73,13 +56,13 @@ struct FavoriteMarketsView: View {
                     HStack {
                         Text(market.location)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundStyle(Color.gray2)
                         
                         Spacer()
                         
                         Text(market.price)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundStyle(Color.gray3)
                     }
                     
                     HStack {

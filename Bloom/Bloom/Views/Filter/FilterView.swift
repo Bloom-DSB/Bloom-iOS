@@ -12,6 +12,8 @@ struct FilterView: View {
     @State private var selectedColors: Set<String> = []
     @State private var minPrice: Double = -10000
     @State private var maxPrice: Double = 100000
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var hideTabBar: Bool
     
     private let categories = ["꽃다발", "꽃바구니", "드라이플라워", "조화"]
     private let colors = [
@@ -37,10 +39,11 @@ struct FilterView: View {
                     Spacer()
                     
                     Button(action: {
-                        // 닫기 액션
+                        hideTabBar = false
+                        presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "xmark")
-                            .foregroundColor(Color(hex: "000001"))
+                            .foregroundStyle(Color(hex: "000001"))
                     }
                 }
                 .padding()
@@ -51,7 +54,7 @@ struct FilterView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
                     ForEach(categories, id: \.self) { category in
-                        FilterButton(title: category, isSelected: selectedCategory == category) {
+                        CategoryFilterButton(title: category, isSelected: selectedCategory == category) {
                             selectedCategory = category
                         }
                     }
@@ -70,12 +73,12 @@ struct FilterView: View {
                     HStack {
                         Text("₩\(Int(minPrice), specifier: "%d") 원")
                             .fontWeight(.bold)
-                            .foregroundColor(.orange)
+                            .foregroundStyle(Color.pointOrange)
                         
                         Spacer()
                         
                         Text("₩\(Int(maxPrice), specifier: "%d") 원")
-                            .foregroundColor(.gray)
+                            .foregroundStyle(Color.gray4)
                     }
                     .padding(.horizontal)
                 }
@@ -87,7 +90,7 @@ struct FilterView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
                     ForEach(colors, id: \.0) { color in
-                        ColorButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
+                        ColorFilterButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
                             toggleColor(color.0)
                         }
                         .frame(height: 50) // 버튼의 크기 조절
@@ -110,9 +113,15 @@ struct FilterView: View {
                 }
                 
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
         }
+        .onAppear {
+            hideTabBar = true
+        }
+        .onDisappear {
+            hideTabBar = false
+        }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
     
     private func toggleColor(_ color: String) {
@@ -124,56 +133,6 @@ struct FilterView: View {
     }
 }
 
-struct FilterButton: View {
-    let title: String
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .frame(maxWidth: .infinity)
-                .font(.pretendardSemiBold(size: 14))
-                .fontWeight(isSelected ? .bold : .regular)
-                .foregroundColor(isSelected ? Color.pointOrange : Color.gray3)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 8)
-                    .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
-        }
-        .padding(.horizontal, 1)
-        .padding(.vertical, 2)
-    }
-}
-
-struct ColorButton: View {
-    let colorName: String
-    let color: Color
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            VStack {
-                HStack {
-                    Circle()
-                        .fill(color)
-                        .frame(width: 24, height: 24)
-                    
-                    Text(colorName)
-                        .font(.pretendardMedium(size: 14))
-                        .foregroundColor(Color.gray3)
-                    Spacer()
-                }
-            }
-            .padding(12)
-            .frame(maxWidth: .infinity, minHeight: 50) // 버튼의 크기 조절
-            .background(RoundedRectangle(cornerRadius: 8)
-                .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
-        }
-    }
-}
-
-
 #Preview {
-    FilterView()
+    FilterView(hideTabBar: .constant(false))
 }

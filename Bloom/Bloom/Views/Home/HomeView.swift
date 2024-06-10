@@ -8,60 +8,9 @@
 import SwiftUI
 import Combine
 
-struct Market: Identifiable {
-    let id: UUID
-    let name: String
-    let location: String
-    let price: String
-    let status: String
-}
-
-class HomeViewModel: ObservableObject {
-    @Published var markets: [Market] = []
-    @Published var searchText: String = ""
-    
-    init() {
-        loadMarkets()
-    }
-    
-    func loadMarkets() {
-        let dummyMarkets = [
-            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "운영중"),
-            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "준비중")
-        ]
-        self.markets = dummyMarkets
-    }
-}
-
-struct SearchTextField: View {
-    @Binding var text: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(Color.black)
-            
-            ZStack(alignment: .leading) {
-                if text.isEmpty {
-                    Text("소중한 사람에게 장미를🌹")
-                        .foregroundColor(.gray3)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 4)
-                        .font(.pretendardRegular(size: 15))
-                }
-                TextField("", text: $text)
-                    .padding(.vertical, 8)
-            }
-        }
-        .padding(.horizontal, 15)
-        .frame(width: 299, height: 44)
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
-    }
-}
-
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @Binding var hideTabBar: Bool
     
     var body: some View {
         NavigationView {
@@ -83,22 +32,20 @@ struct HomeView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 20)
+                    .padding(.top, 10)
                     
                     HStack {
-                        SearchTextField(text: $viewModel.searchText)
+                        HomeSearchTextField(text: $viewModel.searchText)
                         
-                        Button(action: {
-                            // 필터 모달 추가
-                        }) {
+                        NavigationLink(destination: FilterView(hideTabBar: $hideTabBar)) {
                             Image("filter-icon")
                                 .frame(width: 44, height: 44)
-                                .backgroundStyle(Color.baseYellow)
+                                .background(Color.baseYellow)
                                 .foregroundStyle(Color.pointOrange)
                                 .cornerRadius(8)
-                                .padding(.leading, 5)
+                                .padding(.leading, 2)
                         }
                     }
-                    .padding(.horizontal)
                     
                     List(viewModel.markets) { market in
                         VStack(alignment: .leading) {
@@ -133,7 +80,8 @@ struct HomeView: View {
                                     .padding(4)
                                     .font(.pretendardRegular(size: 12))
                                     .frame(width: 51, height: 22)
-                                    .foregroundColor(market.status == "운영중" ? .operating : .preparing)
+                                    .foregroundStyle(market.status == "운영중" ? Color.operating :
+                                                        Color.preparing)
                                     .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                                     .cornerRadius(99)
                             }
@@ -163,5 +111,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(hideTabBar: .constant(false))
 }
