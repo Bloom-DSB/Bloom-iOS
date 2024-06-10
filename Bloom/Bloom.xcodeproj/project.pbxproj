@@ -38,6 +38,7 @@
 		3E9AA0882C11A7B20099E093 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0872C11A7B20099E093 /* HomeView.swift */; };
 		3EA96E932C16994600E29A3D /* MarketProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E922C16994600E29A3D /* MarketProductsView.swift */; };
 		3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E952C16A12D00E29A3D /* LoginView.swift */; };
+		3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E982C16D78500E29A3D /* CustomTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		3EA96E922C16994600E29A3D /* MarketProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductsView.swift; sourceTree = "<group>"; };
 		3EA96E952C16A12D00E29A3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3EA96E972C16A1A500E29A3D /* BloomDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BloomDebug.entitlements; sourceTree = "<group>"; };
+		3EA96E982C16D78500E29A3D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		3E1B66EB2C12E94900305F5A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3EA96E982C16D78500E29A3D /* CustomTabBar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
 				3E9AA0652C11A1EC0099E093 /* Flower.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
+				3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */,
 				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
 				3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */,
 				3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */,
