@@ -79,7 +79,7 @@ struct MarketDetailView: View {
                             Text(viewModel.marketDetail.status)
                                 .font(.pretendardMedium(size: 14))
                                 .frame(width: 60, height: 24)
-                                .foregroundColor(viewModel.marketDetail.status == "운영중" ? Color.operating : Color.preparing)
+                                .foregroundStyle(viewModel.marketDetail.status == "운영중" ? Color.operating : Color.preparing)
                                 .background(viewModel.marketDetail.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                                 .cornerRadius(99)
                             
@@ -111,7 +111,7 @@ struct MarketDetailView: View {
                             }
                             Rectangle()
                                 .frame(width: 1, height: 34)
-                                .foregroundColor(Color.pointOrange)
+                                .foregroundStyle(Color.pointOrange)
                             
                             Button(action: {
                                 // SNS 액션

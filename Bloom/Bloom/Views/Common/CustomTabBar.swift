@@ -14,7 +14,7 @@ struct CustomTabBar: View {
         VStack {
             Rectangle()
                 .frame(height: 0.8)
-                .foregroundColor(Color.gray4)
+                .foregroundStyle(Color.gray4)
                 .padding(.bottom, 5)
             
             HStack {

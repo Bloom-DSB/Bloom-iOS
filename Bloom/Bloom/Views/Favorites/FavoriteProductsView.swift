@@ -40,7 +40,7 @@ struct FavoriteProductsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+                        .foregroundStyle(.black)
                         .padding()
                 }
                 Spacer()
@@ -65,7 +65,7 @@ struct FavoriteProductsView: View {
                             
                             Text(product.status)
                                 .font(.pretendardSemiBold(size: 11))
-                                .foregroundColor(product.status == "운영중" ? Color.operating : Color.preparing)
+                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
                             
                             Text(product.name)
                                 .font(.pretendardMedium(size: 14))

@@ -36,7 +36,7 @@ struct SearchTextField: View {
             ZStack(alignment: .leading) {
                 if text.isEmpty {
                     Text("소중한 사람에게 장미를🌹")
-                        .foregroundColor(.gray3)
+                        .foregroundStyle(Color.gray3)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 4)
                         .font(.pretendardRegular(size: 15))
@@ -85,13 +85,12 @@ struct HomeView: View {
                         }) {
                             Image("filter-icon")
                                 .frame(width: 44, height: 44)
-                                .backgroundStyle(Color.baseYellow)
+                                .background(Color.baseYellow)
                                 .foregroundStyle(Color.pointOrange)
                                 .cornerRadius(8)
-                                .padding(.leading, 5)
+                                .padding(.leading, 2)
                         }
                     }
-                    .padding(.horizontal)
                     
                     List(viewModel.markets) { market in
                         VStack(alignment: .leading) {

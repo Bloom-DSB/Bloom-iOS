@@ -18,20 +18,20 @@ struct RangeSlider: View {
                 // Slider background line
                 Rectangle()
                     .frame(height: 4)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(Color.gray5)
                     .cornerRadius(2)
                 
                 // Active range line
                 Rectangle()
                     .frame(width: CGFloat((maxValue - minValue) / (range.upperBound - range.lowerBound)) * geometry.size.width, height: 4)
-                    .foregroundColor(.orange)
+                    .foregroundStyle(Color.pointOrange)
                     .cornerRadius(2)
                     .offset(x: CGFloat((minValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometry.size.width)
                 
                 // Min handle
                 Circle()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(.orange)
+                    .foregroundStyle(Color.pointOrange)
                     .offset(x: max(0, CGFloat((minValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometry.size.width - 10))
                     .gesture(
                         DragGesture()
@@ -44,7 +44,7 @@ struct RangeSlider: View {
                 // Max handle
                 Circle()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(.orange)
+                    .foregroundStyle(Color.pointOrange)
                     .offset(x: max(0, CGFloat((maxValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometry.size.width - 10))
                     .gesture(
                         DragGesture()

@@ -54,7 +54,7 @@ struct SearchResultsView: View {
                     
                     TextField("검색어를 입력하세요", text: $viewModel.searchText)
                         .textFieldStyle(PlainTextFieldStyle())
-                        .foregroundColor(Color.gray3)
+                        .foregroundStyle(Color.gray3)
                         .padding(.horizontal, 4)
                         .font(.pretendardRegular(size: 15))
                 }
@@ -67,7 +67,7 @@ struct SearchResultsView: View {
                     // 필터 모달 추가
                 }) {
                     Rectangle()
-                        .foregroundColor(.clear)
+                        .foregroundStyle(Color.clear)
                         .frame(width: 44, height: 44)
                         .background(.white)
                         .cornerRadius(8)
@@ -86,14 +86,14 @@ struct SearchResultsView: View {
             HStack {
                 Text("상품 \(filteredProducts.count)개")
                     .font(.pretendardMedium(size: 14))
-                    .foregroundColor(Color.gray2)
+                    .foregroundStyle(Color.gray2)
                 
                 Spacer()
                 
                 HStack(spacing: 0) { // 간격을 없애기 위해 spacing을 0으로 설정
                     Text("운영 중인 가게만 보기")
                         .font(.pretendardMedium(size: 14))
-                        .foregroundColor(viewModel.showOnlyOperating ? Color.operating : Color.gray3)
+                        .foregroundStyle(viewModel.showOnlyOperating ? Color.operating : Color.gray3)
                         .padding(.trailing, 10)
                     
                     Toggle("", isOn: $viewModel.showOnlyOperating)
@@ -117,7 +117,7 @@ struct SearchResultsView: View {
                             
                             Text(product.status)
                                 .font(.pretendardSemiBold(size: 11))
-                                .foregroundColor(product.status == "운영중" ? Color.operating : Color.preparing)
+                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
                             
                             Text(product.name)
                                 .font(.pretendardMedium(size: 14))

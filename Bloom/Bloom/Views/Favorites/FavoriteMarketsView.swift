@@ -36,7 +36,7 @@ struct FavoriteMarketsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+                        .foregroundStyle(.black)
                         .padding()
                 }
                 Spacer()
@@ -64,7 +64,7 @@ struct FavoriteMarketsView: View {
                         Text(market.status)
                             .padding(4)
                             .font(.caption)
-                            .foregroundColor(market.status == "운영중" ? Color.operating : Color.preparing)
+                            .foregroundStyle(market.status == "운영중" ? Color.operating : Color.preparing)
                             .frame(width: 51, height: 22)
                             .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                             .cornerRadius(99)
@@ -73,13 +73,13 @@ struct FavoriteMarketsView: View {
                     HStack {
                         Text(market.location)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundStyle(Color.gray2)
                         
                         Spacer()
                         
                         Text(market.price)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundStyle(Color.gray3)
                     }
                     
                     HStack {

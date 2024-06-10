@@ -40,7 +40,7 @@ struct FilterView: View {
                         // 닫기 액션
                     }) {
                         Image(systemName: "xmark")
-                            .foregroundColor(Color(hex: "000001"))
+                            .foregroundStyle(Color(hex: "000001"))
                     }
                 }
                 .padding()
@@ -70,12 +70,12 @@ struct FilterView: View {
                     HStack {
                         Text("₩\(Int(minPrice), specifier: "%d") 원")
                             .fontWeight(.bold)
-                            .foregroundColor(.orange)
+                            .foregroundStyle(Color.pointOrange)
                         
                         Spacer()
                         
                         Text("₩\(Int(maxPrice), specifier: "%d") 원")
-                            .foregroundColor(.gray)
+                            .foregroundStyle(Color.gray4)
                     }
                     .padding(.horizontal)
                 }
@@ -135,7 +135,7 @@ struct FilterButton: View {
                 .frame(maxWidth: .infinity)
                 .font(.pretendardSemiBold(size: 14))
                 .fontWeight(isSelected ? .bold : .regular)
-                .foregroundColor(isSelected ? Color.pointOrange : Color.gray3)
+                .foregroundStyle(isSelected ? Color.pointOrange : Color.gray3)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 8)
                     .stroke(isSelected ? Color.pointOrange : Color.gray4, lineWidth: 1.3))
@@ -161,7 +161,7 @@ struct ColorButton: View {
                     
                     Text(colorName)
                         .font(.pretendardMedium(size: 14))
-                        .foregroundColor(Color.gray3)
+                        .foregroundStyle(Color.gray3)
                     Spacer()
                 }
             }
