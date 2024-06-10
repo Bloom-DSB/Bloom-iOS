@@ -32,7 +32,7 @@ struct RangeSlider: View {
                 Circle()
                     .frame(width: 20, height: 20)
                     .foregroundStyle(Color.pointOrange)
-                    .offset(x: max(0, CGFloat((minValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometry.size.width - 10))
+                    .offset(x: minHandleOffset(geometryWidth: geometry.size.width))
                     .gesture(
                         DragGesture()
                             .onChanged { value in
@@ -45,7 +45,7 @@ struct RangeSlider: View {
                 Circle()
                     .frame(width: 20, height: 20)
                     .foregroundStyle(Color.pointOrange)
-                    .offset(x: max(0, CGFloat((maxValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometry.size.width - 10))
+                    .offset(x: maxHandleOffset(geometryWidth: geometry.size.width))
                     .gesture(
                         DragGesture()
                             .onChanged { value in
@@ -58,10 +58,20 @@ struct RangeSlider: View {
         }
         .frame(height: 20)
     }
+    
+    // Function to calculate min handle offset
+    private func minHandleOffset(geometryWidth: CGFloat) -> CGFloat {
+        return max(0, CGFloat((minValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometryWidth - 10)
+    }
+    
+    // Function to calculate max handle offset
+    private func maxHandleOffset(geometryWidth: CGFloat) -> CGFloat {
+        return max(0, CGFloat((maxValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * geometryWidth - 10)
+    }
 }
 
 struct RangeSlider_Previews: PreviewProvider {
-    @State static var minValue: Double = 0
+    @State static var minValue: Double = -10000
     @State static var maxValue: Double = 100000
     
     static var previews: some View {
@@ -69,7 +79,3 @@ struct RangeSlider_Previews: PreviewProvider {
             .padding()
     }
 }
-
-//#Preview {
-//    CustomRangeSlider()
-//}

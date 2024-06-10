@@ -10,8 +10,7 @@ import SwiftUI
 struct FilterView: View {
     @State private var selectedCategory: String? = nil
     @State private var selectedColors: Set<String> = []
-    @State private var minPrice: Double = -10000
-    @State private var maxPrice: Double = 100000
+    @ObservedObject var slider = CustomSlider(start: 0, end: 100000)
     @Environment(\.presentationMode) var presentationMode
     @Binding var hideTabBar: Bool
     
@@ -67,17 +66,19 @@ struct FilterView: View {
                     .padding(.top, 10)
                 
                 VStack(alignment: .leading) {
-                    RangeSlider(minValue: $minPrice, maxValue: $maxPrice, range: 0...100000)
-                        .padding(.horizontal)
+                    HStack {
+                        SliderView(slider: slider)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
                     
                     HStack {
-                        Text("₩\(Int(minPrice), specifier: "%d") 원")
+                        Text("₩\(Int(slider.lowHandle.currentValue), specifier: "%d") 원")
                             .fontWeight(.bold)
                             .foregroundStyle(Color.pointOrange)
                         
                         Spacer()
                         
-                        Text("₩\(Int(maxPrice), specifier: "%d") 원")
+                        Text("₩\(Int(slider.highHandle.currentValue), specifier: "%d") 원")
                             .foregroundStyle(Color.gray4)
                     }
                     .padding(.horizontal)
@@ -93,7 +94,7 @@ struct FilterView: View {
                         ColorFilterButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
                             toggleColor(color.0)
                         }
-                        .frame(height: 50) // 버튼의 크기 조절
+                        .frame(height: 50)
                     }
                 }
                 .padding(.horizontal)
@@ -130,6 +131,56 @@ struct FilterView: View {
         } else {
             selectedColors.insert(color)
         }
+    }
+}
+
+struct SliderView: View {
+    @ObservedObject var slider: CustomSlider
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: slider.lineWidth)
+            .fill(Color.gray.opacity(0.2))
+            .frame(width: slider.width, height: slider.lineWidth)
+            .overlay(
+                ZStack {
+                    //Path between both handles
+                    SliderPathBetweenView(slider: slider)
+                    
+                    //Low Handle
+                    SliderHandleView(handle: slider.lowHandle)
+                        .highPriorityGesture(slider.lowHandle.sliderDragGesture)
+                    
+                    //High Handle
+                    SliderHandleView(handle: slider.highHandle)
+                        .highPriorityGesture(slider.highHandle.sliderDragGesture)
+                }
+            )
+    }
+}
+
+struct SliderHandleView: View {
+    @ObservedObject var handle: SliderHandle
+    
+    var body: some View {
+        Circle()
+            .frame(width: handle.diameter, height: handle.diameter)
+            .foregroundColor(.white)
+            .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 0)
+            .scaleEffect(handle.onDrag ? 1.3 : 1)
+            .contentShape(Rectangle())
+            .position(x: handle.currentLocation.x, y: handle.currentLocation.y)
+    }
+}
+
+struct SliderPathBetweenView: View {
+    @ObservedObject var slider: CustomSlider
+    
+    var body: some View {
+        Path { path in
+            path.move(to: slider.lowHandle.currentLocation)
+            path.addLine(to: slider.highHandle.currentLocation)
+        }
+        .stroke(Color.pointOrange, lineWidth: slider.lineWidth)
     }
 }
 

@@ -53,6 +53,7 @@
 		3EA96EB22C1716AC00E29A3D /* MarketDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB12C1716AC00E29A3D /* MarketDetailViewModel.swift */; };
 		3EA96EB42C1716FB00E29A3D /* MarketProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB32C1716FB00E29A3D /* MarketProductsViewModel.swift */; };
 		3EA96EB62C17175C00E29A3D /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */; };
+		3EA96EB82C171D1300E29A3D /* CusotmSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB72C171D1300E29A3D /* CusotmSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		3EA96EB12C1716AC00E29A3D /* MarketDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewModel.swift; sourceTree = "<group>"; };
 		3EA96EB32C1716FB00E29A3D /* MarketProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductsViewModel.swift; sourceTree = "<group>"; };
 		3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		3EA96EB72C171D1300E29A3D /* CusotmSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusotmSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				3EA96E9C2C16EAB200E29A3D /* ColorFilterButton.swift */,
 				3EA96E9A2C16EA6400E29A3D /* CategoryFilterButton.swift */,
 				3E8BC5B42C144BAD003320F1 /* CustomRangeSlider.swift */,
+				3EA96EB72C171D1300E29A3D /* CusotmSlider.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */,
 				3E9AA0672C11A1FD0099E093 /* Market.swift in Sources */,
 				3EA96EAE2C17165A00E29A3D /* FavoriteMarketsViewModel.swift in Sources */,
+				3EA96EB82C171D1300E29A3D /* CusotmSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
