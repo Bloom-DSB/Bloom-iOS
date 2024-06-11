@@ -93,10 +93,10 @@ class SliderHandle: ObservableObject {
     // Current Value
     var currentValue: Double {
         get {
-            return sliderValueStart + currentPercentage.wrappedValue * sliderValueRange
+            return (sliderValueStart + currentPercentage.wrappedValue * sliderValueRange).rounded(to: 1000)
         }
         set {
-            let newPercentage = (newValue - sliderValueStart) / sliderValueRange
+            let newPercentage = ((newValue / 1000).rounded() * 1000 - sliderValueStart) / sliderValueRange
             self.currentPercentage.wrappedValue = newPercentage
             self.currentLocation.x = CGFloat(newPercentage) * sliderWidth
         }
@@ -159,5 +159,11 @@ class CustomSlider: ObservableObject {
     // Value between high and low handle
     var valueBetween: String {
         return String(format: "%.2f", highHandle.currentValue - lowHandle.currentValue)
+    }
+}
+
+extension Double {
+    func rounded(to nearest: Double) -> Double {
+        return (self / nearest).rounded() * nearest
     }
 }
