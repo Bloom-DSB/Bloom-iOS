@@ -65,44 +65,44 @@ class LoginViewModel: NSObject, ObservableObject {
                 promise(.success(user))
             }
         }
-//        return Future { promise in
-//            guard let url = URL(string: "{엔드 포인트}") else {
-//                fatalError("Invalid URL")
-//            }
-//            var request = URLRequest(url: url)
-//            request.httpMethod = "POST"
-//            
-//            do {
-//                let jsonData = try JSONEncoder().encode(appleLoginInfo)
-//                request.httpBody = jsonData
-//                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//            } catch {
-//                promise(.failure(error))
-//                return
-//            }
-//            
-//            URLSession.shared.dataTaskPublisher(for: request)
-//                .subscribe(on: DispatchQueue.global(qos: .background))
-//                .receive(on: DispatchQueue.main)
-//                .tryMap { data, response -> Data in
-//                    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-//                        throw URLError(.badServerResponse)
-//                    }
-//                    return data
-//                }
-//                .decode(type: User.self, decoder: JSONDecoder())
-//                .sink(receiveCompletion: { completion in
-//                    switch completion {
-//                    case .failure(let error):
-//                        promise(.failure(error))
-//                    case .finished:
-//                        break
-//                    }
-//                }, receiveValue: { user in
-//                    promise(.success(user))
-//                })
-//                .store(in: &self.loginCancellables)
-//        }
+        return Future { promise in
+            guard let url = URL(string: "{엔드 포인트}") else {
+                fatalError("Invalid URL")
+            }
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            do {
+                let jsonData = try JSONEncoder().encode(appleLoginInfo)
+                request.httpBody = jsonData
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            } catch {
+                promise(.failure(error))
+                return
+            }
+            
+            URLSession.shared.dataTaskPublisher(for: request)
+                .subscribe(on: DispatchQueue.global(qos: .background))
+                .receive(on: DispatchQueue.main)
+                .tryMap { data, response -> Data in
+                    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                        throw URLError(.badServerResponse)
+                    }
+                    return data
+                }
+                .decode(type: User.self, decoder: JSONDecoder())
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let error):
+                        promise(.failure(error))
+                    case .finished:
+                        break
+                    }
+                }, receiveValue: { user in
+                    promise(.success(user))
+                })
+                .store(in: &self.loginCancellables)
+        }
     }
 }
 
