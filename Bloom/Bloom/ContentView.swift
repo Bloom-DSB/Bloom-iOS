@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "isAuthenticated")
+    @State private var isAuthenticated: Bool = true
     @State private var selectedTab = 0
-    
+    @State private var hideTabBar = false
+    @State private var showPicker = false
+    @State private var selectedCity = "서울특별시"
+    @State private var selectedDistrict = "강남구"
+
     var body: some View {
         if isAuthenticated {
-            MainTabView(selectedTab: $selectedTab)
+            MainTabView(selectedTab: $selectedTab, hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
         } else {
             LoginView(isAuthenticated: $isAuthenticated)
         }
@@ -22,67 +26,50 @@ struct ContentView: View {
 
 struct MainTabView: View {
     @Binding var selectedTab: Int
-    
+    @Binding var hideTabBar: Bool
+    @Binding var showPicker: Bool
+    @Binding var selectedCity: String
+    @Binding var selectedDistrict: String
+
     var body: some View {
-        VStack {
+        NavigationView {
             ZStack {
                 if selectedTab == 0 {
-                    HomeView()
+                    HomeView(hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
                 } else if selectedTab == 1 {
                     MapView()
                 } else if selectedTab == 2 {
-                    MyPageView()
+                    MyPageView(hideTabBar: $hideTabBar)
                 }
-                
+
                 VStack {
                     Spacer()
-                    CustomTabBar(selectedTab: $selectedTab)
+                    if !hideTabBar {
+                        CustomTabBar(selectedTab: $selectedTab)
+                    }
                 }
-            }
-        }
-    }
-}
 
-struct CustomTabBar: View {
-    @Binding var selectedTab: Int
-    
-    var body: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 0.8)
-                .foregroundColor(Color.gray4)
-                .padding(.bottom, 5)
-            
-            HStack {
-                CustomTabBarItem(selectedTab: $selectedTab, tabIndex: 0, activeImage: "tab-home-icon-active", inactiveImage: "tab-home-icon", text: "HOME")
-                Spacer()
-                CustomTabBarItem(selectedTab: $selectedTab, tabIndex: 1, activeImage: "tab-map-icon-active", inactiveImage: "tab-map-icon", text: "MAP")
-                Spacer()
-                CustomTabBarItem(selectedTab: $selectedTab, tabIndex: 2, activeImage: "tab-my-icon-active", inactiveImage: "tab-my-icon", text: "MY")
-            }
-            .frame(height: 60)
-            .padding(.horizontal, 55)
-        }
-    }
-}
-
-struct CustomTabBarItem: View {
-    @Binding var selectedTab: Int
-    let tabIndex: Int
-    let activeImage: String
-    let inactiveImage: String
-    let text: String
-    
-    var body: some View {
-        Button(action: {
-            selectedTab = tabIndex
-        }) {
-            VStack {
-                Image(selectedTab == tabIndex ? activeImage : inactiveImage)
-                    .renderingMode(.original)
-                Text(text)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(selectedTab == tabIndex ? Color.pointOrange : Color.gray)
+                if showPicker {
+                    VStack {
+                        Spacer()
+                        
+                        RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker)
+                            .frame(height: 265)
+                            .background(Color.white)
+                            .cornerRadius(20)
+                            .shadow(radius: 10)
+                            .transition(.move(edge: .bottom))
+                            .animation(.easeInOut, value: showPicker)
+                            .offset(y: 35)
+                    }
+                    .background(
+                        Color.black.opacity(0.3)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                showPicker = false
+                            }
+                    )
+                }
             }
         }
     }
