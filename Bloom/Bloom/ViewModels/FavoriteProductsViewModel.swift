@@ -26,4 +26,3 @@ class FavoriteProductsViewModel: ObservableObject {
         self.products = dummyProducts
     }
 }
-}

@@ -10,20 +10,22 @@ import SwiftUI
 struct FilterView: View {
     @State private var selectedCategory: String? = nil
     @State private var selectedColors: Set<String> = []
-    @State private var minPrice: Double = -10000
-    @State private var maxPrice: Double = 100000
+    @ObservedObject var slider = CustomSlider(start: 0, end: 100000)
     @Environment(\.presentationMode) var presentationMode
     @Binding var hideTabBar: Bool
+    
+    @State private var isLowHandleActive = false
+    @State private var isHighHandleActive = false
     
     private let categories = ["꽃다발", "꽃바구니", "드라이플라워", "조화"]
     private let colors = [
         ("화이트", Color.white),
         ("레드", Color(hex: "E85959")),
-        ("블루", Color(hex: "#7DCDFB")),
-        ("옐로우", Color(hex: "#F9D75E")),
-        ("핑크", Color(hex: "#FFAEC6")),
-        ("퍼플", Color(hex: "#AE83D8")),
-        ("오렌지", Color(hex: "#FFA930")),
+        ("블루", Color(hex: "7DCDFB")),
+        ("옐로우", Color(hex: "F9D75E")),
+        ("핑크", Color(hex: "FFAEC6")),
+        ("퍼플", Color(hex: "AE83D8")),
+        ("오렌지", Color(hex: "FFA930")),
         ("기타", Color.black)
     ]
     
@@ -67,20 +69,49 @@ struct FilterView: View {
                     .padding(.top, 10)
                 
                 VStack(alignment: .leading) {
-                    RangeSlider(minValue: $minPrice, maxValue: $maxPrice, range: 0...100000)
-                        .padding(.horizontal)
+                    HStack {
+                        SliderView(slider: slider)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
                     
                     HStack {
-                        Text("₩\(Int(minPrice), specifier: "%d") 원")
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color.pointOrange)
+                        HStack {
+                            CustomTextField(
+                                value: $slider.lowHandle.currentValue,
+                                placeholder: "최소 가격",
+                                foregroundColor: isLowHandleActive ? UIColor(Color.pointOrange) : UIColor(Color.gray4),
+                                font: UIFont(name: "Pretendard-Medium", size: 15)!,
+                                isActive: $isLowHandleActive
+                            )
+                            Text(" 원")
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundColor(isLowHandleActive ? Color.pointOrange : Color.black)
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(isLowHandleActive ? Color.pointOrange : Color.gray4))
+                        .keyboardType(.numberPad)
                         
-                        Spacer()
+                        Text("~")
+                            .padding(.horizontal, 1)
                         
-                        Text("₩\(Int(maxPrice), specifier: "%d") 원")
-                            .foregroundStyle(Color.gray4)
+                        HStack {
+                            CustomTextField(
+                                value: $slider.highHandle.currentValue,
+                                placeholder: "최대 가격",
+                                foregroundColor: isHighHandleActive ? UIColor(Color.pointOrange) : UIColor(Color.gray4),
+                                font: UIFont(name: "Pretendard-Medium", size: 14)!,
+                                isActive: $isHighHandleActive
+                            )
+                            Text(" 원")
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundColor(isHighHandleActive ? Color.pointOrange : Color.black)
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(isHighHandleActive ? Color.pointOrange : Color.gray4))
+                        .keyboardType(.numberPad)
                     }
                     .padding(.horizontal)
+                    .padding(.top, 20)
                 }
                 
                 Text("색상")
@@ -93,7 +124,7 @@ struct FilterView: View {
                         ColorFilterButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
                             toggleColor(color.0)
                         }
-                        .frame(height: 50) // 버튼의 크기 조절
+                        .frame(height: 50)
                     }
                 }
                 .padding(.horizontal)
@@ -130,6 +161,15 @@ struct FilterView: View {
         } else {
             selectedColors.insert(color)
         }
+    }
+}
+
+extension NumberFormatter {
+    static var currency: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        return formatter
     }
 }
 
