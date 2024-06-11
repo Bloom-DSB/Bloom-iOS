@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct User: Codable, Identifiable {
+    var userIdentifier: String
+    var email: String
+    var name: String
+}

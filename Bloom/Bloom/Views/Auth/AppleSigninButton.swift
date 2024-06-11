@@ -27,21 +27,15 @@ struct AppleSigninButton: View {
                         let fullName = appleIDCredential.fullName
                         let name = (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
                         let email = appleIDCredential.email ?? ""
-                        let identityToken = String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8) ?? ""
-                        let authorizationCode = String(data: appleIDCredential.authorizationCode ?? Data(), encoding: .utf8) ?? ""
-                        
+
                         // UserDefaults에 계정 정보 저장
                         UserDefaults.standard.set(userIdentifier, forKey: "userIdentifier")
                         UserDefaults.standard.set(name, forKey: "userName")
                         UserDefaults.standard.set(email, forKey: "userEmail")
-                        UserDefaults.standard.set(identityToken, forKey: "identityToken")
-                        UserDefaults.standard.set(authorizationCode, forKey: "authorizationCode")
-                        UserDefaults.standard.set(true, forKey: "isAuthenticated")
+
+                        // 백엔드에 로그인 요청
+                        loginApple(userIdentifier: userIdentifier, email: email, name: name)
                         
-                        // 로그인 성공 시 상태 업데이트
-                        DispatchQueue.main.async {
-                            isAuthenticated = true
-                        }
                     default:
                         break
                     }
@@ -53,5 +47,53 @@ struct AppleSigninButton: View {
         )
         .frame(width: UIScreen.main.bounds.width * 0.9, height: 50)
         .cornerRadius(5)
+    }
+    
+    func loginApple(userIdentifier: String, email: String, name: String) {
+        let loginInfo = User(userIdentifier: userIdentifier, email: email, name: name)
+        
+        guard let url = URL(string: "엔드포인트") else {
+            fatalError("Invalid URL")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        do {
+            let jsonData = try JSONEncoder().encode(loginInfo)
+            request.httpBody = jsonData
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        } catch {
+            print("Failed to encode login info: \(error.localizedDescription)")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Request error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                print("Invalid response from server")
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+            
+            do {
+                let user = try JSONDecoder().decode(User.self, from: data)
+                print("User received: \(user.name)")
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(true, forKey: "isAuthenticated")
+                    isAuthenticated = true
+                }
+            } catch {
+                print("Failed to decode user: \(error.localizedDescription)")
+            }
+        }.resume()
     }
 }
