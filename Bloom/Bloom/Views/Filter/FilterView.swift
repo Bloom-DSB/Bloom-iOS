@@ -14,15 +14,18 @@ struct FilterView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var hideTabBar: Bool
     
+    @State private var isLowHandleActive = false
+    @State private var isHighHandleActive = false
+    
     private let categories = ["꽃다발", "꽃바구니", "드라이플라워", "조화"]
     private let colors = [
         ("화이트", Color.white),
         ("레드", Color(hex: "E85959")),
-        ("블루", Color(hex: "#7DCDFB")),
-        ("옐로우", Color(hex: "#F9D75E")),
-        ("핑크", Color(hex: "#FFAEC6")),
-        ("퍼플", Color(hex: "#AE83D8")),
-        ("오렌지", Color(hex: "#FFA930")),
+        ("블루", Color(hex: "7DCDFB")),
+        ("옐로우", Color(hex: "F9D75E")),
+        ("핑크", Color(hex: "FFAEC6")),
+        ("퍼플", Color(hex: "AE83D8")),
+        ("오렌지", Color(hex: "FFA930")),
         ("기타", Color.black)
     ]
     
@@ -73,24 +76,38 @@ struct FilterView: View {
                     
                     HStack {
                         HStack {
-                            CustomTextField(value: $slider.lowHandle.currentValue, placeholder: "최소 가격", foregroundColor: UIColor(Color.pointOrange), font: UIFont(name: "Pretendard-Bold", size: 15)!)
+                            CustomTextField(
+                                value: $slider.lowHandle.currentValue,
+                                placeholder: "최소 가격",
+                                foregroundColor: isLowHandleActive ? UIColor(Color.pointOrange) : UIColor(Color.gray4),
+                                font: UIFont(name: "Pretendard-Medium", size: 15)!,
+                                isActive: $isLowHandleActive
+                            )
                             Text(" 원")
-                                .foregroundColor(Color.pointOrange)
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundColor(isLowHandleActive ? Color.pointOrange : Color.black)
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 8).stroke(Color.pointOrange))
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(isLowHandleActive ? Color.pointOrange : Color.gray4))
                         .keyboardType(.numberPad)
                         
                         Text("~")
                             .padding(.horizontal, 1)
                         
                         HStack {
-                            CustomTextField(value: $slider.highHandle.currentValue, placeholder: "최대 가격", foregroundColor: UIColor(Color.gray4), font: UIFont(name: "Pretendard-Bold", size: 15)!)
+                            CustomTextField(
+                                value: $slider.highHandle.currentValue,
+                                placeholder: "최대 가격",
+                                foregroundColor: isHighHandleActive ? UIColor(Color.pointOrange) : UIColor(Color.gray4),
+                                font: UIFont(name: "Pretendard-Medium", size: 14)!,
+                                isActive: $isHighHandleActive
+                            )
                             Text(" 원")
-                                .foregroundColor(Color.gray4)
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundColor(isHighHandleActive ? Color.pointOrange : Color.black)
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 8).stroke(Color.gray4))
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(isHighHandleActive ? Color.pointOrange : Color.gray4))
                         .keyboardType(.numberPad)
                     }
                     .padding(.horizontal)
