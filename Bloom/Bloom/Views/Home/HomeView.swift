@@ -48,7 +48,7 @@ struct HomeView: View {
                 }
             }
 
-            List(viewModel.markets) { market in
+            List($viewModel.markets) { market in
                 VStack(alignment: .leading) {
                     ZStack(alignment: .topTrailing) {
                         Image(systemName: "photo")
@@ -71,38 +71,42 @@ struct HomeView: View {
                         .padding(10)
                     }
 
-                    HStack {
-                        Text(market.name)
-                            .font(.pretendardSemiBold(size: 18))
-
-                        Spacer()
-
-                        Text(market.status)
-                            .padding(4)
-                            .font(.pretendardRegular(size: 12))
-                            .frame(width: 51, height: 22)
-                            .foregroundStyle(market.status == "운영중" ? Color.operating :
-                                                Color.preparing)
-                            .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
-                            .cornerRadius(99)
-                    }
-
-                    HStack(alignment: .center, content: {
-                        Text(market.location)
-                            .font(.pretendardRegular(size: 15))
-                            .foregroundStyle(Color.gray2)
-
-                        Spacer()
-
-                        Text(market.price)
-                            .font(.pretendardRegular(size: 14))
-                            .foregroundStyle(Color.gray3)
-                    })
+//                    HStack {
+//                        Text(market.name)
+//                            .font(.pretendardSemiBold(size: 18))
+//
+//                        Spacer()
+//
+//                        Text(market.status)
+//                            .padding(4)
+//                            .font(.pretendardRegular(size: 12))
+//                            .frame(width: 51, height: 22)
+//                            .foregroundStyle(market.status == "운영중" ? Color.operating :
+//                                                Color.preparing)
+//                            .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
+//                            .cornerRadius(99)
+//                    }
+//
+//                    HStack(alignment: .center, content: {
+//                        Text(market.location)
+//                            .font(.pretendardRegular(size: 15))
+//                            .foregroundStyle(Color.gray2)
+//
+//                        Spacer()
+//
+//                        Text(market.price)
+//                            .font(.pretendardRegular(size: 14))
+//                            .foregroundStyle(Color.gray3)
+//                    })
                 }
                 .padding(.vertical, 3)
                 .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
+            .onAppear {
+                viewModel.loadMarkets(location: selectedDistrict)
+                print(viewModel.markets)
+            }
         }
     }
 }
