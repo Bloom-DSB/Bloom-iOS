@@ -5,7 +5,6 @@
 //  Created by 조다은 on 6/11/24.
 //
 
-import Foundation
 import SwiftUI
 
 struct RegionPickerView: UIViewControllerRepresentable {
@@ -54,7 +53,7 @@ struct RegionPickerView: UIViewControllerRepresentable {
         NSLayoutConstraint.activate([
             picker.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
             picker.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor),
-            picker.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor)
+            picker.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor)
         ])
         
         return viewController
