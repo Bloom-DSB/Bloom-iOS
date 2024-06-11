@@ -7,59 +7,51 @@
 
 import SwiftUI
 
-struct RegionPickerView: UIViewControllerRepresentable {
-    @Binding var selectedRegion: String
+struct RegionPickerView: View {
+    @Binding var selectedCity: String
+    @Binding var selectedDistrict: String
     @Binding var isPresented: Bool
-    
-    let regions: [String]
-    
-    class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-        var parent: RegionPickerView
 
-        init(parent: RegionPickerView) {
-            self.parent = parent
-        }
-        
-        func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            return 1
-        }
-        
-        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return parent.regions.count
-        }
-        
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return parent.regions[row]
-        }
-        
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            parent.selectedRegion = parent.regions[row]
-            parent.isPresented = false
-        }
-    }
+    var body: some View {
+        VStack {
+            HStack {
+                Button("취소") {
+                    isPresented = false
+                }
+                .padding()
 
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
-    }
+                Spacer()
 
-    func makeUIViewController(context: Context) -> UIViewController {
-        let viewController = UIViewController()
-        let picker = UIPickerView()
-        picker.delegate = context.coordinator
-        picker.dataSource = context.coordinator
-        
-        viewController.view.addSubview(picker)
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            picker.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
-            picker.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor),
-            picker.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor)
-        ])
-        
-        return viewController
-    }
+                Button("완료") {
+                    isPresented = false
+                }
+                .padding()
+            }
 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Update the view controller if needed
+            HStack {
+                Picker("도시", selection: $selectedCity) {
+                    ForEach(regions.map { $0.city }, id: \.self) { city in
+                        Text(city).tag(city)
+                    }
+                }
+                .pickerStyle(WheelPickerStyle())
+                .onChange(of: selectedCity) { newValue in
+                    if let firstDistrict = regions.first(where: { $0.city == newValue })?.districts.first {
+                        selectedDistrict = firstDistrict
+                    }
+                }
+
+                Picker("구", selection: $selectedDistrict) {
+                    ForEach(regions.first(where: { $0.city == selectedCity })?.districts ?? [], id: \.self) { district in
+                        Text(district).tag(district)
+                    }
+                }
+                .pickerStyle(WheelPickerStyle())
+            }
+            .frame(height: 200)
+        }
+        .background(Color.white)
+        .cornerRadius(20)
+//        .shadow(radius: 10)
     }
 }

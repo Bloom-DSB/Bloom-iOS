@@ -12,8 +12,9 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @Binding var hideTabBar: Bool
     @Binding var showPicker: Bool
-    @Binding var selectedRegion: String
-    
+    @Binding var selectedCity: String
+    @Binding var selectedDistrict: String
+
     var body: some View {
         VStack {
             HStack {
@@ -22,7 +23,7 @@ struct HomeView: View {
                 }) {
                     HStack {
                         Image("bloom-icon")
-                        Text(selectedRegion)
+                        Text("\(selectedCity) \(selectedDistrict)")
                             .foregroundStyle(Color.pointOrange)
                             .font(.pretendardBold(size: 20))
                         Image(systemName: "chevron.down")
@@ -33,10 +34,10 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 10)
-            
+
             HStack {
                 HomeSearchTextField(text: $viewModel.searchText)
-                
+
                 NavigationLink(destination: FilterView(hideTabBar: $hideTabBar)) {
                     Image("filter-icon")
                         .frame(width: 44, height: 44)
@@ -46,7 +47,7 @@ struct HomeView: View {
                         .padding(.leading, 2)
                 }
             }
-            
+
             List(viewModel.markets) { market in
                 VStack(alignment: .leading) {
                     ZStack(alignment: .topTrailing) {
@@ -57,7 +58,7 @@ struct HomeView: View {
                             .clipped()
                             .cornerRadius(10)
                             .padding(.bottom, 8)
-                        
+
                         Button(action: {
                             // 관심 목록 추가/삭제 액션
                         }) {
@@ -69,13 +70,13 @@ struct HomeView: View {
                         }
                         .padding(10)
                     }
-                    
+
                     HStack {
                         Text(market.name)
                             .font(.pretendardSemiBold(size: 18))
-                        
+
                         Spacer()
-                        
+
                         Text(market.status)
                             .padding(4)
                             .font(.pretendardRegular(size: 12))
@@ -85,14 +86,14 @@ struct HomeView: View {
                             .background(market.status == "운영중" ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                             .cornerRadius(99)
                     }
-                    
+
                     HStack(alignment: .center, content: {
                         Text(market.location)
                             .font(.pretendardRegular(size: 15))
                             .foregroundStyle(Color.gray2)
-                        
+
                         Spacer()
-                        
+
                         Text(market.price)
                             .font(.pretendardRegular(size: 14))
                             .foregroundStyle(Color.gray3)
@@ -107,5 +108,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(hideTabBar: .constant(false), showPicker: .constant(false), selectedRegion: .constant("서울시 강남구"))
+    HomeView(hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
 }
