@@ -54,6 +54,7 @@
 		3EA96EB62C17175C00E29A3D /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */; };
 		3EA96EB82C171D1300E29A3D /* CusotmSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EB72C171D1300E29A3D /* CusotmSlider.swift */; };
 		3EA96EBF2C17238800E29A3D /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EBE2C17238800E29A3D /* SliderView.swift */; };
+		3EA96EC32C172C2500E29A3D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96EC22C172C2500E29A3D /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		3EA96EB52C17175C00E29A3D /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		3EA96EB72C171D1300E29A3D /* CusotmSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusotmSlider.swift; sourceTree = "<group>"; };
 		3EA96EBE2C17238800E29A3D /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		3EA96EC22C172C2500E29A3D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 			children = (
 				3EA96EB72C171D1300E29A3D /* CusotmSlider.swift */,
 				3EA96EBE2C17238800E29A3D /* SliderView.swift */,
+				3EA96EC22C172C2500E29A3D /* CustomTextField.swift */,
 			);
 			path = Slider;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				3E9AA0632C11A1E00099E093 /* User.swift in Sources */,
 				3EA96EB22C1716AC00E29A3D /* MarketDetailViewModel.swift in Sources */,
 				3E0525CF2C15F0000037EF35 /* FavoriteProductsView.swift in Sources */,
+				3EA96EC32C172C2500E29A3D /* CustomTextField.swift in Sources */,
 				3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */,
 				3EA96EB42C1716FB00E29A3D /* MarketProductsViewModel.swift in Sources */,
 				3E0525D12C15F0420037EF35 /* FavoriteMarketsView.swift in Sources */,

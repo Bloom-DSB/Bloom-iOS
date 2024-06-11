@@ -72,16 +72,29 @@ struct FilterView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     
                     HStack {
-                        Text("₩\(Int(slider.lowHandle.currentValue), specifier: "%d") 원")
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color.pointOrange)
+                        HStack {
+                            CustomTextField(value: $slider.lowHandle.currentValue, placeholder: "최소 가격", foregroundColor: UIColor(Color.pointOrange), font: UIFont(name: "Pretendard-Bold", size: 15)!)
+                            Text(" 원")
+                                .foregroundColor(Color.pointOrange)
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(Color.pointOrange))
+                        .keyboardType(.numberPad)
                         
-                        Spacer()
+                        Text("~")
+                            .padding(.horizontal, 1)
                         
-                        Text("₩\(Int(slider.highHandle.currentValue), specifier: "%d") 원")
-                            .foregroundStyle(Color.gray4)
+                        HStack {
+                            CustomTextField(value: $slider.highHandle.currentValue, placeholder: "최대 가격", foregroundColor: UIColor(Color.gray4), font: UIFont(name: "Pretendard-Bold", size: 15)!)
+                            Text(" 원")
+                                .foregroundColor(Color.gray4)
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(Color.gray4))
+                        .keyboardType(.numberPad)
                     }
                     .padding(.horizontal)
+                    .padding(.top, 20)
                 }
                 
                 Text("색상")
@@ -131,6 +144,15 @@ struct FilterView: View {
         } else {
             selectedColors.insert(color)
         }
+    }
+}
+
+extension NumberFormatter {
+    static var currency: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        return formatter
     }
 }
 

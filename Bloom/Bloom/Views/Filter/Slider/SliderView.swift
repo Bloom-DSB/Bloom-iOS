@@ -9,21 +9,21 @@ import SwiftUI
 
 struct SliderView: View {
     @ObservedObject var slider: CustomSlider
-    
+
     var body: some View {
         RoundedRectangle(cornerRadius: slider.lineWidth)
             .fill(Color.gray.opacity(0.2))
             .frame(width: slider.width, height: slider.lineWidth)
             .overlay(
                 ZStack {
-                    //Path between both handles
+                    // Path between both handles
                     SliderPathBetweenView(slider: slider)
-                    
-                    //Low Handle
+
+                    // Low Handle
                     SliderHandleView(handle: slider.lowHandle)
                         .highPriorityGesture(slider.lowHandle.sliderDragGesture)
-                    
-                    //High Handle
+
+                    // High Handle
                     SliderHandleView(handle: slider.highHandle)
                         .highPriorityGesture(slider.highHandle.sliderDragGesture)
                 }
@@ -33,7 +33,7 @@ struct SliderView: View {
 
 struct SliderHandleView: View {
     @ObservedObject var handle: SliderHandle
-    
+
     var body: some View {
         Circle()
             .frame(width: handle.diameter, height: handle.diameter)
@@ -47,7 +47,7 @@ struct SliderHandleView: View {
 
 struct SliderPathBetweenView: View {
     @ObservedObject var slider: CustomSlider
-    
+
     var body: some View {
         Path { path in
             path.move(to: slider.lowHandle.currentLocation)
@@ -56,7 +56,3 @@ struct SliderPathBetweenView: View {
         .stroke(Color.pointOrange, lineWidth: slider.lineWidth)
     }
 }
-
-//#Preview {
-//    SliderView()
-//}
