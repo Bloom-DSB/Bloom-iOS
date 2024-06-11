@@ -10,6 +10,7 @@ import AuthenticationServices
 
 struct AppleSigninButton: View {
     @Binding var isAuthenticated: Bool
+    @ObservedObject var appleLoginViewModel: LoginViewModel
     
     var body: some View {
         SignInWithAppleButton(
@@ -38,9 +39,13 @@ struct AppleSigninButton: View {
                         UserDefaults.standard.set(authorizationCode, forKey: "authorizationCode")
                         UserDefaults.standard.set(true, forKey: "isAuthenticated")
                         
+                        // 서버로 로그인 요청
+                        appleLoginViewModel.insertAppleIdTokenToAppleLoginInfoModel(appleIdToken: identityToken)
+                        
                         // 로그인 성공 시 상태 업데이트
                         DispatchQueue.main.async {
-                            isAuthenticated = true
+                            appleLoginViewModel.isAuthenticated = true
+                            isAuthenticated = appleLoginViewModel.isAuthenticated
                         }
                     default:
                         break
