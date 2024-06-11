@@ -12,6 +12,8 @@
 		3E0525C82C15957C0037EF35 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0525C72C15957C0037EF35 /* MapView.swift */; };
 		3E0525CF2C15F0000037EF35 /* FavoriteProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0525CE2C15F0000037EF35 /* FavoriteProductsView.swift */; };
 		3E0525D12C15F0420037EF35 /* FavoriteMarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0525D02C15F0420037EF35 /* FavoriteMarketsView.swift */; };
+		3E4A7D4D2C17EF450094A45D /* RegionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D4C2C17EF450094A45D /* RegionPickerView.swift */; };
+		3E4A7D4F2C17F9FA0094A45D /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D4E2C17F9FA0094A45D /* Region.swift */; };
 		3E8BC5A82C11E6B8003320F1 /* MarketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5A72C11E6B8003320F1 /* MarketDetailView.swift */; };
 		3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5A92C11FB18003320F1 /* ProductDetailView.swift */; };
 		3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5AC2C143578003320F1 /* FilterView.swift */; };
@@ -63,6 +65,8 @@
 		3E0525C72C15957C0037EF35 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3E0525CE2C15F0000037EF35 /* FavoriteProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductsView.swift; sourceTree = "<group>"; };
 		3E0525D02C15F0420037EF35 /* FavoriteMarketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMarketsView.swift; sourceTree = "<group>"; };
+		3E4A7D4C2C17EF450094A45D /* RegionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPickerView.swift; sourceTree = "<group>"; };
+		3E4A7D4E2C17F9FA0094A45D /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3E8BC5A72C11E6B8003320F1 /* MarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailView.swift; sourceTree = "<group>"; };
 		3E8BC5A92C11FB18003320F1 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		3E8BC5AC2C143578003320F1 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 				3E9AA0622C11A1E00099E093 /* User.swift */,
 				3E9AA0642C11A1EC0099E093 /* Product.swift */,
 				3E9AA0662C11A1FD0099E093 /* Market.swift */,
+				3E4A7D4E2C17F9FA0094A45D /* Region.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				3E9AA0872C11A7B20099E093 /* HomeView.swift */,
+				3E4A7D4C2C17EF450094A45D /* RegionPickerView.swift */,
 				3EA96E9E2C16EB7400E29A3D /* HomeSearchTextField.swift */,
 			);
 			path = Home;
@@ -468,6 +474,7 @@
 				3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */,
 				3EA96EAC2C17161400E29A3D /* FavoriteProductsViewModel.swift in Sources */,
 				3E8BC5A82C11E6B8003320F1 /* MarketDetailView.swift in Sources */,
+				3E4A7D4F2C17F9FA0094A45D /* Region.swift in Sources */,
 				3EA96EA12C16EBFA00E29A3D /* AppIntroPage.swift in Sources */,
 				3E0525C52C1584C00037EF35 /* ProfileEditView.swift in Sources */,
 				3EA96EAA2C1715CD00E29A3D /* HomeViewModel.swift in Sources */,
@@ -478,6 +485,7 @@
 				3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
 				3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */,
+				3E4A7D4D2C17EF450094A45D /* RegionPickerView.swift in Sources */,
 				3EA96E9B2C16EA6400E29A3D /* CategoryFilterButton.swift in Sources */,
 				3E9AA06B2C11A2230099E093 /* Color+Extensions.swift in Sources */,
 				3EA96EA32C16EC1B00E29A3D /* OpensourceLicensePage.swift in Sources */,
