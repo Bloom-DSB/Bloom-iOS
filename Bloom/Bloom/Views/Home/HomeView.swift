@@ -39,10 +39,11 @@ struct HomeView: View {
                 .padding(.top, 10)
                 
                 HStack {
-                    HomeSearchTextField(text: $homeViewModel.searchText)
-                    {
+                    HomeSearchTextField(text: $homeViewModel.searchText) {
                         navigateToSearchResults = true
                     }
+                    .frame(width: 300, height: 40)
+                    .cornerRadius(8)
                     
                     Button(action: {
                         withAnimation {
@@ -83,6 +84,9 @@ struct HomeView: View {
             NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText), isActive: $navigateToSearchResults) {
                 EmptyView()
             }
+                .onDisappear {
+                    homeViewModel.searchText = ""
+                }
         )
     }
 }

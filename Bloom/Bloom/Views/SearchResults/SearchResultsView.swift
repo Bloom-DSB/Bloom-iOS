@@ -10,7 +10,8 @@ import SwiftUI
 struct SearchResultsView: View {
     @StateObject private var viewModel = SearchResultsViewModel()
     let query: String
-    
+    @Environment(\.presentationMode) var presentationMode
+
 //    var filteredProducts: [Product] {
 //        viewModel.showOnlyOperating ? viewModel.products.filter { $0.status == "운영중" } : viewModel.products
 //    }
@@ -20,7 +21,7 @@ struct SearchResultsView: View {
         VStack {
             HStack {
                 Button(action: {
-                    // 뒤로가기 액션
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundStyle(Color.black)
