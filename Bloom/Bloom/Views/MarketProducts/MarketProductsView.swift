@@ -7,61 +7,74 @@
 
 import SwiftUI
 
-//struct MarketProductsView: View {
-//    @StateObject private var viewModel = MarketProductsViewModel()
+struct MarketProductsView: View {
 //    @Environment(\.presentationMode) var presentationMode
-//    
-//    var body: some View {
-//        VStack {
-//            HStack {
-//                Button(action: {
+    let simpleProducts: [SimpleProduct]
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button(action: {
 //                    presentationMode.wrappedValue.dismiss()
-//                }) {
-//                    Image(systemName: "chevron.left")
-//                        .resizable()
-//                        .foregroundStyle(.black)
-//                        .frame(width: 9, height: 18)
-//                }
-//                
-//                Spacer()
-//                
-//                Text("판매 상품")
-//                    .font(.pretendardMedium(size: 18))
-//                
-//                Spacer()
-//            }
-//            .padding(.vertical, 15)
-//            
-//            ScrollView {
-//                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
-//                    ForEach(viewModel.products) { product in
-//                        VStack(alignment: .leading, spacing: 3) {
-//                            Image(product.imageName)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: 107, height: 134)
-//                                .clipped()
-//                                .cornerRadius(8)
-//                                .padding(.bottom, 1)
-//                            
-//                            Text(product.name)
-//                                .font(.pretendardMedium(size: 14))
-//                                .foregroundStyle(Color.gray2)
-//                                .lineLimit(1)
-//                            
-//                            Text(product.price)
-//                                .font(.pretendardBold(size: 15))
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        .padding(.horizontal, 20)
-//        .navigationBarTitle("")
-//        .navigationBarHidden(true)
-//    }
-//}
-//
-//#Preview {
-//    MarketProductsView()
-//}
+                }) {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .foregroundStyle(.black)
+                        .frame(width: 9, height: 18)
+                }
+                
+                Spacer()
+                
+                Text("판매 상품")
+                    .font(.pretendardMedium(size: 18))
+                
+                Spacer()
+            }
+            .padding(.vertical, 15)
+            
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(simpleProducts) { product in
+                        VStack(alignment: .leading, spacing: 3) {
+                            AsyncImage(url: URL(string: product.images.first ?? "")) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 107, height: 134)
+                                    .clipped()
+                                    .cornerRadius(8)
+                                    .padding(.bottom, 1)
+                            } placeholder: {
+                                Color.gray
+                            }
+                            
+                            Text(product.name)
+                                .font(.pretendardMedium(size: 14))
+                                .foregroundStyle(Color.gray2)
+                                .lineLimit(1)
+                            
+                            Text("\(product.price)원")
+                                .font(.pretendardBold(size: 15))
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+        }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
+    }
+}
+
+#Preview {
+    MarketProductsView(simpleProducts: [
+        SimpleProduct(id: 1, name: "사과", price: 1000, images: ["https://strbloom.blob.core.windows.net/undefined/flower_c.jpg"]),
+        SimpleProduct(id: 2, name: "바나나", price: 2000, images: ["https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"])
+    ])
+}
