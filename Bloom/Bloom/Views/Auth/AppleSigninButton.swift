@@ -32,9 +32,12 @@ struct AppleSigninButton: View {
                         UserDefaults.standard.set(userIdentifier, forKey: "userIdentifier")
                         UserDefaults.standard.set(name, forKey: "userName")
                         UserDefaults.standard.set(email, forKey: "userEmail")
+                        
+                        UserDefaults.standard.set(true, forKey: "isAuthenticated")
+                        isAuthenticated = true
 
                         // 백엔드에 로그인 요청
-                        loginApple(userIdentifier: userIdentifier, email: email, name: name)
+//                        loginApple(userIdentifier: userIdentifier, email: email, name: name)
                         
                     default:
                         break

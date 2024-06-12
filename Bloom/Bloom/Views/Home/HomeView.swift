@@ -16,6 +16,7 @@ struct HomeView: View {
     @Binding var selectedDistrict: String
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
+    @State private var selectedMarket: Market? // Add this line
     
     var body: some View {
         ZStack {
@@ -60,12 +61,15 @@ struct HomeView: View {
                 }
                 
                 List(homeViewModel.markets) { market in
-                    MarketRow(viewModel: homeViewModel, market: market)
+                    NavigationLink(destination: MarketDetailView(hideTabBar: $hideTabBar, market: market)) {
+                        MarketRow(viewModel: homeViewModel, market: market)
+                    }
                 }
-                .listStyle(PlainListStyle())
+                .listStyle(InsetListStyle())
+                
             }
             .onAppear {
-                homeViewModel.loadMarkets(location: selectedDistrict)
+                homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                 print("load markets \n \(homeViewModel.markets.first?.name ?? "")")
             }
             
@@ -84,13 +88,14 @@ struct HomeView: View {
             NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText), isActive: $navigateToSearchResults) {
                 EmptyView()
             }
-                .onDisappear {
-                    homeViewModel.searchText = ""
-                }
+            .onDisappear {
+                homeViewModel.searchText = ""
+            }
         )
     }
 }
 
 #Preview {
     HomeView(homeViewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
+        .environmentObject(HomeViewModel())
 }
