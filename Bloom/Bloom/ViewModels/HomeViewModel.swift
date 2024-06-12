@@ -24,7 +24,9 @@ class HomeViewModel: ObservableObject {
         AF.request(url, method: .get, parameters: params).responseDecodable(of: MarketResponse.self) { response in
             switch response.result {
             case .success(let result):
-                self.markets = result.data
+//                self.markets = result.data
+//              관심 수 기준으로 내림차순 정렬
+                self.markets = result.data.sorted(by: { $0.interestCount > $1.interestCount })
                 print("load markets \n \(self.markets)")
             case .failure(let error):
                 print("Failed to fetch markets: \(error.localizedDescription)")

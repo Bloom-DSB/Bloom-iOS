@@ -52,6 +52,7 @@ struct HomeView: View {
                 MarketRow(viewModel: homeViewModel, market: market)
             }
             .listStyle(PlainListStyle())
+            .listStyle(PlainListStyle())
         }
         .onAppear {
             homeViewModel.loadMarkets(location: selectedDistrict)
