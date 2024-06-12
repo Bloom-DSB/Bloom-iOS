@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeSearchTextField: View {
     @Binding var text: String
+    var onCommit: () -> Void // 완료 버튼이 눌렸을 때 실행되는 클로저
     
     var body: some View {
         HStack {
@@ -23,7 +24,7 @@ struct HomeSearchTextField: View {
                         .padding(.horizontal, 4)
                         .font(.pretendardRegular(size: 15))
                 }
-                TextField("", text: $text)
+                TextField("", text: $text, onCommit: onCommit)
                     .padding(.vertical, 8)
             }
         }

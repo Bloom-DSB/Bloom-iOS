@@ -15,6 +15,7 @@ struct HomeView: View {
     @Binding var selectedCity: String
     @Binding var selectedDistrict: String
     @State private var showFilterView = false
+    @State private var navigateToSearchResults = false
     
     var body: some View {
         ZStack {
@@ -39,15 +40,8 @@ struct HomeView: View {
                 
                 HStack {
                     HomeSearchTextField(text: $homeViewModel.searchText)
-                    
-                    NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText)) {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundStyle(Color.black)
-                            .frame(width: 44, height: 44)
-                            .background(Color.baseYellow)
-                            .foregroundStyle(Color.pointOrange)
-                            .cornerRadius(8)
-                            .padding(.leading, 2)
+                    {
+                        navigateToSearchResults = true
                     }
                     
                     Button(action: {
@@ -85,6 +79,11 @@ struct HomeView: View {
                     })
             }
         }
+        .background(
+            NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText), isActive: $navigateToSearchResults) {
+                EmptyView()
+            }
+        )
     }
 }
 
