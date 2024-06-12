@@ -14,18 +14,18 @@ struct SimpleProduct: Codable {
 
 // Market Model
 struct Market: Codable, Identifiable {
-    let id: Int
-    let name: String
-    let summary: String
-    let addressDetail: String
-    let location: String
-    let phoneNumber: String
-    let sns: String
-    let simpleProducts: [SimpleProduct]
-    let interestCount: Int
-    let operatingTime: [String: String]
-    let latitude: Double
-    let longitude: Double
+    var id: Int
+    var name: String
+    var summary: String
+    var addressDetail: String
+    var location: String
+    var phoneNumber: String
+    var sns: String
+    var simpleProducts: [SimpleProduct]
+    var interestCount: Int
+    var operatingTime: [String: String]
+    var latitude: Double
+    var longitude: Double
     
     enum CodingKeys: String, CodingKey {
         case id = "marketId"

@@ -6,52 +6,94 @@
 //
 
 import Foundation
-import Combine
-
-class HomeViewModel: ObservableObject {
-    @Published var markets: [Market] = []
-    @Published var searchText: String = ""
-    private var cancellables = Set<AnyCancellable>()
-    
-    func loadMarkets(location: String) {
-        guard let url = URL(string: "\(NetworkConfig.baseURL)/markets?location=\(location)") else {
-            print("Invalid URL")
-            return
-        }
-        
-        URLSession.shared.dataTaskPublisher(for: url)
-            .map { $0.data }
-            .decode(type: MarketResponse.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Failed to fetch markets: \(error)")
-                case .finished:
-                    break
-                }
-            }, receiveValue: { [weak self] response in
-                self?.markets = response.data
-            })
-            .store(in: &cancellables)
-    }
-}
-
-
+import Alamofire
+import SwiftUI
 
 //class HomeViewModel: ObservableObject {
 //    @Published var markets: [Market] = []
 //    @Published var searchText: String = ""
-//
+//    
 //    init() {
-//        loadMarkets()
+//        loadMarkets(location: "강남구")
 //    }
-//
-//    func loadMarkets() {
-//        let dummyMarkets = [
-//            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "운영중"),
-//            Market(id: UUID(), name: "가든 플라워 라우라", location: "강남구 서초동", price: "1000원부터", status: "준비중")
-//        ]
-//        self.markets = dummyMarkets
+//    
+//    func loadMarkets(location: String) {
+//        let url = "\(NetworkConfig.baseURL)/markets"
+//        let params: Parameters = ["location": location]
+//        
+//        AF.request(url, method: .get, parameters: params).responseDecodable(of: MarketResponse.self) { response in
+//            switch response.result {
+//            case .success(let result):
+//                self.markets = result.data
+//                print("load markets \n \(self.markets)")
+//            case .failure(let error):
+//                print("Failed to fetch markets: \(error.localizedDescription)")
+//            }
+//        }
 //    }
 //}
+
+
+class HomeViewModel: ObservableObject {
+    @Published var markets: [Market] = []
+    @Published var searchText: String = ""
+
+    init() {
+        loadMarkets()
+    }
+
+    func loadMarkets() {
+        let dummyMarkets = [
+            Market(
+                id: 1,
+                name: "서울마켓",
+                summary: "서울에서 가장 인기 있는 마켓",
+                addressDetail: "서울특별시 강남구",
+                location: "강남구",
+                phoneNumber: "010-1234-5678",
+                sns: "http://instagram.com/seoulmarket",
+                simpleProducts: [
+                    SimpleProduct(name: "사과", price: 1000),
+                    SimpleProduct(name: "바나나", price: 2000)
+                ],
+                interestCount: 100,
+                operatingTime: [
+                    "Sunday": "Closed",
+                    "Saturday": "10:00 - 14:00",
+                    "Friday": "09:00 - 18:00",
+                    "Thursday": "09:00 - 18:00",
+                    "Wednesday": "09:00 - 18:00",
+                    "Tuesday": "09:00 - 18:00",
+                    "Monday": "09:00 - 18:00"
+                ],
+                latitude: 37.5665,
+                longitude: 126.9784
+            ),
+            Market(
+                id: 2,
+                name: "부산마켓",
+                summary: "부산에서 유명한 해운대 마켓",
+                addressDetail: "부산광역시 해운대구",
+                location: "해운대구",
+                phoneNumber: "051-9876-5432",
+                sns: "http://instagram.com/busanmarket",
+                simpleProducts: [
+                    SimpleProduct(name: "감자", price: 500)
+                ],
+                interestCount: 200,
+                operatingTime: [
+                    "Sunday": "Closed",
+                    "Saturday": "10:00 - 14:00",
+                    "Friday": "09:00 - 18:00",
+                    "Thursday": "09:00 - 18:00",
+                    "Wednesday": "09:00 - 18:00",
+                    "Tuesday": "09:00 - 18:00",
+                    "Monday": "09:00 - 18:00"
+                ],
+                latitude: 35.16,
+                longitude: 129.158
+            )
+        ]
+        self.markets = dummyMarkets
+    }
+}

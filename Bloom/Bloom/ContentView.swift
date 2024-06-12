@@ -35,7 +35,7 @@ struct MainTabView: View {
         NavigationView {
             ZStack {
                 if selectedTab == 0 {
-                    HomeView(hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
+                    HomeView(viewModel: HomeViewModel(), hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
                 } else if selectedTab == 1 {
                     MapView()
                 } else if selectedTab == 2 {
