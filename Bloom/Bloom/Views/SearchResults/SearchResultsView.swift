@@ -9,16 +9,19 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @StateObject private var viewModel = SearchResultsViewModel()
-    
-    var filteredProducts: [Product] {
-        viewModel.showOnlyOperating ? viewModel.products.filter { $0.status == "운영중" } : viewModel.products
-    }
+    let query: String
+    @Environment(\.presentationMode) var presentationMode
+
+//    var filteredProducts: [Product] {
+//        viewModel.showOnlyOperating ? viewModel.products.filter { $0.status == "운영중" } : viewModel.products
+//    }
+//    var filteredProducts: [Product]
     
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    // 뒤로가기 액션
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundStyle(Color.black)
@@ -75,7 +78,7 @@ struct SearchResultsView: View {
                         .padding(.trailing, 10)
                     
                     Toggle("", isOn: $viewModel.showOnlyOperating)
-                        .labelsHidden() // 라벨을 숨겨서 텍스트와 토글 사이의 간격을 제거
+                        .labelsHidden()
                         .toggleStyle(SwitchToggleStyle(tint: Color.operating))
                 }
             }
@@ -84,27 +87,7 @@ struct SearchResultsView: View {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
                     ForEach(filteredProducts) { product in
-                        VStack(alignment: .leading, spacing: 3) {
-                            Image(product.imageName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 107, height: 134)
-                                .clipped()
-                                .cornerRadius(8)
-                                .padding(.bottom, 1)
-                            
-                            Text(product.status)
-                                .font(.pretendardSemiBold(size: 11))
-                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
-                            
-                            Text(product.name)
-                                .font(.pretendardMedium(size: 14))
-                                .foregroundStyle(Color.gray2)
-                                .lineLimit(1)
-                            
-                            Text(product.price)
-                                .font(.pretendardBold(size: 15))
-                        }
+                        ProductRow(product: product)
                     }
                 }
             }
@@ -112,9 +95,12 @@ struct SearchResultsView: View {
         .padding(.horizontal, 20)
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .onAppear {
+            viewModel.searchProducts(query: query)
+        }
     }
 }
 
 #Preview {
-    SearchResultsView()
+    SearchResultsView(query: "꽃")
 }

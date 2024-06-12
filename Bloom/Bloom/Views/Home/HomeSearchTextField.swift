@@ -6,30 +6,60 @@
 //
 
 import SwiftUI
+import UIKit
 
-struct HomeSearchTextField: View {
+struct HomeSearchTextField: UIViewRepresentable {
     @Binding var text: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(Color.black)
-            
-            ZStack(alignment: .leading) {
-                if text.isEmpty {
-                    Text("소중한 사람에게 장미를🌹")
-                        .foregroundStyle(Color.gray3)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 4)
-                        .font(.pretendardRegular(size: 15))
-                }
-                TextField("", text: $text)
-                    .padding(.vertical, 8)
-            }
+    var onCommit: () -> Void
+
+    class Coordinator: NSObject, UITextFieldDelegate {
+        var parent: HomeSearchTextField
+
+        init(parent: HomeSearchTextField) {
+            self.parent = parent
         }
-        .padding(.horizontal, 15)
-        .frame(width: 299, height: 44)
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
+
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            parent.text = textField.text ?? ""
+        }
+
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            parent.onCommit()
+            textField.resignFirstResponder()
+            return true
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(parent: self)
+    }
+
+    func makeUIView(context: Context) -> UITextField {
+        let textField = UITextField(frame: .zero)
+        textField.placeholder = "소중한 사람에게 장미를🌹"
+        textField.delegate = context.coordinator
+        textField.returnKeyType = .search
+        textField.backgroundColor = UIColor.systemGray6
+        textField.borderStyle = .none
+        textField.layer.cornerRadius = 8
+        textField.font = UIFont(name: "Pretendard-Regular", size: 15)
+        textField.leftViewMode = .always
+
+        let iconView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+        iconView.tintColor = .black
+
+        let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
+        containerView.addSubview(iconView)
+        containerView.addSubview(spacerView)
+
+        iconView.center = CGPoint(x: 23, y: 10)
+        textField.leftView = containerView
+
+        return textField
+    }
+
+    func updateUIView(_ uiView: UITextField, context: Context) {
+        uiView.text = text
     }
 }

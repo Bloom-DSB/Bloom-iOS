@@ -8,23 +8,22 @@
 import Foundation
 
 struct Product: Codable, Identifiable {
-    let id: UUID
+    let id = UUID()  // UUID 생성 (네트워크에서 받는 id와 다름)
+    let marketId: Int
+    let productId: Int
     let name: String
-    let price: String
-    let imageName: String
-    let status: String
+    let category: String
+    let price: Int
+    let images: [String]
+    let descriptionImage: String
+    let share: Bool
+    let interestCount: Int
+    let caution: String
 }
 
-struct ProductDetail: Codable, Identifiable {
-    let id: UUID
-    let name: String
-    let price: String
-    let imageName: String
-    let description: String
-    let packagingMethod: String
-    let storageMethod: String
-    let caution: String
-    let marketName: String
-    let marketStatus: String
-    let marketLocation: String
+struct ProductResponse: Codable {
+    let status: Bool
+    let data: [Product]
+    let message: String
 }
+

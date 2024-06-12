@@ -61,19 +61,19 @@ struct MyPageView: View {
                     .frame(width: 0.8, height: 48)
                     .foregroundStyle(Color.pointOrange)
                 
-                NavigationLink(destination: FavoriteProductsView()) {
-                    VStack {
-                        Text("관심 상품")
-                            .font(.pretendardMedium(size: 14))
-                            .foregroundStyle(Color.black)
-                            .padding(.bottom, 1)
-                        
-                        Text("\(productCount)")
-                            .font(.pretendardSemiBold(size: 24))
-                            .foregroundStyle(Color.pointOrange)
-                    }
-                    .frame(maxWidth: .infinity)
-                }
+//                NavigationLink(destination: FavoriteProductsView()) {
+//                    VStack {
+//                        Text("관심 상품")
+//                            .font(.pretendardMedium(size: 14))
+//                            .foregroundStyle(Color.black)
+//                            .padding(.bottom, 1)
+//                        
+//                        Text("\(productCount)")
+//                            .font(.pretendardSemiBold(size: 24))
+//                            .foregroundStyle(Color.pointOrange)
+//                    }
+//                    .frame(maxWidth: .infinity)
+//                }
             }
             .frame(height: 107)
             .background(Color.baseYellow)
