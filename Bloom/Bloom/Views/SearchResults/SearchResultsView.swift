@@ -77,7 +77,7 @@ struct SearchResultsView: View {
                         .padding(.trailing, 10)
                     
                     Toggle("", isOn: $viewModel.showOnlyOperating)
-                        .labelsHidden() // 라벨을 숨겨서 텍스트와 토글 사이의 간격을 제거
+                        .labelsHidden()
                         .toggleStyle(SwitchToggleStyle(tint: Color.operating))
                 }
             }
@@ -86,28 +86,7 @@ struct SearchResultsView: View {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
                     ForEach(filteredProducts) { product in
-                        Text(product.name)
-//                        VStack(alignment: .leading, spacing: 3) {
-//                            Image(product.name)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: 107, height: 134)
-//                                .clipped()
-//                                .cornerRadius(8)
-//                                .padding(.bottom, 1)
-//                            
-//                            Text(product.status)
-//                                .font(.pretendardSemiBold(size: 11))
-//                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
-//                            
-//                            Text(product.name)
-//                                .font(.pretendardMedium(size: 14))
-//                                .foregroundStyle(Color.gray2)
-//                                .lineLimit(1)
-//                            
-//                            Text(product.price)
-//                                .font(.pretendardBold(size: 15))
-//                        }
+                        ProductRow(product: product)
                     }
                 }
             }
