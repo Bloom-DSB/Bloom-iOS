@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
+    @ObservedObject var homeViewModel: HomeViewModel
     @Binding var hideTabBar: Bool
     @Binding var showPicker: Bool
     @Binding var selectedCity: String
@@ -36,7 +36,7 @@ struct HomeView: View {
             .padding(.top, 10)
             
             HStack {
-                HomeSearchTextField(text: $viewModel.searchText)
+                HomeSearchTextField(text: $homeViewModel.searchText)
                 
                 NavigationLink(destination: FilterView(hideTabBar: $hideTabBar)) {
                     Image("filter-icon")
@@ -48,19 +48,18 @@ struct HomeView: View {
                 }
             }
             
-            List(viewModel.markets) { market in
-                MarketRow(viewModel: viewModel, market: market)
+            List(homeViewModel.markets) { market in
+                MarketRow(viewModel: homeViewModel, market: market)
             }
-            
             .listStyle(PlainListStyle())
         }
         .onAppear {
-            viewModel.loadMarkets(location: selectedDistrict)
-            print("load markets \n \(viewModel.markets.first?.name)")
+            homeViewModel.loadMarkets(location: selectedDistrict)
+            print("load markets \n \(homeViewModel.markets.first?.name ?? "")")
         }
     }
 }
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
+    HomeView(homeViewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
 }

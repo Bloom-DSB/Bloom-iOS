@@ -16,7 +16,7 @@ struct MarketRow: View {
             ZStack(alignment: .topTrailing) {
                 HStack(spacing: 0) {
                     // 왼쪽 큰 이미지
-                    AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+                    AsyncImage(url: URL(string: "https://kukka-2-media-123.s3.amazonaws.com/media/catalog/product/images/7d2a1652-a326-4ce0-aae9-ebb4c71c3d84.jpg")) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -28,7 +28,7 @@ struct MarketRow: View {
                     
                     VStack(spacing: 0) {
                         // 오른쪽 상단 작은 이미지
-                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+                        AsyncImage(url: URL(string: "https://kukka-2-media-123.s3.amazonaws.com/media/catalog/product/images/7d2a1652-a326-4ce0-aae9-ebb4c71c3d84.jpg")) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -39,7 +39,7 @@ struct MarketRow: View {
                         .clipped()
                         
                         // 오른쪽 하단 작은 이미지
-                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+                        AsyncImage(url: URL(string: "https://kukka-2-media-123.s3.amazonaws.com/media/catalog/product/images/7d2a1652-a326-4ce0-aae9-ebb4c71c3d84.jpg")) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -48,6 +48,38 @@ struct MarketRow: View {
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
                         .clipped()
+//                    AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+//                        image
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                    } placeholder: {
+//                        Color.gray
+//                    }
+//                    .frame(width: UIScreen.main.bounds.width * 0.57, height: 160)
+//                    .clipped()
+//                    
+//                    VStack(spacing: 0) {
+//                        // 오른쪽 상단 작은 이미지
+//                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+//                            image
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                        } placeholder: {
+//                            Color.gray
+//                        }
+//                        .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
+//                        .clipped()
+//                        
+//                        // 오른쪽 하단 작은 이미지
+//                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+//                            image
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                        } placeholder: {
+//                            Color.gray
+//                        }
+//                        .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
+//                        .clipped()
                     }
                 }
                 .padding(.bottom, 2)

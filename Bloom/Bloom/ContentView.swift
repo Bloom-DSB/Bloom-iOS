@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "isAuthenticated")
+    @State private var isAuthenticated: Bool = true
     @State private var selectedTab = 0
     @State private var hideTabBar = false
     @State private var showPicker = false
     @State private var selectedCity = "서울특별시"
     @State private var selectedDistrict = "강남구"
+    @ObservedObject private var homeViewModel = HomeViewModel()
 
     var body: some View {
         if isAuthenticated {
-            MainTabView(selectedTab: $selectedTab, hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
+            MainTabView(
+                selectedTab: $selectedTab,
+                hideTabBar: $hideTabBar,
+                showPicker: $showPicker,
+                selectedCity: $selectedCity,
+                selectedDistrict: $selectedDistrict,
+                homeViewModel: homeViewModel
+            )
         } else {
             LoginView(isAuthenticated: $isAuthenticated)
         }
@@ -30,12 +38,19 @@ struct MainTabView: View {
     @Binding var showPicker: Bool
     @Binding var selectedCity: String
     @Binding var selectedDistrict: String
+    @ObservedObject var homeViewModel: HomeViewModel
 
     var body: some View {
         NavigationView {
             ZStack {
                 if selectedTab == 0 {
-                    HomeView(viewModel: HomeViewModel(), hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
+                    HomeView(
+                        homeViewModel: homeViewModel,
+                        hideTabBar: $hideTabBar,
+                        showPicker: $showPicker,
+                        selectedCity: $selectedCity,
+                        selectedDistrict: $selectedDistrict
+                    )
                 } else if selectedTab == 1 {
                     MapView()
                 } else if selectedTab == 2 {
@@ -53,7 +68,10 @@ struct MainTabView: View {
                     VStack {
                         Spacer()
                         
-                        RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker)
+                        RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker
+                        ) {
+                            homeViewModel.loadMarkets(location: selectedDistrict)
+                        }
                             .frame(height: 265)
                             .background(Color.white)
                             .cornerRadius(20)
