@@ -13,6 +13,7 @@ struct FilterView: View {
     @ObservedObject var slider = CustomSlider(start: 0, end: 100000)
     @Environment(\.presentationMode) var presentationMode
     @Binding var hideTabBar: Bool
+    @Binding var showFilterView: Bool
     
     @State private var isLowHandleActive = false
     @State private var isHighHandleActive = false
@@ -42,7 +43,9 @@ struct FilterView: View {
                     
                     Button(action: {
                         hideTabBar = false
-                        presentationMode.wrappedValue.dismiss()
+                        withAnimation {
+                            showFilterView = false
+                        }
                     }) {
                         Image(systemName: "xmark")
                             .foregroundStyle(Color(hex: "000001"))
@@ -174,5 +177,5 @@ extension NumberFormatter {
 }
 
 #Preview {
-    FilterView(hideTabBar: .constant(false))
+    FilterView(hideTabBar: .constant(false), showFilterView: .constant(false))
 }

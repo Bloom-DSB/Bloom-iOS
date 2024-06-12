@@ -40,6 +40,16 @@ struct HomeView: View {
                 HStack {
                     HomeSearchTextField(text: $homeViewModel.searchText)
                     
+                    NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText)) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(Color.black)
+                            .frame(width: 44, height: 44)
+                            .background(Color.baseYellow)
+                            .foregroundStyle(Color.pointOrange)
+                            .cornerRadius(8)
+                            .padding(.leading, 2)
+                    }
+                    
                     Button(action: {
                         withAnimation {
                             showFilterView.toggle()
@@ -65,9 +75,9 @@ struct HomeView: View {
             }
             
             if showFilterView {
-                FilterView(hideTabBar: $hideTabBar)
+                FilterView(hideTabBar: $hideTabBar, showFilterView: $showFilterView)
                     .transition(.move(edge: .bottom))
-                    .animation(.easeInOut)
+                    .animation(.easeInOut(duration: 0.3))
                     .background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all).onTapGesture {
                         withAnimation {
                             showFilterView.toggle()

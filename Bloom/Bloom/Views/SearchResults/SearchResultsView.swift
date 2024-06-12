@@ -9,10 +9,12 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @StateObject private var viewModel = SearchResultsViewModel()
+    let query: String
     
-    var filteredProducts: [Product] {
-        viewModel.showOnlyOperating ? viewModel.products.filter { $0.status == "운영중" } : viewModel.products
-    }
+//    var filteredProducts: [Product] {
+//        viewModel.showOnlyOperating ? viewModel.products.filter { $0.status == "운영중" } : viewModel.products
+//    }
+//    var filteredProducts: [Product]
     
     var body: some View {
         VStack {
@@ -84,27 +86,28 @@ struct SearchResultsView: View {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
                     ForEach(filteredProducts) { product in
-                        VStack(alignment: .leading, spacing: 3) {
-                            Image(product.imageName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 107, height: 134)
-                                .clipped()
-                                .cornerRadius(8)
-                                .padding(.bottom, 1)
-                            
-                            Text(product.status)
-                                .font(.pretendardSemiBold(size: 11))
-                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
-                            
-                            Text(product.name)
-                                .font(.pretendardMedium(size: 14))
-                                .foregroundStyle(Color.gray2)
-                                .lineLimit(1)
-                            
-                            Text(product.price)
-                                .font(.pretendardBold(size: 15))
-                        }
+                        Text(product.name)
+//                        VStack(alignment: .leading, spacing: 3) {
+//                            Image(product.name)
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                                .frame(width: 107, height: 134)
+//                                .clipped()
+//                                .cornerRadius(8)
+//                                .padding(.bottom, 1)
+//                            
+//                            Text(product.status)
+//                                .font(.pretendardSemiBold(size: 11))
+//                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
+//                            
+//                            Text(product.name)
+//                                .font(.pretendardMedium(size: 14))
+//                                .foregroundStyle(Color.gray2)
+//                                .lineLimit(1)
+//                            
+//                            Text(product.price)
+//                                .font(.pretendardBold(size: 15))
+//                        }
                     }
                 }
             }
@@ -112,9 +115,12 @@ struct SearchResultsView: View {
         .padding(.horizontal, 20)
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .onAppear {
+            viewModel.searchProducts(query: query)
+        }
     }
 }
 
 #Preview {
-    SearchResultsView()
+    SearchResultsView(query: "꽃")
 }

@@ -6,25 +6,135 @@
 //
 
 import Foundation
+import Combine
+import Alamofire
+
+//class SearchResultsViewModel: ObservableObject {
+//    @Published var products: [Product] = []
+//    @Published var searchText: String = ""
+//    @Published var showOnlyOperating: Bool = false
+//    private var cancellables = Set<AnyCancellable>()
+//    
+//    func searchProducts(query: String) {
+//        let url = "\(NetworkConfig.baseURL)/products"
+//        let params: Parameters = ["query": query]
+//        
+//        AF.request(url, method: .get, parameters: params).responseDecodable(of: ProductResponse.self) { response in
+//            switch response.result {
+//            case .success(let result):
+//                self.products = result.data
+//                print("Fetched products: \(self.products)")
+//            case .failure(let error):
+//                print("Failed to fetch products: \(error.localizedDescription)")
+//            }
+//        }
+//    }
+//}
+
+
+var filteredProducts: [Product] = [
+    Product(
+        marketId: 1,
+        productId: 1,
+        name: "사과",
+        category: "과일",
+        price: 1000,
+        images: [
+            "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
+            "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
+        ],
+        descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
+        share: true,
+        interestCount: 100,
+        caution: "알러지 주의"
+    ),
+    Product(
+        marketId: 1,
+        productId: 2,
+        name: "바나나",
+        category: "과일",
+        price: 2000,
+        images: [
+            "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
+        ],
+        descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg",
+        share: false,
+        interestCount: 150,
+        caution: "없음"
+    ),
+    Product(
+        marketId: 2,
+        productId: 3,
+        name: "감자",
+        category: "채소",
+        price: 500,
+        images: [
+            "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
+        ],
+        descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg",
+        share: true,
+        interestCount: 200,
+        caution: "잘 씻어서 드세요"
+    )
+]
 
 class SearchResultsViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var searchText: String = ""
     @Published var showOnlyOperating: Bool = false
+    private var cancellables = Set<AnyCancellable>()
     
-    init() {
-        loadProducts()
-    }
+//    init() {
+//        searchProducts(query: "해바라기")
+//    }
     
-    func loadProducts() {
+    func searchProducts(query: String) {
         let dummyProducts = [
-            Product(id: UUID(), name: "고백공격 장미꽃", price: "19,900원", imageName: "flower1", status: "운영중"),
-            Product(id: UUID(), name: "세상에서 제일 예쁜 꽃", price: "15,000원", imageName: "flower2", status: "준비중"),
-            Product(id: UUID(), name: "고백공격 장미꽃", price: "19,900원", imageName: "flower1", status: "운영중"),
-            Product(id: UUID(), name: "세상에서 제일 예쁜 꽃", price: "15,000원", imageName: "flower2", status: "준비중"),
-            Product(id: UUID(), name: "로맨틱 튤립", price: "12,000원", imageName: "flower3", status: "운영중"),
-            Product(id: UUID(), name: "봄의 정원", price: "25,000원", imageName: "flower4", status: "운영중")
+            Product(
+                marketId: 1,
+                productId: 1,
+                name: "사과",
+                category: "과일",
+                price: 1000,
+                images: [
+                    "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
+                    "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
+                ],
+                descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
+                share: true,
+                interestCount: 100,
+                caution: "알러지 주의"
+            ),
+            Product(
+                marketId: 1,
+                productId: 2,
+                name: "바나나",
+                category: "과일",
+                price: 2000,
+                images: [
+                    "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
+                ],
+                descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg",
+                share: false,
+                interestCount: 150,
+                caution: "없음"
+            ),
+            Product(
+                marketId: 2,
+                productId: 3,
+                name: "감자",
+                category: "채소",
+                price: 500,
+                images: [
+                    "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
+                ],
+                descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg",
+                share: true,
+                interestCount: 200,
+                caution: "잘 씻어서 드세요"
+            )
         ]
+        
         self.products = dummyProducts
     }
 }
