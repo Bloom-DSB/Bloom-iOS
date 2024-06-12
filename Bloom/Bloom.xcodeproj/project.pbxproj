@@ -15,10 +15,12 @@
 		3E4A7D4D2C17EF450094A45D /* RegionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D4C2C17EF450094A45D /* RegionPickerView.swift */; };
 		3E4A7D4F2C17F9FA0094A45D /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D4E2C17F9FA0094A45D /* Region.swift */; };
 		3E4A7D512C181E0B0094A45D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D502C181E0B0094A45D /* LoginViewModel.swift */; };
+		3E4A7D542C18772D0094A45D /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D532C18772D0094A45D /* NetworkConfig.swift */; };
 		3E8BC5A82C11E6B8003320F1 /* MarketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5A72C11E6B8003320F1 /* MarketDetailView.swift */; };
 		3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5A92C11FB18003320F1 /* ProductDetailView.swift */; };
 		3E8BC5AD2C143578003320F1 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5AC2C143578003320F1 /* FilterView.swift */; };
 		3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BC5B72C146492003320F1 /* SearchResultsView.swift */; };
+		3E8C19DA2C194051004BEA1D /* MarketRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C19D92C194051004BEA1D /* MarketRow.swift */; };
 		3E9AA0522C118DF80099E093 /* BloomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0512C118DF80099E093 /* BloomApp.swift */; };
 		3E9AA0542C118DF80099E093 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0532C118DF80099E093 /* ContentView.swift */; };
 		3E9AA0562C118DFA0099E093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0552C118DFA0099E093 /* Assets.xcassets */; };
@@ -38,6 +40,7 @@
 		3E9AA0822C11A3CC0099E093 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA0792C11A3CC0099E093 /* Pretendard-Light.ttf */; };
 		3E9AA0832C11A3CC0099E093 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E9AA07A2C11A3CC0099E093 /* Pretendard-Black.ttf */; };
 		3E9AA0882C11A7B20099E093 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AA0872C11A7B20099E093 /* HomeView.swift */; };
+		3E9CD7C32C187E1D0094858E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3E9CD7C22C187E1D0094858E /* Alamofire */; };
 		3EA96E932C16994600E29A3D /* MarketProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E922C16994600E29A3D /* MarketProductsView.swift */; };
 		3EA96E962C16A12D00E29A3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E952C16A12D00E29A3D /* LoginView.swift */; };
 		3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA96E982C16D78500E29A3D /* CustomTabBar.swift */; };
@@ -69,10 +72,12 @@
 		3E4A7D4C2C17EF450094A45D /* RegionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPickerView.swift; sourceTree = "<group>"; };
 		3E4A7D4E2C17F9FA0094A45D /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3E4A7D502C181E0B0094A45D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		3E4A7D532C18772D0094A45D /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		3E8BC5A72C11E6B8003320F1 /* MarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailView.swift; sourceTree = "<group>"; };
 		3E8BC5A92C11FB18003320F1 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		3E8BC5AC2C143578003320F1 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3E8BC5B72C146492003320F1 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		3E8C19D92C194051004BEA1D /* MarketRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRow.swift; sourceTree = "<group>"; };
 		3E9AA04E2C118DF80099E093 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9AA0512C118DF80099E093 /* BloomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomApp.swift; sourceTree = "<group>"; };
 		3E9AA0532C118DF80099E093 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9CD7C32C187E1D0094858E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,8 +174,17 @@
 			isa = PBXGroup;
 			children = (
 				3EA96E982C16D78500E29A3D /* CustomTabBar.swift */,
+				3E8C19D92C194051004BEA1D /* MarketRow.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		3E4A7D522C1877190094A45D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3E4A7D532C18772D0094A45D /* NetworkConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		3E8BC5A52C11E64C003320F1 /* MarketDetail */ = {
@@ -229,6 +244,7 @@
 				3E9AA0842C11A4220099E093 /* Info.plist */,
 				3E9AA0512C118DF80099E093 /* BloomApp.swift */,
 				3E9AA0532C118DF80099E093 /* ContentView.swift */,
+				3E4A7D522C1877190094A45D /* Config */,
 				3E9AA0612C11A1D50099E093 /* Models */,
 				3E9AA0852C11A7920099E093 /* Views */,
 				3EA96EA62C16EF6000E29A3D /* ViewModels */,
@@ -396,6 +412,9 @@
 			dependencies = (
 			);
 			name = Bloom;
+			packageProductDependencies = (
+				3E9CD7C22C187E1D0094858E /* Alamofire */,
+			);
 			productName = Bloom;
 			productReference = 3E9AA04E2C118DF80099E093 /* Bloom.app */;
 			productType = "com.apple.product-type.application";
@@ -424,6 +443,9 @@
 				Base,
 			);
 			mainGroup = 3E9AA0452C118DF80099E093;
+			packageReferences = (
+				3E9CD7C12C187E1D0094858E /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 3E9AA04F2C118DF80099E093 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -485,7 +507,9 @@
 				3EA96EBF2C17238800E29A3D /* SliderView.swift in Sources */,
 				3E9AA0702C11A3A30099E093 /* Font+Extensions.swift in Sources */,
 				3E9AA0652C11A1EC0099E093 /* Product.swift in Sources */,
+				3E4A7D542C18772D0094A45D /* NetworkConfig.swift in Sources */,
 				3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */,
+				3E8C19DA2C194051004BEA1D /* MarketRow.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
 				3E4A7D512C181E0B0094A45D /* LoginViewModel.swift in Sources */,
 				3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */,
@@ -717,6 +741,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3E9CD7C12C187E1D0094858E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3E9CD7C22C187E1D0094858E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E9CD7C12C187E1D0094858E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E9AA0462C118DF80099E093 /* Project object */;
 }

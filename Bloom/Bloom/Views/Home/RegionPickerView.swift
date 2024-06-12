@@ -11,6 +11,7 @@ struct RegionPickerView: View {
     @Binding var selectedCity: String
     @Binding var selectedDistrict: String
     @Binding var isPresented: Bool
+    var onComplete: () -> Void
 
     var body: some View {
         VStack {
@@ -24,6 +25,7 @@ struct RegionPickerView: View {
 
                 Button("완료") {
                     isPresented = false
+                    onComplete()
                 }
                 .padding()
             }
@@ -52,6 +54,5 @@ struct RegionPickerView: View {
         }
         .background(Color.white)
         .cornerRadius(20)
-//        .shadow(radius: 10)
     }
 }

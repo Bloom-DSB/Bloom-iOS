@@ -27,7 +27,7 @@ struct LoginView: View {
             Spacer()
             
             if showAppleSigninButton {
-                AppleSigninButton(isAuthenticated: $isAuthenticated, appleLoginViewModel: appleLoginViewModel)
+                AppleSigninButton(isAuthenticated: $isAuthenticated)
                     .transition(.opacity)
                     .animation(.easeIn, value: showAppleSigninButton)
             }

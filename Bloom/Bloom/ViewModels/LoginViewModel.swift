@@ -60,10 +60,10 @@ class LoginViewModel: NSObject, ObservableObject {
     func requestAppleLoginToServer(appleLoginInfo: AppleLoginView) -> Future<User, Error> {
         return Future { promise in
             // 무조건 성공으로 가정
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                let user = User(id: "1111", name: "Dummy User", email: "dana@email.com") // 서버에서 받은 사용자 정보를 가정
-                promise(.success(user))
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                let user = User(id: "1111", name: "Dummy User", email: "dana@email.com") // 서버에서 받은 사용자 정보를 가정
+//                promise(.success(user))
+//            }
         }
         return Future { promise in
             guard let url = URL(string: "{엔드 포인트}") else {
