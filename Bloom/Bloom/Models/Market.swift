@@ -8,19 +8,39 @@
 import Foundation
 
 struct Market: Codable, Identifiable {
-    let id: UUID
+    let id: Int
     let name: String
+    let summary: String
+    let addressDetail: String
     let location: String
-    let price: String
-    let status: String
+    let phoneNumber: String
+    let sns: String
+    let simpleProducts: [SimpleProduct]
+    let interestCount: Int
+    let operatingTime: [String: String]
+    let latitude: Double
+    let longitude: Double
+
+    enum CodingKeys: String, CodingKey {
+        case id = "marketId"
+        case name, summary, addressDetail, location, phoneNumber, sns, simpleProducts, interestCount, operatingTime, latitude, longitude
+    }
 }
 
-struct MarketDetail: Codable, Identifiable {
-    let id: UUID
+struct SimpleProduct: Codable, Identifiable {
+    let id: Int
     let name: String
-    let status: String
-    let description: String
-    let products: [Product]
-    let location: String
-    let mapImageName: String
+    let price: Int
+    let images: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case id = "productId"
+        case name, price, images
+    }
+}
+
+struct MarketResponse: Codable {
+    let status: Bool
+    let data: [Market]
+    let message: String
 }

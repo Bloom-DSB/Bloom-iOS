@@ -11,6 +11,7 @@ import AuthenticationServices
 struct LoginView: View {
     @Binding var isAuthenticated: Bool
     @State private var showAppleSigninButton = false
+    @StateObject private var appleLoginViewModel = LoginViewModel()
     
     var body: some View {
         VStack {
@@ -30,7 +31,7 @@ struct LoginView: View {
                     .transition(.opacity)
                     .animation(.easeIn, value: showAppleSigninButton)
             }
-            
+                        
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -44,7 +45,6 @@ struct LoginView: View {
         }
     }
 }
-
 
 #Preview {
     LoginView(isAuthenticated: .constant(false))
