@@ -7,42 +7,37 @@
 
 import Foundation
 
-struct SimpleProduct: Codable {
-    let name: String
-    let price: Int
-}
-
-// Market Model
 struct Market: Codable, Identifiable {
-    var id: Int
-    var name: String
-    var summary: String
-    var addressDetail: String
-    var location: String
-    var phoneNumber: String
-    var sns: String
-    var simpleProducts: [SimpleProduct]
-    var interestCount: Int
-    var operatingTime: [String: String]
-    var latitude: Double
-    var longitude: Double
-    
+    let id: Int
+    let name: String
+    let summary: String
+    let addressDetail: String
+    let location: String
+    let phoneNumber: String
+    let sns: String
+    let simpleProducts: [SimpleProduct]
+    let interestCount: Int
+    let operatingTime: [String: String]
+    let latitude: Double
+    let longitude: Double
+
     enum CodingKeys: String, CodingKey {
         case id = "marketId"
-        case name
-        case summary
-        case addressDetail
-        case location
-        case phoneNumber
-        case sns
-        case simpleProducts
-        case interestCount
-        case operatingTime
-        case latitude
-        case longitude
+        case name, summary, addressDetail, location, phoneNumber, sns, simpleProducts, interestCount, operatingTime, latitude, longitude
     }
 }
 
+struct SimpleProduct: Codable, Identifiable {
+    let id: Int
+    let name: String
+    let price: Int
+    let images: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case id = "productId"
+        case name, price, images
+    }
+}
 
 struct MarketResponse: Codable {
     let status: Bool

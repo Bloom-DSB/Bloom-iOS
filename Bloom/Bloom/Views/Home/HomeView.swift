@@ -49,15 +49,14 @@ struct HomeView: View {
             }
             
             List(viewModel.markets) { market in
-                MarketRow(market: market)
+                MarketRow(viewModel: viewModel, market: market)
             }
+            
             .listStyle(PlainListStyle())
-            .onAppear {
-                print("load")
-//                viewModel.loadMarkets(location: selectedDistrict)
-                viewModel.loadMarkets()
-                print("load markets \n \(viewModel.markets)")
-            }
+        }
+        .onAppear {
+            viewModel.loadMarkets(location: selectedDistrict)
+            print("load markets \n \(viewModel.markets.first?.name)")
         }
     }
 }
