@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ProductDetailView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @State private var isProductFavorite = false
+
     let product: SimpleProduct
     let market: SimpleMarket
 
@@ -18,17 +21,23 @@ struct ProductDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     ZStack(alignment: .topLeading) {
-                        AsyncImage(url: URL(string: product.images.first ?? "")) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 393, height: 300)
-                                .clipped()
-                        } placeholder: {
-                            Color.gray
-                                .frame(width: 393, height: 300)
-                                .clipped()
+                        TabView {
+                            ForEach(product.images, id: \.self) { imageUrl in
+                                AsyncImage(url: URL(string: imageUrl)) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 393, height: 300)
+                                        .clipped()
+                                } placeholder: {
+                                    Color.gray
+                                        .frame(width: 393, height: 300)
+                                        .clipped()
+                                }
+                            }
                         }
+                        .frame(height: 300)
+                        .tabViewStyle(PageTabViewStyle())
 
                         HStack {
                             Button(action: {
@@ -51,17 +60,34 @@ struct ProductDetailView: View {
                                 Spacer()
 
                                 Button(action: {
-                                    // 관심 토글 액션
+                                    isProductFavorite.toggle()
                                 }) {
-                                    Image(systemName: "heart.fill")
+                                    Image(systemName: isProductFavorite ? "heart.fill" : "heart")
                                         .resizable()
                                         .frame(width: 20, height: 20)
-                                        .foregroundStyle(Color.pointOrange)
+                                        .foregroundStyle(isProductFavorite ? Color.pointOrange : Color.gray5)
                                         .padding()
-                                        .background(Color.white)
+                                        .background(.white)
                                         .clipShape(Circle())
                                         .padding(15)
                                 }
+                                .contentShape(Rectangle())
+//                                .onTapGesture {
+//                                    isProductFavorite.toggle()
+//                                }
+//                                .buttonStyle(PlainButtonStyle())
+//                                Button(action: {
+//                                    // 관심 토글 액션
+//                                }) {
+//                                    Image(systemName: "heart.fill")
+//                                        .resizable()
+//                                        .frame(width: 20, height: 20)
+//                                        .foregroundStyle(Color.pointOrange)
+//                                        .padding()
+//                                        .background(Color.white)
+//                                        .clipShape(Circle())
+//                                        .padding(15)
+//                                }
                             }
                         }
                     }

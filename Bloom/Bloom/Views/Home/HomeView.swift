@@ -10,15 +10,15 @@ import Combine
 
 struct HomeView: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    @StateObject var filterViewModel = FilterViewModel() 
+    @StateObject var filterViewModel = FilterViewModel()
     @Binding var hideTabBar: Bool
     @Binding var showPicker: Bool
     @Binding var selectedCity: String
     @Binding var selectedDistrict: String
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
-//    @State private var selectedMarket: Market?
-
+    //    @State private var selectedMarket: Market?
+    
     var body: some View {
         ZStack {
             VStack {
@@ -39,14 +39,14 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
-
+                
                 HStack {
                     HomeSearchTextField(text: $homeViewModel.searchText) {
                         navigateToSearchResults = true
                     }
                     .frame(width: 300, height: 40)
                     .cornerRadius(8)
-
+                    
                     Button(action: {
                         withAnimation {
                             showFilterView.toggle()
@@ -60,7 +60,7 @@ struct HomeView: View {
                             .padding(.leading, 2)
                     }
                 }
-
+                
                 List(homeViewModel.markets) { market in
                     ZStack {
                         NavigationLink(destination: MarketDetailView(hideTabBar: $hideTabBar, market: market)) { EmptyView() }.opacity(0.0)
@@ -74,8 +74,10 @@ struct HomeView: View {
                 print("HomeView First Load: \(fullRegion)")
                 homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                 print("load markets \n \(homeViewModel.markets.first?.name ?? "")")
+                filterViewModel.resetFilters()
+                
             }
-
+            
             if showFilterView {
                 FilterView(filterViewModel: filterViewModel, hideTabBar: $hideTabBar, showFilterView: $showFilterView, navigateToSearchResults: $navigateToSearchResults)
                     .transition(.move(edge: .bottom))
@@ -85,16 +87,16 @@ struct HomeView: View {
                             showFilterView.toggle()
                         }
                     })
-
+                
             }
         }
         .background(
             NavigationLink(destination: SearchResultsView(filterViewModel: filterViewModel, query: homeViewModel.searchText, filterParams: filterViewModel.buildQueryParameters()), isActive: $navigateToSearchResults) {
                 EmptyView()
             }
-            .onDisappear {
-                homeViewModel.searchText = ""
-            }
+                .onDisappear {
+                    homeViewModel.searchText = ""
+                }
         )
     }
 }

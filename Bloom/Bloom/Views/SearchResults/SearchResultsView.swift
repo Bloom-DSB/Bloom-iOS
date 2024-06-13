@@ -8,6 +8,7 @@ struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
+    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", operatingTime: ["this":"tothis"], location: "여기", phoneNumber: "010")
     
     var filteredProducts: [SimpleProduct] {
         viewModel.showOnlyOperating ? viewModel.products.filter { $0.category == "꽃다발" } : viewModel.products
@@ -86,7 +87,9 @@ struct SearchResultsView: View {
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
                         ForEach(filteredProducts) { product in
-                            ProductRow(product: product)
+                            NavigationLink(destination: ProductDetailView(product: product, market: market)) {
+                                ProductRow(product: product)
+                            }
                         }
                     }
                 }
