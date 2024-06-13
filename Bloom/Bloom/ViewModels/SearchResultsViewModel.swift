@@ -14,11 +14,11 @@ import Alamofire
 //    @Published var searchText: String = ""
 //    @Published var showOnlyOperating: Bool = false
 //    private var cancellables = Set<AnyCancellable>()
-//    
+//
 //    func searchProducts(query: String) {
 //        let url = "\(NetworkConfig.baseURL)/products"
 //        let params: Parameters = ["query": query]
-//        
+//
 //        AF.request(url, method: .get, parameters: params).responseDecodable(of: ProductResponse.self) { response in
 //            switch response.result {
 //            case .success(let result):
@@ -44,7 +44,6 @@ var filteredProducts: [Product] = [
             "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
         ],
         descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
-        share: true,
         interestCount: 100,
         caution: "알러지 주의"
     ),
@@ -58,7 +57,6 @@ var filteredProducts: [Product] = [
             "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
         ],
         descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg",
-        share: false,
         interestCount: 150,
         caution: "없음"
     ),
@@ -72,7 +70,6 @@ var filteredProducts: [Product] = [
             "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
         ],
         descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg",
-        share: true,
         interestCount: 200,
         caution: "잘 씻어서 드세요"
     )
@@ -101,7 +98,6 @@ class SearchResultsViewModel: ObservableObject {
                     "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
                 ],
                 descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
-                share: true,
                 interestCount: 100,
                 caution: "알러지 주의"
             ),
@@ -115,7 +111,6 @@ class SearchResultsViewModel: ObservableObject {
                     "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
                 ],
                 descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg",
-                share: false,
                 interestCount: 150,
                 caution: "없음"
             ),
@@ -129,7 +124,6 @@ class SearchResultsViewModel: ObservableObject {
                     "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg"
                 ],
                 descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_a.jpg",
-                share: true,
                 interestCount: 200,
                 caution: "잘 씻어서 드세요"
             )

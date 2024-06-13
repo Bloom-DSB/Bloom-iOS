@@ -10,48 +10,52 @@ import SwiftUI
 struct MarketRow: View {
     @ObservedObject var viewModel: HomeViewModel
     var market: Market
+    @State private var isFavorite = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ZStack(alignment: .topTrailing) {
-//                HStack(spacing: 0) {
-////                    // 왼쪽 큰 이미지
-//                    AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
-//                        image
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                    } placeholder: {
-//                        Color.gray
-//                    }
-//                    .frame(width: UIScreen.main.bounds.width * 0.57, height: 160)
-//                    .clipped()
-//                    
-//                    VStack(spacing: 0) {
-//                        // 오른쪽 상단 작은 이미지
-//                        AsyncImage(url: URL(string: market.simpleProducts[1].images[0])) { image in
-//                            image
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                        } placeholder: {
-//                            Color.gray
-//                        }
-//                        .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
-//                        .clipped()
-//                        
-//                        // 오른쪽 하단 작은 이미지
-//                        AsyncImage(url: URL(string: market.simpleProducts[1].images[0])) { image in
-//                            image
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                        } placeholder: {
-//                            Color.gray
-//                        }
-//                        .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
-//                        .clipped()
-//                    }
-//                }
+                //                HStack(spacing: 0) {
+                //                    // 왼쪽 큰 이미지
+                //                    AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+                //                        image
+                //                            .resizable()
+                //                            .aspectRatio(contentMode: .fill)
+                //                    } placeholder: {
+                //                        Color.gray
+                //                    }
+                //                    .frame(width: UIScreen.main.bounds.width * 0.57, height: 160)
+                //                    .clipped()
+                //
+                //                    VStack(spacing: 0) {
+                //                        // 오른쪽 상단 작은 이미지
+                //                        AsyncImage(url: URL(string: market.simpleProducts[1].images[0])) { image in
+                //                            image
+                //                                .resizable()
+                //                                .aspectRatio(contentMode: .fill)
+                //                        } placeholder: {
+                //                            Color.gray
+                //                        }
+                //                        .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
+                //                        .clipped()
+                //
+                //                        // 오른쪽 하단 작은 이미지
+                //                        AsyncImage(url: URL(string: market.simpleProducts[1].images[0])) { image in
+                //                            image
+                //                                .resizable()
+                //                                .aspectRatio(contentMode: .fill)
+                //                        } placeholder: {
+                //                            Color.gray
+                //                        }
+                //                        .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
+                //                        .clipped()
+                //                    }
+                //                }
+                
+                
+                
                 HStack(spacing: 0) {
-//                    // 왼쪽 큰 이미지
+                    // 왼쪽 큰 이미지
                     AsyncImage(url: URL(string: "https://strbloom.blob.core.windows.net/product/product_bouquet_rose1.jpeg")) { image in
                         image
                             .resizable()
@@ -94,15 +98,19 @@ struct MarketRow: View {
                 )
                 
                 Button(action: {
-                    // 관심 목록 추가/삭제 액션
+                    isFavorite.toggle()
                 }) {
                     Image(systemName: "heart.fill")
                         .padding(10)
                         .background(.white)
-                        .foregroundStyle(Color.pointOrange)
+                        .foregroundStyle(isFavorite ? Color.pointOrange : Color.gray5)
                         .clipShape(Circle())
                 }
                 .padding(10)
+                .contentShape(Rectangle())
+                .gesture(TapGesture().onEnded {
+                    isFavorite.toggle()
+                })
             }
             
             HStack {
@@ -119,7 +127,7 @@ struct MarketRow: View {
                     .background(viewModel.isOperating(market: market) ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                     .cornerRadius(99)
             }
-
+            
             HStack {
                 HStack {
                     Image("location-icon")
@@ -166,7 +174,7 @@ struct MarketRow: View {
 //        ],
 //        latitude: 37.5665,
 //        longitude: 126.9784
-//        
+//
 //    )
 //    )
 //}

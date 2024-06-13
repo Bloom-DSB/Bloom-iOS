@@ -49,7 +49,6 @@ struct ProductRow: View {
             "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
         ],
         descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
-        share: true,
         interestCount: 100,
         caution: "알러지 주의"
     ))
