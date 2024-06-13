@@ -10,6 +10,7 @@ import SwiftUI
 struct MarketDetailView: View {
     @Binding var hideTabBar: Bool
     @Environment(\.presentationMode) var presentationMode
+    @State private var showWebView = false
 
     let market: Market
 
@@ -25,17 +26,9 @@ struct MarketDetailView: View {
                 ZStack(alignment: .topLeading) {
                     if let firstImageURL = market.simpleProducts.first?.images.first {
                         
-//                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
-//                            image
                         CachedAsyncImage(url: firstImageURL)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
                                 .frame(width: UIScreen.main.bounds.width, height: 320)
                                 .clipped()
-//                        } placeholder: {
-//                            Color.gray
-//                                .frame(width: UIScreen.main.bounds.width, height: 320)
-//                        }
                     }
 
                     HStack {
@@ -104,7 +97,7 @@ struct MarketDetailView: View {
                             .foregroundStyle(Color.pointOrange)
 
                         Button(action: {
-                            // SNS 액션
+                            showWebView = true
                         }) {
                             VStack {
                                 Image(systemName: "camera")
@@ -121,7 +114,7 @@ struct MarketDetailView: View {
                             .foregroundStyle(Color.pointOrange)
 
                         Button(action: {
-                            // 운영시간 액션
+                            
                         }) {
                             VStack {
                                 Image(systemName: "clock")
@@ -186,7 +179,7 @@ struct MarketDetailView: View {
 
                 LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
                     ForEach(market.simpleProducts) { product in
-                        NavigationLink(destination: 
+                        NavigationLink(destination:
                                         ProductDetailView(
                                             product: product,
                                             market:
@@ -195,18 +188,10 @@ struct MarketDetailView: View {
                         ) {
                             VStack(alignment: .leading) {
                                 if let firstImageURL = product.images.first {
-//                                    AsyncImage(url: url) { image in
-//                                        image
                                     CachedAsyncImage(url: firstImageURL)
-//                                            .resizable()
-//                                            .aspectRatio(contentMode: .fill)
                                             .frame(width: 100, height: 130)
                                             .clipped()
                                             .cornerRadius(8)
-//                                    } placeholder: {
-//                                        Color.gray
-//                                            .frame(width: 100, height: 130)
-//                                    }
                                 }
 
                                 Text(product.name)
@@ -277,5 +262,8 @@ struct MarketDetailView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .sheet(isPresented: $showWebView) {
+            WebView(url: URL(string: "https://www.google.com")!)
+        }
     }
 }
