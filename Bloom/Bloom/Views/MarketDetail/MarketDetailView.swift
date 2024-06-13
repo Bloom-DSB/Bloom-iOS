@@ -170,7 +170,7 @@ struct MarketDetailView: View {
 
                     Spacer()
 
-                    NavigationLink(destination: MarketProductsView(simpleProducts: market.simpleProducts, market: SimpleMarket(id: market.id, name: market.name, operatingTime: market.operatingTime, location: market.location, phoneNumber: market.phoneNumber))) {
+                    NavigationLink(destination: MarketProductsView(simpleProducts: market.simpleProducts, market: SimpleMarket(id: market.id, name: market.name, isOperation: market.isOperation, location: market.location, phoneNumber: market.phoneNumber))) {
                         HStack(spacing: 5) {
                             Text("전체보기")
                                 .font(.pretendardMedium(size: 14))
@@ -190,7 +190,7 @@ struct MarketDetailView: View {
                                         ProductDetailView(
                                             product: product,
                                             market:
-                                                SimpleMarket(id: market.id, name: market.name, operatingTime: market.operatingTime, location: market.location, phoneNumber: market.phoneNumber)
+                                                SimpleMarket(id: market.id, name: market.name, isOperation: market.isOperation, location: market.location, phoneNumber: market.phoneNumber)
                                         )
                         ) {
                             VStack(alignment: .leading) {

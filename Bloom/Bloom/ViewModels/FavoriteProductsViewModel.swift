@@ -18,7 +18,7 @@ class FavoriteProductsViewModel: ObservableObject {
         let dummyProducts = [
             SimpleProduct(
                 id: 1,
-                marketId: 1,
+                simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"),
                 name: "고백공격 장미꽃",
                 category: "꽃 한송이",
                 color: "레드",
@@ -31,7 +31,7 @@ class FavoriteProductsViewModel: ObservableObject {
             ),
             SimpleProduct(
                 id: 2,
-                marketId: 1,
+                simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"),
                 name: "세상에서 제일 예쁜 꽃",
                 category: "꽃 한송이",
                 color: "핑크",
@@ -44,7 +44,7 @@ class FavoriteProductsViewModel: ObservableObject {
             ),
             SimpleProduct(
                 id: 3,
-                marketId: 2,
+                simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"),
                 name: "로맨틱 튤립",
                 category: "꽃 한송이",
                 color: "옐로우",
@@ -57,7 +57,7 @@ class FavoriteProductsViewModel: ObservableObject {
             ),
             SimpleProduct(
                 id: 4,
-                marketId: 2,
+                simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"),
                 name: "봄의 정원",
                 category: "꽃 한송이",
                 color: "화이트",
@@ -70,7 +70,7 @@ class FavoriteProductsViewModel: ObservableObject {
             ),
             SimpleProduct(
                 id: 5,
-                marketId: 3,
+                simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"),
                 name: "파란 해바라기",
                 category: "꽃 한송이",
                 color: "블루",

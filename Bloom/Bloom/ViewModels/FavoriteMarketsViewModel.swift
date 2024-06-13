@@ -25,8 +25,8 @@ class FavoriteMarketsViewModel: ObservableObject {
                 phoneNumber: "010-1234-5678",
                 sns: "http://instagram.com/garden_flower_laura",
                 simpleProducts: [
-                    SimpleProduct(id: 1, marketId: 22222314, name: "장미 한송이", category: "꽃 한송이", color: "레드", price: 5000, descriptionImage: "redRose.png", share: "http://example.com/share1", interestCount: 100, caution: "조심히 다뤄주세요.", images: ["https://example.com/image1"]),
-                    SimpleProduct(id: 2, marketId: 222, name: "튤립 한송이", category: "꽃 한송이", color: "옐로우", price: 4000, descriptionImage: "yellowTulip.png", share: "http://example.com/share2", interestCount: 80, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image2"])
+                    SimpleProduct(id: 1, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "장미 한송이", category: "꽃 한송이", color: "레드", price: 5000, descriptionImage: "redRose.png", share: "http://example.com/share1", interestCount: 100, caution: "조심히 다뤄주세요.", images: ["https://example.com/image1"]),
+                    SimpleProduct(id: 2, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "튤립 한송이", category: "꽃 한송이", color: "옐로우", price: 4000, descriptionImage: "yellowTulip.png", share: "http://example.com/share2", interestCount: 80, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image2"])
                 ],
                 interestCount: 200,
                 operatingTime: [
@@ -50,8 +50,8 @@ class FavoriteMarketsViewModel: ObservableObject {
                 phoneNumber: "010-8765-4321",
                 sns: "http://instagram.com/flower_and_plant",
                 simpleProducts: [
-                    SimpleProduct(id: 3, marketId: 32123, name: "화이트 데이지", category: "꽃 한송이", color: "화이트", price: 3000, descriptionImage: "whiteDaisy.png", share: "http://example.com/share3", interestCount: 90, caution: "물에 꽂아두세요.", images: ["https://example.com/image3"]),
-                    SimpleProduct(id: 4, marketId: 23123, name: "핑크 장미", category: "꽃 한송이", color: "핑크", price: 6000, descriptionImage: "pinkRose.png", share: "http://example.com/share4", interestCount: 110, caution: "조심히 다뤄주세요.", images: ["https://example.com/image4"])
+                    SimpleProduct(id: 1, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "장미 한송이", category: "꽃 한송이", color: "레드", price: 5000, descriptionImage: "redRose.png", share: "http://example.com/share1", interestCount: 100, caution: "조심히 다뤄주세요.", images: ["https://example.com/image1"]),
+                    SimpleProduct(id: 2, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "튤립 한송이", category: "꽃 한송이", color: "옐로우", price: 4000, descriptionImage: "yellowTulip.png", share: "http://example.com/share2", interestCount: 80, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image2"])
                 ],
                 interestCount: 150,
                 operatingTime: [
@@ -75,8 +75,8 @@ class FavoriteMarketsViewModel: ObservableObject {
                 phoneNumber: "010-1357-2468",
                 sns: "http://instagram.com/blooming_garden",
                 simpleProducts: [
-                    SimpleProduct(id: 5, marketId: 1123, name: "파란 장미", category: "꽃 한송이", color: "블루", price: 7000, descriptionImage: "blueRose.png", share: "http://example.com/share5", interestCount: 95, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image5"]),
-                    SimpleProduct(id: 6, marketId: 23123, name: "보라 튤립", category: "꽃 한송이", color: "퍼플", price: 6500, descriptionImage: "purpleTulip.png", share: "http://example.com/share6", interestCount: 85, caution: "물을 주기 전 확인하세요.", images: ["https://example.com/image6"])
+                    SimpleProduct(id: 1, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "장미 한송이", category: "꽃 한송이", color: "레드", price: 5000, descriptionImage: "redRose.png", share: "http://example.com/share1", interestCount: 100, caution: "조심히 다뤄주세요.", images: ["https://example.com/image1"]),
+                    SimpleProduct(id: 2, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "튤립 한송이", category: "꽃 한송이", color: "옐로우", price: 4000, descriptionImage: "yellowTulip.png", share: "http://example.com/share2", interestCount: 80, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image2"])
                 ],
                 interestCount: 180,
                 operatingTime: [
@@ -100,8 +100,8 @@ class FavoriteMarketsViewModel: ObservableObject {
                 phoneNumber: "010-2468-1357",
                 sns: "http://instagram.com/flora_flower_shop",
                 simpleProducts: [
-                    SimpleProduct(id: 7, marketId: 2222, name: "노란 해바라기", category: "꽃 한송이", color: "옐로우", price: 5000, descriptionImage: "yellowSunflower.png", share: "http://example.com/share7", interestCount: 105, caution: "물을 자주 갈아주세요.", images: ["https://example.com/image7"]),
-                    SimpleProduct(id: 8, marketId: 222, name: "흰 백합", category: "꽃 한송이", color: "화이트", price: 8000, descriptionImage: "whiteLily.png", share: "http://example.com/share8", interestCount: 115, caution: "조심히 다뤄주세요.", images: ["https://example.com/image8"])
+                    SimpleProduct(id: 1, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "장미 한송이", category: "꽃 한송이", color: "레드", price: 5000, descriptionImage: "redRose.png", share: "http://example.com/share1", interestCount: 100, caution: "조심히 다뤄주세요.", images: ["https://example.com/image1"]),
+                    SimpleProduct(id: 2, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "튤립 한송이", category: "꽃 한송이", color: "옐로우", price: 4000, descriptionImage: "yellowTulip.png", share: "http://example.com/share2", interestCount: 80, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image2"])
                 ],
                 interestCount: 220,
                 operatingTime: [
@@ -125,8 +125,8 @@ class FavoriteMarketsViewModel: ObservableObject {
                 phoneNumber: "010-3698-7412",
                 sns: "http://instagram.com/flower_dream",
                 simpleProducts: [
-                    SimpleProduct(id: 9, marketId: 22222, name: "빨간 장미", category: "꽃 한송이", color: "레드", price: 6000, descriptionImage: "redRose.png", share: "http://example.com/share9", interestCount: 125, caution: "물에 꽂아두세요.", images: ["https://example.com/image9"]),
-                    SimpleProduct(id: 10, marketId: 2222, name: "분홍 백합", category: "꽃 한송이", color: "핑크", price: 7500, descriptionImage: "pinkLily.png", share: "http://example.com/share10", interestCount: 95, caution: "조심히 다뤄주세요.", images: ["https://example.com/image10"])
+                    SimpleProduct(id: 1, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "장미 한송이", category: "꽃 한송이", color: "레드", price: 5000, descriptionImage: "redRose.png", share: "http://example.com/share1", interestCount: 100, caution: "조심히 다뤄주세요.", images: ["https://example.com/image1"]),
+                    SimpleProduct(id: 2, simpleMarket: SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010"), name: "튤립 한송이", category: "꽃 한송이", color: "옐로우", price: 4000, descriptionImage: "yellowTulip.png", share: "http://example.com/share2", interestCount: 80, caution: "햇빛에 두지 마세요.", images: ["https://example.com/image2"])
                 ],
                 interestCount: 250,
                 operatingTime: [

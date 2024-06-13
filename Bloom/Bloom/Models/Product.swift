@@ -9,7 +9,8 @@ import Foundation
 
 struct SimpleProduct: Codable, Identifiable {
     var id: Int
-    let marketId: Int
+//    let marketId: Int
+    let simpleMarket: SimpleMarket
     let name: String
     let category: String
     let color: String
@@ -22,7 +23,7 @@ struct SimpleProduct: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id = "productId"
-        case marketId, name, category, color, price, descriptionImage, share, interestCount, caution, images
+        case simpleMarket, name, category, color, price, descriptionImage, share, interestCount, caution, images
     }
 }
 
