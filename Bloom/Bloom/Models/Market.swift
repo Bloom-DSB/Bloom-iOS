@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct SimpleMarket: Codable, Identifiable {
     var id: Int
@@ -26,12 +27,21 @@ struct Market: Codable, Identifiable {
     let simpleProducts: [SimpleProduct]
     let interestCount: Int
     let operatingTime: [String: String]
-    let latitude: Double
-    let longitude: Double
+    let isOperation: Bool
+    
+    private var coordinate: Coordinate
+    var locationCoordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+    
+    struct Coordinate: Hashable, Codable {
+        let latitude: Double
+        let longitude: Double
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "marketId"
-        case name, summary, addressDetail, location, phoneNumber, sns, simpleProducts, interestCount, operatingTime, latitude, longitude
+        case name, summary, addressDetail, location, phoneNumber, sns, simpleProducts, interestCount, operatingTime, isOperation, coordinate
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isAuthenticated: Bool = true
+    @State private var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "isAuthenticated")
     @State private var selectedTab = 0
     @State private var hideTabBar = false
     @State private var showPicker = false
