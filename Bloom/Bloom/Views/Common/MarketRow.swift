@@ -50,7 +50,7 @@ struct MarketRow: View {
                         }
                         
                         // 오른쪽 하단 작은 이미지
-                        if market.simpleProducts.count > 1, let secondImageURL = market.simpleProducts[1].images.first, let url = URL(string: secondImageURL) {
+                        if market.simpleProducts.count > 2, let secondImageURL = market.simpleProducts[2].images.first, let url = URL(string: secondImageURL) {
                             AsyncImage(url: url) { image in
                                 image
                                     .resizable()

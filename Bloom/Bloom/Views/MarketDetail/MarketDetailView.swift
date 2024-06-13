@@ -23,15 +23,18 @@ struct MarketDetailView: View {
         ScrollView {
             VStack(alignment: .center) {
                 ZStack(alignment: .topLeading) {
-                    AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width, height: 320)
-                            .clipped()
-                    } placeholder: {
-                        Color.gray
-                            .frame(width: UIScreen.main.bounds.width, height: 320)
+                    if let firstImageURL = market.simpleProducts.first?.images.first, let url = URL(string: firstImageURL) {
+                        
+                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.width, height: 320)
+                                .clipped()
+                        } placeholder: {
+                            Color.gray
+                                .frame(width: UIScreen.main.bounds.width, height: 320)
+                        }
                     }
 
                     HStack {
@@ -182,18 +185,28 @@ struct MarketDetailView: View {
 
                 LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
                     ForEach(market.simpleProducts) { product in
-                        NavigationLink(destination: ProductDetailView(product: product, market: SimpleMarket(id: market.id, name: market.name, operatingTime: market.operatingTime, location: market.location, phoneNumber: market.phoneNumber))) {
+                        NavigationLink(destination: 
+                                        ProductDetailView(
+                                            product: product,
+                                            market:
+                                                SimpleMarket(id: market.id, name: market.name, operatingTime: market.operatingTime, location: market.location, phoneNumber: market.phoneNumber)
+                                        )
+                        ) {
                             VStack(alignment: .leading) {
-                                AsyncImage(url: URL(string: product.images[0])) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 100, height: 130)
-                                        .clipped()
-                                        .cornerRadius(8)
-                                } placeholder: {
-                                    Color.gray
-                                        .frame(width: 100, height: 130)
+                                if let firstImageURL = product.images.first,
+                                   let url = URL(string: firstImageURL) {
+                                    
+                                    AsyncImage(url: url) { image in
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 100, height: 130)
+                                            .clipped()
+                                            .cornerRadius(8)
+                                    } placeholder: {
+                                        Color.gray
+                                            .frame(width: 100, height: 130)
+                                    }
                                 }
 
                                 Text(product.name)
@@ -266,35 +279,3 @@ struct MarketDetailView: View {
         .navigationBarHidden(true)
     }
 }
-
-//#Preview {
-//    MarketDetailView(hideTabBar: .constant(false), market: Market(
-//        id: 1,
-//        name: "서울마켓",
-//        summary: "서울에서 가장 인기 있는 마켓",
-//        addressDetail: "서울특별시 강남구",
-//        location: "강남구",
-//        phoneNumber: "010-1234-5678",
-//        sns: "http://instagram.com/seoulmarket",
-//        simpleProducts: [
-//            SimpleProduct(id: 8770, name: "남자친구를 위한 꽃 한송이", category: "꽃 한송이", color: "블루", price: 5000, descriptionImage: "blueDes.png", share: "https://example.com/share7", interestCount: 115, caution: "파란색이 좋아하는 남자친구에게 선물하세요.", images: ["https://strbloom.blob.core.windows.net/product/product_one_blueflower1.png"]),
-//            SimpleProduct(id: 8769, name: "순백의 꽃다발", category: "꽃다발", color: "화이트", price: 90000, descriptionImage: "whiteDes.png", share: "https://example.com/share6", interestCount: 130, caution: "신부님과 잘어울릴 수 있는 꽃다발입니다.", images: ["https://strbloom.blob.core.windows.net/product/product_bouquet_white1.png"]),
-//            SimpleProduct(id: 8768, name: "행복한 아침 해바라기", category: "꽃 한송이", color: "옐로우", price: 8000, descriptionImage: "sunflowerDes.png", share: "https://example.com/share5", interestCount: 110, caution: "해바라기는 햇빛을 좋아합니다.", images: ["https://strbloom.blob.core.windows.net/product/product_one_sunflower1.png"]),
-//            SimpleProduct(id: 8767, name: "밝은 당신과 닮은 장미바구니", category: "꽃바구니", color: "옐로우", price: 80000, descriptionImage: "yellowDes.png", share: "https://example.com/share4", interestCount: 90, caution: "노란색이 어울린다면 딱인 상품입니다.", images: ["https://strbloom.blob.core.windows.net/product/product_basket_yellowrose1.png"]),
-//            SimpleProduct(id: 8766, name: "감사해요 꽃바구니", category: "꽃바구니", color: "옐로우", price: 35000, descriptionImage: "yellowDes.png", share: "https://example.com/share3", interestCount: 100, caution: "네덜란드산 튤립을 즐길 수 있습니다. 굿굿", images: ["https://strbloom.blob.core.windows.net/product/product_basket_tulip1.jpeg"]),
-//            SimpleProduct(id: 8765, name: "사랑을 전할 꽃다발", category: "꽃다발", color: "레드", price: 50000, descriptionImage: "redroseDes.png", share: "https://example.com/share2", interestCount: 120, caution: "꽃이 무거우니 조심하세요!", images: ["https://strbloom.blob.core.windows.net/product/product_bouquet_rose1.jpeg"])
-//        ],
-//        interestCount: 100,
-//        operatingTime: [
-//            "Sunday": "Closed",
-//            "Saturday": "10:00 - 14:00",
-//            "Friday": "09:00 - 18:00",
-//            "Thursday": "09:00 - 18:00",
-//            "Wednesday": "09:00 - 18:00",
-//            "Tuesday": "09:00 - 18:00",
-//            "Monday": "09:00 - 18:00"
-//        ],
-//        latitude: 37.5665,
-//        longitude: 126.9784
-//    ))
-//}

@@ -57,9 +57,11 @@ struct MainTabView: View {
                 if showPicker {
                     VStack {
                         Spacer()
-
+                        
+//                        print("picker에서 전달되는 도시 : \(selectedCity)")
+//                        print("picker에서 전달되는 자치구 : \(selectedDistrict)")
                         RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker) {
-                            homeViewModel.loadMarkets(location: selectedDistrict)
+                            homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                         }
                             .frame(height: 265)
                             .background(Color.white)
@@ -82,6 +84,6 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

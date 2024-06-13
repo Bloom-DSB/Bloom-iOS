@@ -10,13 +10,14 @@ import Combine
 
 struct HomeView: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    @StateObject var filterViewModel = FilterViewModel() 
     @Binding var hideTabBar: Bool
     @Binding var showPicker: Bool
     @Binding var selectedCity: String
     @Binding var selectedDistrict: String
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
-    @State private var selectedMarket: Market?
+//    @State private var selectedMarket: Market?
 
     var body: some View {
         ZStack {
@@ -69,12 +70,14 @@ struct HomeView: View {
                 .listStyle(InsetListStyle())
             }
             .onAppear {
+                let fullRegion = "\(selectedCity) \(selectedDistrict)"
+                print("HomeView First Load: \(fullRegion)")
                 homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                 print("load markets \n \(homeViewModel.markets.first?.name ?? "")")
             }
 
             if showFilterView {
-                FilterView(hideTabBar: $hideTabBar, showFilterView: $showFilterView)
+                FilterView(filterViewModel: filterViewModel, hideTabBar: $hideTabBar, showFilterView: $showFilterView, navigateToSearchResults: $navigateToSearchResults)
                     .transition(.move(edge: .bottom))
                     .animation(.easeInOut(duration: 0.3))
                     .background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all).onTapGesture {
@@ -82,10 +85,11 @@ struct HomeView: View {
                             showFilterView.toggle()
                         }
                     })
+
             }
         }
         .background(
-            NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText), isActive: $navigateToSearchResults) {
+            NavigationLink(destination: SearchResultsView(filterViewModel: filterViewModel, query: homeViewModel.searchText, filterParams: filterViewModel.buildQueryParameters()), isActive: $navigateToSearchResults) {
                 EmptyView()
             }
             .onDisappear {
@@ -95,7 +99,7 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView(homeViewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
-        .environmentObject(HomeViewModel())
-}
+//#Preview {
+//    HomeView(homeViewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
+//        .environmentObject(HomeViewModel())
+//}
