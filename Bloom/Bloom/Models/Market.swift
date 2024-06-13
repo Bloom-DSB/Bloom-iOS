@@ -11,9 +11,14 @@ import CoreLocation
 struct SimpleMarket: Codable, Identifiable {
     var id: Int
     let name: String
-    let operatingTime: [String: String]
+    let isOperation: Bool
     let location: String
     let phoneNumber: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "marketId"
+        case name, isOperation, location, phoneNumber
+    }
 }
 
 struct Market: Codable, Identifiable {

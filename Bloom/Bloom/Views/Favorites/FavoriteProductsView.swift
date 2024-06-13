@@ -12,7 +12,7 @@ struct FavoriteProductsView: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @StateObject private var viewModel = FavoriteProductsViewModel()
     @Environment(\.presentationMode) var presentationMode
-    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", operatingTime: ["this":"tothis"], location: "여기", phoneNumber: "010")
+    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010")
     
     var body: some View {
         VStack {

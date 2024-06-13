@@ -23,20 +23,11 @@ struct ProductDetailView: View {
                     ZStack(alignment: .topLeading) {
                         TabView {
                             ForEach(product.images, id: \.self) { imageUrl in
-//                                AsyncImage(url: URL(string: imageUrl)) { image in
                                 CachedAsyncImage(url: imageUrl)
-
-//                                        .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 393, height: 300)
                                         .clipped()
-                                } 
-//                        placeholder: {
-//                                    Color.gray
-//                                        .frame(width: 393, height: 300)
-//                                        .clipped()
-//                                }
-//                            }
+                                }
                         }
                         .frame(height: 300)
                         .tabViewStyle(PageTabViewStyle())
@@ -74,22 +65,6 @@ struct ProductDetailView: View {
                                         .padding(15)
                                 }
                                 .contentShape(Rectangle())
-//                                .onTapGesture {
-//                                    isProductFavorite.toggle()
-//                                }
-//                                .buttonStyle(PlainButtonStyle())
-//                                Button(action: {
-//                                    // 관심 토글 액션
-//                                }) {
-//                                    Image(systemName: "heart.fill")
-//                                        .resizable()
-//                                        .frame(width: 20, height: 20)
-//                                        .foregroundStyle(Color.pointOrange)
-//                                        .padding()
-//                                        .background(Color.white)
-//                                        .clipShape(Circle())
-//                                        .padding(15)
-//                                }
                             }
                         }
                     }
@@ -118,18 +93,9 @@ struct ProductDetailView: View {
                         .background(Color.gray6)
 
                     VStack(alignment: .leading, spacing: 8) {
-//                        AsyncImage(url: URL(string: product.descriptionImage)) { image in
-//                            image
                         CachedAsyncImage(url: product.descriptionImage)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
                                 .frame(width: 393, height: .infinity)
                                 .clipped()
-//                        } placeholder: {
-//                            Color.gray
-//                                .frame(width: 393, height: 500)
-//                                .clipped()
-//                        }
                     }
                     .padding(.top, 5)
                 }
@@ -146,13 +112,14 @@ struct ProductDetailView: View {
                             .foregroundStyle(Color.primary)
 
                         HStack {
-                            Text("운영 상태")
-                                .font(.caption)
-                                .foregroundStyle(Color.blue)
+                            Text(market.isOperation ? "운영중" : "휴무중")
                                 .padding(4)
-                                .background(Color.blue.opacity(0.2))
-                                .cornerRadius(5)
-
+                                .font(.pretendardRegular(size: 12))
+                                .frame(width: 60, height: 22)
+                                .foregroundStyle(market.isOperation ? Color.operating : Color.preparing)
+                                .background(market.isOperation ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
+                                .cornerRadius(99)
+                            
                             HStack(spacing: 0) {
                                 Image("location-icon")
                                     .foregroundStyle(Color.gray)

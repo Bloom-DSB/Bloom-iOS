@@ -8,8 +8,8 @@ struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
-    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", operatingTime: ["this":"tothis"], location: "여기", phoneNumber: "010")
-    
+    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", isOperation: true, location: "여기", phoneNumber: "010")
+
     var filteredProducts: [SimpleProduct] {
         viewModel.showOnlyOperating ? viewModel.products.filter { $0.category == "꽃다발" } : viewModel.products
     }
