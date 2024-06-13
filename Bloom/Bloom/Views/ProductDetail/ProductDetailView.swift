@@ -1,12 +1,3 @@
-//
-//  ProductDetailView.swift
-//  Bloom
-//
-//  Created by 조다은 on 6/6/24.
-//
-
-import SwiftUI
-
 import SwiftUI
 
 struct ProductDetailView: View {
@@ -135,7 +126,13 @@ struct ProductDetailView: View {
                     Spacer()
 
                     Button(action: {
-                        // 전화하기 액션
+                        if let phoneURL = URL(string: "tel://01012345678") {
+                            if UIApplication.shared.canOpenURL(phoneURL) {
+                                UIApplication.shared.open(phoneURL, options: [:], completionHandler: nil)
+                            } else {
+                                print("전화 기능을 사용할 수 없습니다.")
+                            }
+                        }
                     }) {
                         Text("전화하기")
                             .font(.body)
