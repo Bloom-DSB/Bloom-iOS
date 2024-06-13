@@ -1,22 +1,15 @@
-//
-//  SearchResultsView.swift
-//  Bloom
-//
-//  Created by 조다은 on 6/8/24.
-//
-
 import SwiftUI
 
 struct SearchResultsView: View {
     @StateObject private var viewModel = SearchResultsViewModel()
     let query: String
+    let filterParams: [String: String]
     @Environment(\.presentationMode) var presentationMode
 
-//    var filteredProducts: [Product] {
-//        viewModel.showOnlyOperating ? viewModel.products.filter { $0.status == "운영중" } : viewModel.products
-//    }
-//    var filteredProducts: [Product]
-    
+    var filteredProducts: [Product] {
+        viewModel.showOnlyOperating ? viewModel.products.filter { $0.category == "꽃다발" } : viewModel.products
+    }
+
     var body: some View {
         VStack {
             HStack {
@@ -96,11 +89,11 @@ struct SearchResultsView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.searchProducts(query: query)
+            viewModel.searchProducts(query: query, filterParams: filterParams)
         }
     }
 }
 
 #Preview {
-    SearchResultsView(query: "꽃")
+    SearchResultsView(query: "꽃", filterParams: ["category": "꽃다발"])
 }

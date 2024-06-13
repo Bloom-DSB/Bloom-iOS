@@ -23,15 +23,18 @@ struct MarketDetailView: View {
         ScrollView {
             VStack(alignment: .center) {
                 ZStack(alignment: .topLeading) {
-                    AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width, height: 320)
-                            .clipped()
-                    } placeholder: {
-                        Color.gray
-                            .frame(width: UIScreen.main.bounds.width, height: 320)
+                    if let firstImageURL = market.simpleProducts.first?.images.first, let url = URL(string: firstImageURL) {
+                        
+                        AsyncImage(url: URL(string: market.simpleProducts[0].images[0])) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.width, height: 320)
+                                .clipped()
+                        } placeholder: {
+                            Color.gray
+                                .frame(width: UIScreen.main.bounds.width, height: 320)
+                        }
                     }
 
                     HStack {

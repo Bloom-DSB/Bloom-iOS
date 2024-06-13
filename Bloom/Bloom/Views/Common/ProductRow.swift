@@ -37,19 +37,19 @@ struct ProductRow: View {
     }
 }
 
-#Preview {
-    ProductRow(product: Product(
-        marketId: 1,
-        productId: 1,
-        name: "사과",
-        category: "과일",
-        price: 1000,
-        images: [
-            "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
-            "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
-        ],
-        descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
-        interestCount: 100,
-        caution: "알러지 주의"
-    ))
-}
+//#Preview {
+//    ProductRow(product: Product(
+//        marketId: 1,
+//        productId: 1,
+//        name: "사과",
+//        category: "과일",
+//        price: 1000,
+//        images: [
+//            "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
+//            "https://strbloom.blob.core.windows.net/undefined/flower_b.jpg"
+//        ],
+//        descriptionImage: "https://strbloom.blob.core.windows.net/undefined/flower_c.jpg",
+//        interestCount: 100,
+//        caution: "알러지 주의"
+//    ))
+//}
