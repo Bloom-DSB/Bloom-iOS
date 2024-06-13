@@ -87,7 +87,7 @@ struct HomeView: View {
             }
         }
         .background(
-            NavigationLink(destination: SearchResultsView(query: homeViewModel.searchText, filterParams: filterViewModel.buildQueryParameters()), isActive: $navigateToSearchResults) {
+            NavigationLink(destination: SearchResultsView(filterViewModel: filterViewModel, query: homeViewModel.searchText, filterParams: filterViewModel.buildQueryParameters()), isActive: $navigateToSearchResults) {
                 EmptyView()
             }
             .onDisappear {
@@ -97,7 +97,7 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView(homeViewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
-        .environmentObject(HomeViewModel())
-}
+//#Preview {
+//    HomeView(homeViewModel: HomeViewModel(), hideTabBar: .constant(false), showPicker: .constant(false), selectedCity: .constant("서울특별시"), selectedDistrict: .constant("강남구"))
+//        .environmentObject(HomeViewModel())
+//}
