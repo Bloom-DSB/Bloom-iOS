@@ -16,7 +16,6 @@ struct Product: Codable, Identifiable {
     let price: Int
     let images: [String]
     let descriptionImage: String
-    let share: Bool
     let interestCount: Int
     let caution: String
 }

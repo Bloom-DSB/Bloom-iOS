@@ -8,36 +8,36 @@
 import SwiftUI
 
 struct MarketProductsView: View {
-//    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode
     let simpleProducts: [SimpleProduct]
-    
+
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
+
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-//                    presentationMode.wrappedValue.dismiss()
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .resizable()
                         .foregroundStyle(.black)
                         .frame(width: 9, height: 18)
                 }
-                
+
                 Spacer()
-                
+
                 Text("판매 상품")
                     .font(.pretendardMedium(size: 18))
-                
+
                 Spacer()
             }
             .padding(.vertical, 15)
-            
+
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(simpleProducts) { product in
@@ -53,12 +53,12 @@ struct MarketProductsView: View {
                             } placeholder: {
                                 Color.gray
                             }
-                            
+
                             Text(product.name)
                                 .font(.pretendardMedium(size: 14))
                                 .foregroundStyle(Color.gray2)
                                 .lineLimit(1)
-                            
+
                             Text("\(product.price)원")
                                 .font(.pretendardBold(size: 15))
                         }
