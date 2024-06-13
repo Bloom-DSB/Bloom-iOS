@@ -16,8 +16,8 @@ struct HomeView: View {
     @Binding var selectedDistrict: String
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
-    @State private var selectedMarket: Market? // Add this line
-    
+    @State private var selectedMarket: Market?
+
     var body: some View {
         ZStack {
             VStack {
@@ -38,14 +38,14 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
-                
+
                 HStack {
                     HomeSearchTextField(text: $homeViewModel.searchText) {
                         navigateToSearchResults = true
                     }
                     .frame(width: 300, height: 40)
                     .cornerRadius(8)
-                    
+
                     Button(action: {
                         withAnimation {
                             showFilterView.toggle()
@@ -59,20 +59,20 @@ struct HomeView: View {
                             .padding(.leading, 2)
                     }
                 }
-                
+
                 List(homeViewModel.markets) { market in
-                    NavigationLink(destination: MarketDetailView(hideTabBar: $hideTabBar, market: market)) {
+                    ZStack {
+                        NavigationLink(destination: MarketDetailView(hideTabBar: $hideTabBar, market: market)) { EmptyView() }.opacity(0.0)
                         MarketRow(viewModel: homeViewModel, market: market)
                     }
                 }
                 .listStyle(InsetListStyle())
-                
             }
             .onAppear {
                 homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                 print("load markets \n \(homeViewModel.markets.first?.name ?? "")")
             }
-            
+
             if showFilterView {
                 FilterView(hideTabBar: $hideTabBar, showFilterView: $showFilterView)
                     .transition(.move(edge: .bottom))

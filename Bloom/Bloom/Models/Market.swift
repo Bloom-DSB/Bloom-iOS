@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct SimpleMarket: Codable, Identifiable {
+    var id: Int
+    let name: String
+    let operatingTime: [String: String]
+    let location: String
+    let phoneNumber: String
+}
+
 struct Market: Codable, Identifiable {
     let id: Int
     let name: String
@@ -20,22 +28,10 @@ struct Market: Codable, Identifiable {
     let operatingTime: [String: String]
     let latitude: Double
     let longitude: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "marketId"
         case name, summary, addressDetail, location, phoneNumber, sns, simpleProducts, interestCount, operatingTime, latitude, longitude
-    }
-}
-
-struct SimpleProduct: Codable, Identifiable {
-    let id: Int
-    let name: String
-    let price: Int
-    let images: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case id = "productId"
-        case name, price, images
     }
 }
 
