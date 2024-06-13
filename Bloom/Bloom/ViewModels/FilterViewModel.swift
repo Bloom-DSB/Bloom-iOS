@@ -36,4 +36,11 @@ class FilterViewModel: ObservableObject {
         
         return params
     }
+    
+    func resetFilters() {
+        selectedCategory = nil
+        selectedColors = []
+        minPrice = 0
+        maxPrice = 100000
+    }
 }

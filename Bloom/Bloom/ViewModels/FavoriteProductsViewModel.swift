@@ -7,22 +7,81 @@
 
 import Foundation
 
-//class FavoriteProductsViewModel: ObservableObject {
-//    @Published var products: [Product] = []
-//    
-//    init() {
-//        loadFavoriteProducts()
-//    }
-//    
-//    func loadFavoriteProducts() {
-//        let dummyProducts = [
-//            Product(id: UUID(), name: "고백공격 장미꽃", price: "19,900원", imageName: "flower1", status: "운영중"),
-//            Product(id: UUID(), name: "세상에서 제일 예쁜 꽃", price: "15,000원", imageName: "flower2", status: "준비중"),
-//            Product(id: UUID(), name: "고백공격 장미꽃", price: "19,900원", imageName: "flower1", status: "운영중"),
-//            Product(id: UUID(), name: "세상에서 제일 예쁜 꽃", price: "15,000원", imageName: "flower2", status: "준비중"),
-//            Product(id: UUID(), name: "로맨틱 튤립", price: "12,000원", imageName: "flower3", status: "운영중"),
-//            Product(id: UUID(), name: "봄의 정원", price: "25,000원", imageName: "flower4", status: "운영중")
-//        ]
-//        self.products = dummyProducts
-//    }
-//}
+class FavoriteProductsViewModel: ObservableObject {
+    @Published var products: [SimpleProduct] = []
+    
+    init() {
+        loadFavoriteProducts()
+    }
+    
+    func loadFavoriteProducts() {
+        let dummyProducts = [
+            SimpleProduct(
+                id: 1,
+                marketId: 1,
+                name: "고백공격 장미꽃",
+                category: "꽃 한송이",
+                color: "레드",
+                price: 19900,
+                descriptionImage: "flower1",
+                share: "https://example.com/share1",
+                interestCount: 100,
+                caution: "조심히 다뤄주세요.",
+                images: ["https://example.com/image1"]
+            ),
+            SimpleProduct(
+                id: 2,
+                marketId: 1,
+                name: "세상에서 제일 예쁜 꽃",
+                category: "꽃 한송이",
+                color: "핑크",
+                price: 15000,
+                descriptionImage: "flower2",
+                share: "https://example.com/share2",
+                interestCount: 120,
+                caution: "햇빛에 두지 마세요.",
+                images: ["https://example.com/image2"]
+            ),
+            SimpleProduct(
+                id: 3,
+                marketId: 2,
+                name: "로맨틱 튤립",
+                category: "꽃 한송이",
+                color: "옐로우",
+                price: 12000,
+                descriptionImage: "flower3",
+                share: "https://example.com/share3",
+                interestCount: 110,
+                caution: "물을 자주 갈아주세요.",
+                images: ["https://example.com/image3"]
+            ),
+            SimpleProduct(
+                id: 4,
+                marketId: 2,
+                name: "봄의 정원",
+                category: "꽃 한송이",
+                color: "화이트",
+                price: 25000,
+                descriptionImage: "flower4",
+                share: "https://example.com/share4",
+                interestCount: 130,
+                caution: "조심히 다뤄주세요.",
+                images: ["https://example.com/image4"]
+            ),
+            SimpleProduct(
+                id: 5,
+                marketId: 3,
+                name: "파란 해바라기",
+                category: "꽃 한송이",
+                color: "블루",
+                price: 17000,
+                descriptionImage: "flower5",
+                share: "https://example.com/share5",
+                interestCount: 140,
+                caution: "햇빛에 두지 마세요.",
+                images: ["https://example.com/image5"]
+            )
+        ]
+        self.products = dummyProducts
+    }
+}

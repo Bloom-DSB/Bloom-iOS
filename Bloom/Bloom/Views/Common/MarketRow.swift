@@ -17,14 +17,16 @@ struct MarketRow: View {
             ZStack(alignment: .topTrailing) {
                 HStack(spacing: 0) {
                     // 왼쪽 큰 이미지
-                    if let firstImageURL = market.simpleProducts.first?.images.first, let url = URL(string: firstImageURL) {
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                        } placeholder: {
-                            Color.gray
-                        }
+                    if let firstImageURL = market.simpleProducts.first?.images.first {
+//                        AsyncImage(url: url) { image in
+//                            image
+                        CachedAsyncImage(url: firstImageURL)
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                        } 
+//                placeholder: {
+//                            Color.gray
+//                        }
                         .frame(width: UIScreen.main.bounds.width * 0.57, height: 160)
                         .clipped()
                     } else {
@@ -34,14 +36,15 @@ struct MarketRow: View {
                     
                     VStack(spacing: 0) {
                         // 오른쪽 상단 작은 이미지
-                        if market.simpleProducts.count > 1, let secondImageURL = market.simpleProducts[1].images.first, let url = URL(string: secondImageURL) {
-                            AsyncImage(url: url) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                Color.gray
-                            }
+                        if market.simpleProducts.count > 1, let secondImageURL = market.simpleProducts[1].images.first {
+//                            AsyncImage(url: url) { image in
+//                                image
+                            CachedAsyncImage(url: secondImageURL)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                            } placeholder: {
+//                                Color.gray
+//                            }
                             .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
                             .clipped()
                         } else {
@@ -50,14 +53,15 @@ struct MarketRow: View {
                         }
                         
                         // 오른쪽 하단 작은 이미지
-                        if market.simpleProducts.count > 2, let secondImageURL = market.simpleProducts[2].images.first, let url = URL(string: secondImageURL) {
-                            AsyncImage(url: url) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                Color.gray
-                            }
+                        if market.simpleProducts.count > 2, let secondImageURL = market.simpleProducts[2].images.first {
+//                            AsyncImage(url: url) { image in
+//                                image
+                            CachedAsyncImage(url: secondImageURL)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                            } placeholder: {
+//                                Color.gray
+//                            }
                             .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
                             .clipped()
                         } else {
@@ -74,20 +78,20 @@ struct MarketRow: View {
                 )
                 
                 Button(action: {
-                                    isFavorite.toggle()
-                                }) {
-                                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                                        .padding(10)
-                                        .background(.white)
-                                        .foregroundStyle(isFavorite ? Color.pointOrange : Color.gray5)
-                                        .clipShape(Circle())
-                                }
-                                .padding(10)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    isFavorite.toggle()
-                                }
-                                .buttonStyle(PlainButtonStyle()) 
+                    isFavorite.toggle()
+                }) {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .padding(10)
+                        .background(.white)
+                        .foregroundStyle(isFavorite ? Color.pointOrange : Color.gray5)
+                        .clipShape(Circle())
+                }
+                .padding(10)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    isFavorite.toggle()
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             
             HStack {
@@ -96,12 +100,12 @@ struct MarketRow: View {
                 
                 Spacer()
                 
-                Text(viewModel.isOperating(market: market) ? "운영중" : "휴무중")
+                Text(market.isOperation ? "운영중" : "휴무중")
                     .padding(4)
                     .font(.pretendardRegular(size: 12))
                     .frame(width: 60, height: 22)
-                    .foregroundStyle(viewModel.isOperating(market: market) ? Color.operating : Color.preparing)
-                    .background(viewModel.isOperating(market: market) ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
+                    .foregroundStyle(market.isOperation ? Color.operating : Color.preparing)
+                    .background(market.isOperation ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                     .cornerRadius(99)
             }
             
@@ -119,11 +123,13 @@ struct MarketRow: View {
                 Text("\(market.summary)")
                     .font(.pretendardRegular(size: 14))
                     .foregroundStyle(Color.gray3)
+                    .lineLimit(1)
+                    .multilineTextAlignment(.trailing)
             }
         }
         .padding(.vertical, 3)
         .listRowSeparator(.hidden)
-        .background(Color.white) // 셀의 배경을 지정하여 버튼의 클릭 영역을 제한
+        .background(Color.white)
         .cornerRadius(10)
     }
 }

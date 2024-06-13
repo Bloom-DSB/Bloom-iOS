@@ -8,6 +8,7 @@ struct SearchResultsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
+    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", operatingTime: ["this":"tothis"], location: "여기", phoneNumber: "010")
     
     var filteredProducts: [SimpleProduct] {
         viewModel.showOnlyOperating ? viewModel.products.filter { $0.category == "꽃다발" } : viewModel.products
@@ -73,12 +74,12 @@ struct SearchResultsView: View {
                     HStack(spacing: 0) {
                         Text("운영 중인 가게만 보기")
                             .font(.pretendardMedium(size: 14))
-                            .foregroundStyle(viewModel.showOnlyOperating ? Color.operating : Color.gray3)
+                            .foregroundStyle(viewModel.showOnlyOperating ? Color.pointOrange : Color.gray3)
                             .padding(.trailing, 10)
                         
                         Toggle("", isOn: $viewModel.showOnlyOperating)
                             .labelsHidden()
-                            .toggleStyle(SwitchToggleStyle(tint: Color.operating))
+                            .toggleStyle(SwitchToggleStyle(tint: Color.pointOrange))
                     }
                 }
                 .padding(.top, 10)
@@ -86,7 +87,9 @@ struct SearchResultsView: View {
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
                         ForEach(filteredProducts) { product in
-                            ProductRow(product: product)
+                            NavigationLink(destination: ProductDetailView(product: product, market: market)) {
+                                ProductRow(product: product)
+                            }
                         }
                     }
                 }

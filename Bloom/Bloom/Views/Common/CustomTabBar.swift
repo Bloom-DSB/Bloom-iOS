@@ -45,6 +45,8 @@ struct CustomTabBarItem: View {
             VStack {
                 Image(selectedTab == tabIndex ? activeImage : inactiveImage)
                     .renderingMode(.original)
+                    .resizable()
+                    .frame(width: 20, height: 20)
                 Text(text)
                     .font(.system(size: 12, weight: .medium))
                     .foregroundStyle(selectedTab == tabIndex ? Color.pointOrange : Color.gray4)
