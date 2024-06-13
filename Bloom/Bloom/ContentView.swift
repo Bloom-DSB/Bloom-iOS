@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var hideTabBar = false
     @State private var showPicker = false
     @State private var selectedCity = "서울특별시"
-    @State private var selectedDistrict = "강남구"
+    @State private var selectedDistrict = "중구"
     @ObservedObject private var homeViewModel = HomeViewModel()
 
     var body: some View {
@@ -42,7 +42,7 @@ struct MainTabView: View {
                 case 1:
                     MapView()
                 case 2:
-                    MyPageView(hideTabBar: $hideTabBar)
+                    MyPageView(homeViewModel: homeViewModel, hideTabBar: $hideTabBar)
                 default:
                     HomeView(homeViewModel: homeViewModel, hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
                 }
@@ -57,7 +57,6 @@ struct MainTabView: View {
                 if showPicker {
                     VStack {
                         Spacer()
-                        
 //                        print("picker에서 전달되는 도시 : \(selectedCity)")
 //                        print("picker에서 전달되는 자치구 : \(selectedDistrict)")
                         RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker) {

@@ -74,20 +74,20 @@ struct MarketRow: View {
                 )
                 
                 Button(action: {
-                                    isFavorite.toggle()
-                                }) {
-                                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                                        .padding(10)
-                                        .background(.white)
-                                        .foregroundStyle(isFavorite ? Color.pointOrange : Color.gray5)
-                                        .clipShape(Circle())
-                                }
-                                .padding(10)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    isFavorite.toggle()
-                                }
-                                .buttonStyle(PlainButtonStyle()) 
+                    isFavorite.toggle()
+                }) {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .padding(10)
+                        .background(.white)
+                        .foregroundStyle(isFavorite ? Color.pointOrange : Color.gray5)
+                        .clipShape(Circle())
+                }
+                .padding(10)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    isFavorite.toggle()
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             
             HStack {
@@ -96,12 +96,12 @@ struct MarketRow: View {
                 
                 Spacer()
                 
-                Text(viewModel.isOperating(market: market) ? "운영중" : "휴무중")
+                Text(market.isOperation ? "운영중" : "휴무중")
                     .padding(4)
                     .font(.pretendardRegular(size: 12))
                     .frame(width: 60, height: 22)
-                    .foregroundStyle(viewModel.isOperating(market: market) ? Color.operating : Color.preparing)
-                    .background(viewModel.isOperating(market: market) ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
+                    .foregroundStyle(market.isOperation ? Color.operating : Color.preparing)
+                    .background(market.isOperation ? Color(hex: "E4F7FF"): Color(hex: "FFE1E1"))
                     .cornerRadius(99)
             }
             
@@ -119,11 +119,13 @@ struct MarketRow: View {
                 Text("\(market.summary)")
                     .font(.pretendardRegular(size: 14))
                     .foregroundStyle(Color.gray3)
+                    .lineLimit(1)
+                    .multilineTextAlignment(.trailing)
             }
         }
         .padding(.vertical, 3)
         .listRowSeparator(.hidden)
-        .background(Color.white) // 셀의 배경을 지정하여 버튼의 클릭 영역을 제한
+        .background(Color.white)
         .cornerRadius(10)
     }
 }

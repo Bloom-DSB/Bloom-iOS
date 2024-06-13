@@ -43,6 +43,21 @@ struct Market: Codable, Identifiable {
         case id = "marketId"
         case name, summary, addressDetail, location, phoneNumber, sns, simpleProducts, interestCount, operatingTime, isOperation, coordinate
     }
+    
+    init(id: Int, name: String, summary: String, addressDetail: String, location: String, phoneNumber: String, sns: String, simpleProducts: [SimpleProduct], interestCount: Int, operatingTime: [String: String], isOperation: Bool, coordinate: Coordinate) {
+        self.id = id
+        self.name = name
+        self.summary = summary
+        self.addressDetail = addressDetail
+        self.location = location
+        self.phoneNumber = phoneNumber
+        self.sns = sns
+        self.simpleProducts = simpleProducts
+        self.interestCount = interestCount
+        self.operatingTime = operatingTime
+        self.isOperation = isOperation
+        self.coordinate = coordinate
+    }
 }
 
 struct MarketResponse: Codable {

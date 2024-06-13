@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyPageView: View {
+    @ObservedObject var homeViewModel: HomeViewModel
     @State private var userName: String = UserDefaults.standard.string(forKey: "userName") ?? "Unknown"
     @State private var email: String = UserDefaults.standard.string(forKey: "userEmail") ?? "unknown@example.com"
     @State private var storeCount = 3
@@ -43,7 +44,7 @@ struct MyPageView: View {
             .padding(.vertical, 20)
             
             HStack(spacing: 0) {
-                NavigationLink(destination: FavoriteMarketsView()) {
+                NavigationLink(destination: FavoriteMarketsView(homeViewModel: homeViewModel, hideTabBar: $hideTabBar)) {
                     VStack {
                         Text("관심 마켓")
                             .font(.pretendardMedium(size: 14))
@@ -61,19 +62,19 @@ struct MyPageView: View {
                     .frame(width: 0.8, height: 48)
                     .foregroundStyle(Color.pointOrange)
                 
-//                NavigationLink(destination: FavoriteProductsView()) {
-//                    VStack {
-//                        Text("관심 상품")
-//                            .font(.pretendardMedium(size: 14))
-//                            .foregroundStyle(Color.black)
-//                            .padding(.bottom, 1)
-//                        
-//                        Text("\(productCount)")
-//                            .font(.pretendardSemiBold(size: 24))
-//                            .foregroundStyle(Color.pointOrange)
-//                    }
-//                    .frame(maxWidth: .infinity)
-//                }
+                NavigationLink(destination: FavoriteProductsView(homeViewModel: homeViewModel)) {
+                    VStack {
+                        Text("관심 상품")
+                            .font(.pretendardMedium(size: 14))
+                            .foregroundStyle(Color.black)
+                            .padding(.bottom, 1)
+                        
+                        Text("\(productCount)")
+                            .font(.pretendardSemiBold(size: 24))
+                            .foregroundStyle(Color.pointOrange)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
             }
             .frame(height: 107)
             .background(Color.baseYellow)
@@ -142,6 +143,6 @@ struct MyPageView: View {
     }
 }
 
-#Preview {
-    MyPageView(hideTabBar: .constant(false))
-}
+//#Preview {
+//    MyPageView(hideTabBar: .constant(false))
+//}

@@ -19,12 +19,13 @@ struct ProductRow: View {
                     .frame(width: 107, height: 134)
                     .clipped()
                     .cornerRadius(8)
-                    .padding(.bottom, 1)
+                    .padding(.bottom, 3)
             } placeholder: {
                 Color.gray
                     .frame(width: 107, height: 134)
                     .cornerRadius(8)
             }
+            
             
             Text(product.name)
                 .font(.pretendardMedium(size: 14))
@@ -33,6 +34,7 @@ struct ProductRow: View {
             
             Text("\(product.price)원")
                 .font(.pretendardBold(size: 15))
+                .foregroundStyle(Color.black)
         }
     }
 }

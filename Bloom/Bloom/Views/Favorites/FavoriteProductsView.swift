@@ -8,63 +8,47 @@
 import SwiftUI
 import Combine
 
-//struct FavoriteProductsView: View {
-//    @StateObject private var viewModel = FavoriteProductsViewModel()
-//    @Environment(\.presentationMode) var presentationMode
-//    
-//    var body: some View {
-//        VStack {
-//            HStack {
-//                Button(action: {
-//                    presentationMode.wrappedValue.dismiss()
-//                }) {
-//                    Image(systemName: "chevron.left")
-//                        .foregroundStyle(.black)
-//                        .padding()
-//                }
-//                Spacer()
-//                Text("관심 상품")
-//                    .font(.system(size: 18, weight: .medium))
-//                Spacer()
-//                Spacer() // 오른쪽 여백을 위한 Spacer
-//            }
-//            .padding()
-//            
-//            ScrollView {
-//                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
-//                    ForEach(viewModel.products) { product in
-//                        VStack(alignment: .leading, spacing: 3) {
-//                            Image(product.imageName)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: 107, height: 134)
-//                                .clipped()
-//                                .cornerRadius(8)
-//                                .padding(.bottom, 1)
-//                            
-//                            Text(product.status)
-//                                .font(.pretendardSemiBold(size: 11))
-//                                .foregroundStyle(product.status == "운영중" ? Color.operating : Color.preparing)
-//                            
-//                            Text(product.name)
-//                                .font(.pretendardMedium(size: 14))
-//                                .foregroundStyle(Color.gray2)
-//                                .lineLimit(1)
-//                            
-//                            Text(product.price)
-//                                .font(.pretendardBold(size: 15))
-//                        }
-//                    }
-//                }
-//                .padding(.horizontal, 20)
-//            }
-//        }
-//        .navigationBarTitle("")
-//        .navigationBarHidden(true)
-//    }
-//}
-//
-//
+struct FavoriteProductsView: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    @StateObject private var viewModel = FavoriteProductsViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    var market: SimpleMarket = SimpleMarket(id: 1, name: "어쩌고가게", operatingTime: ["this":"tothis"], location: "여기", phoneNumber: "010")
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.black)
+                        .padding()
+                }
+                Spacer()
+                Text("관심 상품")
+                    .font(.system(size: 18, weight: .medium))
+                    .padding(.trailing, 50)
+                Spacer()
+            }
+            .padding(0)
+            
+            ScrollView {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
+                    ForEach(viewModel.products) { product in
+                        NavigationLink(destination: ProductDetailView(product: product, market: market)) {
+                            ProductRow(product: product)
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+        }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
+    }
+}
+
+
 //#Preview {
 //    FavoriteProductsView()
 //}

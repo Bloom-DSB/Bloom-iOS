@@ -73,12 +73,12 @@ struct SearchResultsView: View {
                     HStack(spacing: 0) {
                         Text("운영 중인 가게만 보기")
                             .font(.pretendardMedium(size: 14))
-                            .foregroundStyle(viewModel.showOnlyOperating ? Color.operating : Color.gray3)
+                            .foregroundStyle(viewModel.showOnlyOperating ? Color.pointOrange : Color.gray3)
                             .padding(.trailing, 10)
                         
                         Toggle("", isOn: $viewModel.showOnlyOperating)
                             .labelsHidden()
-                            .toggleStyle(SwitchToggleStyle(tint: Color.operating))
+                            .toggleStyle(SwitchToggleStyle(tint: Color.pointOrange))
                     }
                 }
                 .padding(.top, 10)
