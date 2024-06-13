@@ -12,18 +12,17 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     @Published var markets: [Market] = []
     @Published var searchText: String = ""
-    
-    init() {
-        loadMarkets(location: "강남구")
-    }
-    
+
     func loadMarkets(location: String) {
         let url = "\(NetworkConfig.baseURL)/markets"
         let params: Parameters = ["location": location]
         
+        print("load요청한 지역: \(location)")
+        
         AF.request(url, method: .get, parameters: params).responseDecodable(of: MarketResponse.self) { response in
             switch response.result {
             case .success(let result):
+                print(result)
 //                self.markets = result.data
 //              관심 수 기준으로 내림차순 정렬
                 self.markets = result.data.sorted(by: { $0.interestCount > $1.interestCount })

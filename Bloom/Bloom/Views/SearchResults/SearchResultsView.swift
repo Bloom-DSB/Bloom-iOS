@@ -9,7 +9,7 @@ struct SearchResultsView: View {
     @State private var showFilterView = false
     @State private var navigateToSearchResults = false
     
-    var filteredProducts: [Product] {
+    var filteredProducts: [SimpleProduct] {
         viewModel.showOnlyOperating ? viewModel.products.filter { $0.category == "꽃다발" } : viewModel.products
     }
     

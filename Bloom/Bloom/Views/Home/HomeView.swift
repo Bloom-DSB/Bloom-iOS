@@ -70,6 +70,8 @@ struct HomeView: View {
                 .listStyle(InsetListStyle())
             }
             .onAppear {
+                let fullRegion = "\(selectedCity) \(selectedDistrict)"
+                print("HomeView First Load: \(fullRegion)")
                 homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                 print("load markets \n \(homeViewModel.markets.first?.name ?? "")")
             }

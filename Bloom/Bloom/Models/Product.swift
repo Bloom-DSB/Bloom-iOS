@@ -26,28 +26,8 @@ struct SimpleProduct: Codable, Identifiable {
     }
 }
 
-struct Product: Codable, Identifiable {
-    let marketId: Int
-    var id: Int
-    let name: String
-    let category: String
-    let price: Int
-    let images: [String]
-    let descriptionImage: String
-    let share: String
-    let interestCount: Int
-    let caution: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "productId"
-        case marketId, name, category, price
-        case images = "image"
-        case descriptionImage, share, interestCount, caution
-    }
-}
-
 struct ProductResponse: Codable {
     let status: Bool
-    let data: [Product]
+    let data: [SimpleProduct]
     let message: String
 }

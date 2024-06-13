@@ -31,7 +31,7 @@ class FilterViewModel: ObservableObject {
         }
         
         if !selectedColors.isEmpty {
-            params["colors"] = selectedColors.joined(separator: ",")
+            params["color"] = selectedColors.joined(separator: ",")
         }
         
         return params

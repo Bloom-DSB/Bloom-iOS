@@ -12,7 +12,15 @@ struct RegionPickerView: View {
     @Binding var selectedDistrict: String
     @Binding var isPresented: Bool
     var onComplete: () -> Void
-
+    
+    private var cities: [String] {
+        regions.map { $0.city }
+    }
+    
+    private var districts: [String] {
+        regions.first(where: { $0.city == selectedCity })?.districts ?? []
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -20,19 +28,21 @@ struct RegionPickerView: View {
                     isPresented = false
                 }
                 .padding()
-
+                
                 Spacer()
-
+                
                 Button("완료") {
                     isPresented = false
                     onComplete()
+                    print("도시 선택: \(selectedCity)")
+
                 }
                 .padding()
             }
-
+            
             HStack {
                 Picker("도시", selection: $selectedCity) {
-                    ForEach(regions.map { $0.city }, id: \.self) { city in
+                    ForEach(cities, id: \.self) { city in
                         Text(city).tag(city)
                     }
                 }
@@ -41,10 +51,11 @@ struct RegionPickerView: View {
                     if let firstDistrict = regions.first(where: { $0.city == newValue })?.districts.first {
                         selectedDistrict = firstDistrict
                     }
+                    print("도시 선택: \(selectedCity)")
                 }
-
+                
                 Picker("구", selection: $selectedDistrict) {
-                    ForEach(regions.first(where: { $0.city == selectedCity })?.districts ?? [], id: \.self) { district in
+                    ForEach(districts, id: \.self) { district in
                         Text(district).tag(district)
                     }
                 }
@@ -54,5 +65,22 @@ struct RegionPickerView: View {
         }
         .background(Color.white)
         .cornerRadius(20)
+        .onAppear {
+            if !cities.contains(selectedCity) {
+                selectedCity = cities.first ?? ""
+            }
+            if !districts.contains(selectedDistrict) {
+                selectedDistrict = districts.first ?? ""
+            }
+        }
     }
+}
+
+#Preview {
+    RegionPickerView(
+        selectedCity: .constant("서울특별시"),
+        selectedDistrict: .constant("강남구"),
+        isPresented: .constant(true),
+        onComplete: {}
+    )
 }

@@ -10,7 +10,7 @@ import Combine
 import Alamofire
 
 class SearchResultsViewModel: ObservableObject {
-    @Published var products: [Product] = []
+    @Published var products: [SimpleProduct] = []
     @Published var searchText: String = ""
     @Published var showOnlyOperating: Bool = false
     
@@ -27,6 +27,7 @@ class SearchResultsViewModel: ObservableObject {
             switch response.result {
             case .success(let result):
                 self.products = result.data
+                print(result.message)
             case .failure(let error):
                 print("Failed to fetch products: \(error.localizedDescription)")
             }

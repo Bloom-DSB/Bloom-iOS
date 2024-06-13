@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductRow: View {
-    var product: Product
+    var product: SimpleProduct
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
