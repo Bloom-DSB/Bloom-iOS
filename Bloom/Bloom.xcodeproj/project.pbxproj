@@ -16,6 +16,8 @@
 		3E4A7D4F2C17F9FA0094A45D /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D4E2C17F9FA0094A45D /* Region.swift */; };
 		3E4A7D512C181E0B0094A45D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D502C181E0B0094A45D /* LoginViewModel.swift */; };
 		3E4A7D542C18772D0094A45D /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A7D532C18772D0094A45D /* NetworkConfig.swift */; };
+		3E5D68922C1B43E600C9F6B5 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D68912C1B43E600C9F6B5 /* ImageCache.swift */; };
+		3E5D68942C1B440A00C9F6B5 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D68932C1B440A00C9F6B5 /* CachedAsyncImage.swift */; };
 		3E5FAC4F2C19C6730062A6EF /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 3E5FAC4E2C19C6730062A6EF /* KakaoMapsSDK-SPM */; };
 		3E7F1A4B2C1972A50055D7C4 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F1A4A2C1972A50055D7C4 /* FilterViewModel.swift */; };
 		3E7F1A4D2C197AAE0055D7C4 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F1A4C2C197AAE0055D7C4 /* ProductRow.swift */; };
@@ -76,6 +78,8 @@
 		3E4A7D4E2C17F9FA0094A45D /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3E4A7D502C181E0B0094A45D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3E4A7D532C18772D0094A45D /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		3E5D68912C1B43E600C9F6B5 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		3E5D68932C1B440A00C9F6B5 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		3E7F1A4A2C1972A50055D7C4 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		3E7F1A4C2C197AAE0055D7C4 /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
 		3E8BC5A72C11E6B8003320F1 /* MarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailView.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				3EA96E982C16D78500E29A3D /* CustomTabBar.swift */,
 				3E8C19D92C194051004BEA1D /* MarketRow.swift */,
 				3E7F1A4C2C197AAE0055D7C4 /* ProductRow.swift */,
+				3E5D68932C1B440A00C9F6B5 /* CachedAsyncImage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				3E4A7D532C18772D0094A45D /* NetworkConfig.swift */,
+				3E5D68912C1B43E600C9F6B5 /* ImageCache.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				3EA96EC32C172C2500E29A3D /* CustomTextField.swift in Sources */,
 				3E8BC5AA2C11FB18003320F1 /* ProductDetailView.swift in Sources */,
 				3EA96EB42C1716FB00E29A3D /* MarketProductsViewModel.swift in Sources */,
+				3E5D68942C1B440A00C9F6B5 /* CachedAsyncImage.swift in Sources */,
 				3E0525D12C15F0420037EF35 /* FavoriteMarketsView.swift in Sources */,
 				3EA96EA82C16FC4A00E29A3D /* AppleSigninButton.swift in Sources */,
 				3EA96E9D2C16EAB200E29A3D /* ColorFilterButton.swift in Sources */,
@@ -521,6 +528,7 @@
 				3EA96EA52C16EC3500E29A3D /* DeveloperIntroPage.swift in Sources */,
 				3E8C19DA2C194051004BEA1D /* MarketRow.swift in Sources */,
 				3E8BC5B82C146492003320F1 /* SearchResultsView.swift in Sources */,
+				3E5D68922C1B43E600C9F6B5 /* ImageCache.swift in Sources */,
 				3E4A7D512C181E0B0094A45D /* LoginViewModel.swift in Sources */,
 				3EA96E992C16D78500E29A3D /* CustomTabBar.swift in Sources */,
 				3E4A7D4D2C17EF450094A45D /* RegionPickerView.swift in Sources */,

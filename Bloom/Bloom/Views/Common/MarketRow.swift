@@ -17,14 +17,16 @@ struct MarketRow: View {
             ZStack(alignment: .topTrailing) {
                 HStack(spacing: 0) {
                     // 왼쪽 큰 이미지
-                    if let firstImageURL = market.simpleProducts.first?.images.first, let url = URL(string: firstImageURL) {
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                        } placeholder: {
-                            Color.gray
-                        }
+                    if let firstImageURL = market.simpleProducts.first?.images.first {
+//                        AsyncImage(url: url) { image in
+//                            image
+                        CachedAsyncImage(url: firstImageURL)
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                        } 
+//                placeholder: {
+//                            Color.gray
+//                        }
                         .frame(width: UIScreen.main.bounds.width * 0.57, height: 160)
                         .clipped()
                     } else {
@@ -34,14 +36,15 @@ struct MarketRow: View {
                     
                     VStack(spacing: 0) {
                         // 오른쪽 상단 작은 이미지
-                        if market.simpleProducts.count > 1, let secondImageURL = market.simpleProducts[1].images.first, let url = URL(string: secondImageURL) {
-                            AsyncImage(url: url) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                Color.gray
-                            }
+                        if market.simpleProducts.count > 1, let secondImageURL = market.simpleProducts[1].images.first {
+//                            AsyncImage(url: url) { image in
+//                                image
+                            CachedAsyncImage(url: secondImageURL)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                            } placeholder: {
+//                                Color.gray
+//                            }
                             .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
                             .clipped()
                         } else {
@@ -50,14 +53,15 @@ struct MarketRow: View {
                         }
                         
                         // 오른쪽 하단 작은 이미지
-                        if market.simpleProducts.count > 2, let secondImageURL = market.simpleProducts[2].images.first, let url = URL(string: secondImageURL) {
-                            AsyncImage(url: url) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                Color.gray
-                            }
+                        if market.simpleProducts.count > 2, let secondImageURL = market.simpleProducts[2].images.first {
+//                            AsyncImage(url: url) { image in
+//                                image
+                            CachedAsyncImage(url: secondImageURL)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                            } placeholder: {
+//                                Color.gray
+//                            }
                             .frame(width: UIScreen.main.bounds.width * 0.33, height: 80)
                             .clipped()
                         } else {

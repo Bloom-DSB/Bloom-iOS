@@ -23,18 +23,20 @@ struct ProductDetailView: View {
                     ZStack(alignment: .topLeading) {
                         TabView {
                             ForEach(product.images, id: \.self) { imageUrl in
-                                AsyncImage(url: URL(string: imageUrl)) { image in
-                                    image
-                                        .resizable()
+//                                AsyncImage(url: URL(string: imageUrl)) { image in
+                                CachedAsyncImage(url: imageUrl)
+
+//                                        .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 393, height: 300)
                                         .clipped()
-                                } placeholder: {
-                                    Color.gray
-                                        .frame(width: 393, height: 300)
-                                        .clipped()
-                                }
-                            }
+                                } 
+//                        placeholder: {
+//                                    Color.gray
+//                                        .frame(width: 393, height: 300)
+//                                        .clipped()
+//                                }
+//                            }
                         }
                         .frame(height: 300)
                         .tabViewStyle(PageTabViewStyle())
@@ -116,17 +118,18 @@ struct ProductDetailView: View {
                         .background(Color.gray6)
 
                     VStack(alignment: .leading, spacing: 8) {
-                        AsyncImage(url: URL(string: product.descriptionImage)) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
+//                        AsyncImage(url: URL(string: product.descriptionImage)) { image in
+//                            image
+                        CachedAsyncImage(url: product.descriptionImage)
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
                                 .frame(width: 393, height: .infinity)
                                 .clipped()
-                        } placeholder: {
-                            Color.gray
-                                .frame(width: 393, height: 500)
-                                .clipped()
-                        }
+//                        } placeholder: {
+//                            Color.gray
+//                                .frame(width: 393, height: 500)
+//                                .clipped()
+//                        }
                     }
                     .padding(.top, 5)
                 }

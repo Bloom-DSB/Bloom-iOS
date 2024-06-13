@@ -12,19 +12,21 @@ struct ProductRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
-            AsyncImage(url: URL(string: product.images.first ?? "")) { image in
-                image
-                    .resizable()
+//            AsyncImage(url: URL(string: product.images.first ?? "")) { image in
+//                image
+                CachedAsyncImage(url: product.images.first ?? "")
+//                    .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 107, height: 134)
                     .clipped()
                     .cornerRadius(8)
                     .padding(.bottom, 3)
-            } placeholder: {
-                Color.gray
-                    .frame(width: 107, height: 134)
-                    .cornerRadius(8)
-            }
+//            } 
+//    placeholder: {
+//                Color.gray
+//                    .frame(width: 107, height: 134)
+//                    .cornerRadius(8)
+//            }
             
             
             Text(product.name)

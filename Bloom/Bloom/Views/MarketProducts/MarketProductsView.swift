@@ -46,19 +46,20 @@ struct MarketProductsView: View {
                     ForEach(simpleProducts) { product in
                         NavigationLink(destination: ProductDetailView(product: product, market: market)) {
                             VStack(alignment: .leading, spacing: 3) {
-                                AsyncImage(url: URL(string: product.images.first ?? "")) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
+//                                AsyncImage(url: URL(string: product.images.first ?? "")) { image in
+//                                    image
+                                CachedAsyncImage(url: product.images.first ?? "")
+//                                        .resizable()
+//                                        .aspectRatio(contentMode: .fill)
                                         .frame(width: 107, height: 134)
                                         .clipped()
                                         .cornerRadius(8)
                                         .padding(.bottom, 1)
-                                } placeholder: {
-                                    Color.gray
-                                        .frame(width: 107, height: 134)
-                                        .clipped()
-                                }
+//                                } placeholder: {
+//                                    Color.gray
+//                                        .frame(width: 107, height: 134)
+//                                        .clipped()
+//                                }
                                 
                                 Text(product.name)
                                     .font(.pretendardMedium(size: 14))
