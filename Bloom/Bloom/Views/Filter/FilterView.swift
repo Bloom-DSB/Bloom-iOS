@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct FilterView: View {
-    @State private var selectedCategory: String? = nil
-    @State private var selectedColors: Set<String> = []
-    @ObservedObject var slider = CustomSlider(start: 0, end: 100000)
+    @ObservedObject var filterViewModel: FilterViewModel
     @Environment(\.presentationMode) var presentationMode
     @Binding var hideTabBar: Bool
     @Binding var showFilterView: Bool
+    @Binding var navigateToSearchResults: Bool
     
     @State private var isLowHandleActive = false
     @State private var isHighHandleActive = false
     
-    private let categories = ["꽃다발", "꽃바구니", "드라이플라워", "조화"]
+    private let categories = ["꽃다발", "꽃바구니", "꽃 한송이", "기타"]
     private let colors = [
         ("화이트", Color.white),
         ("레드", Color(hex: "E85959")),
@@ -59,8 +58,8 @@ struct FilterView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
                     ForEach(categories, id: \.self) { category in
-                        CategoryFilterButton(title: category, isSelected: selectedCategory == category) {
-                            selectedCategory = category
+                        CategoryFilterButton(title: category, isSelected: filterViewModel.selectedCategory == category) {
+                            filterViewModel.selectedCategory = category
                         }
                     }
                 }
@@ -73,14 +72,14 @@ struct FilterView: View {
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        SliderView(slider: slider)
+                        SliderView(slider: CustomSlider(start: Double(filterViewModel.minPrice), end: Double(filterViewModel.maxPrice)))
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     
                     HStack {
                         HStack {
                             CustomTextField(
-                                value: $slider.lowHandle.currentValue,
+                                value: $filterViewModel.minPrice,
                                 placeholder: "최소 가격",
                                 foregroundColor: isLowHandleActive ? UIColor(Color.pointOrange) : UIColor(Color.gray4),
                                 font: UIFont(name: "Pretendard-Medium", size: 15)!,
@@ -91,15 +90,14 @@ struct FilterView: View {
                                 .foregroundColor(isLowHandleActive ? Color.pointOrange : Color.black)
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 8).stroke(isLowHandleActive ? Color.pointOrange : Color.gray4))
-                        .keyboardType(.numberPad)
+                        .background(RoundedRectangle(cornerRadius: 8).stroke(isLowHandleActive ? Color.pointOrange : Color.gray4))                        .keyboardType(.numberPad)
                         
                         Text("~")
                             .padding(.horizontal, 1)
                         
                         HStack {
                             CustomTextField(
-                                value: $slider.highHandle.currentValue,
+                                value: $filterViewModel.maxPrice,
                                 placeholder: "최대 가격",
                                 foregroundColor: isHighHandleActive ? UIColor(Color.pointOrange) : UIColor(Color.gray4),
                                 font: UIFont(name: "Pretendard-Medium", size: 14)!,
@@ -124,7 +122,7 @@ struct FilterView: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2), spacing: 10) {
                     ForEach(colors, id: \.0) { color in
-                        ColorFilterButton(colorName: color.0, color: color.1, isSelected: selectedColors.contains(color.0)) {
+                        ColorFilterButton(colorName: color.0, color: color.1, isSelected: filterViewModel.selectedColors.contains(color.0)) {
                             toggleColor(color.0)
                         }
                         .frame(height: 50)
@@ -135,7 +133,11 @@ struct FilterView: View {
                 Spacer()
                 
                 Button(action: {
-                    // 검색하기 액션
+                    navigateToSearchResults = true
+                    hideTabBar = false
+                    withAnimation {
+                        showFilterView = false
+                    }
                 }) {
                     Text("검색하기")
                         .font(.pretendardSemiBold(size: 18))
@@ -145,7 +147,6 @@ struct FilterView: View {
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                 }
-                
             }
         }
         .onAppear {
@@ -159,23 +160,14 @@ struct FilterView: View {
     }
     
     private func toggleColor(_ color: String) {
-        if selectedColors.contains(color) {
-            selectedColors.remove(color)
+        if filterViewModel.selectedColors.contains(color) {
+            filterViewModel.selectedColors.remove(color)
         } else {
-            selectedColors.insert(color)
+            filterViewModel.selectedColors.insert(color)
         }
     }
 }
 
-extension NumberFormatter {
-    static var currency: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0
-        return formatter
-    }
-}
-
 #Preview {
-    FilterView(hideTabBar: .constant(false), showFilterView: .constant(false))
+    FilterView(filterViewModel: FilterViewModel(), hideTabBar: .constant(false), showFilterView: .constant(false), navigateToSearchResults: .constant(false))
 }

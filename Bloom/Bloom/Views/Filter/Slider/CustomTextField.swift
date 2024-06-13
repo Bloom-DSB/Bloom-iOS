@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomTextField: UIViewRepresentable {
-    @Binding var value: Double
+    @Binding var value: Int
     var placeholder: String
     var foregroundColor: UIColor
     var font: UIFont
@@ -55,7 +55,7 @@ struct CustomTextField: UIViewRepresentable {
 
         func textFieldDidEndEditing(_ textField: UITextField) {
             parent.isActive = false
-            if let text = textField.text, let newValue = Double(text) {
+            if let text = textField.text, let newValue = Int(text) {
                 parent.value = newValue
             }
         }

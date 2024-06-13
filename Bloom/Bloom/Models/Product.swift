@@ -7,23 +7,27 @@
 
 import Foundation
 
-struct Product: Codable, Identifiable {
-    let id = UUID()  // UUID 생성 (네트워크에서 받는 id와 다름)
+struct SimpleProduct: Codable, Identifiable {
+    var id: Int
     let marketId: Int
-    let productId: Int
     let name: String
     let category: String
+    let color: String
     let price: Int
-    let images: [String]
     let descriptionImage: String
-    let share: Bool
+    let share: String
     let interestCount: Int
     let caution: String
+    let images: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "productId"
+        case marketId, name, category, color, price, descriptionImage, share, interestCount, caution, images
+    }
 }
 
 struct ProductResponse: Codable {
     let status: Bool
-    let data: [Product]
+    let data: [SimpleProduct]
     let message: String
 }
-

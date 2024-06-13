@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "isAuthenticated")
+    @State private var isAuthenticated: Bool = true
     @State private var selectedTab = 0
     @State private var hideTabBar = false
     @State private var showPicker = false
@@ -18,14 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         if isAuthenticated {
-            MainTabView(
-                selectedTab: $selectedTab,
-                hideTabBar: $hideTabBar,
-                showPicker: $showPicker,
-                selectedCity: $selectedCity,
-                selectedDistrict: $selectedDistrict,
-                homeViewModel: homeViewModel
-            )
+            MainTabView(selectedTab: $selectedTab, hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, homeViewModel: homeViewModel)
         } else {
             LoginView(isAuthenticated: $isAuthenticated)
         }
@@ -41,20 +34,17 @@ struct MainTabView: View {
     @ObservedObject var homeViewModel: HomeViewModel
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                if selectedTab == 0 {
-                    HomeView(
-                        homeViewModel: homeViewModel,
-                        hideTabBar: $hideTabBar,
-                        showPicker: $showPicker,
-                        selectedCity: $selectedCity,
-                        selectedDistrict: $selectedDistrict
-                    )
-                } else if selectedTab == 1 {
+                switch selectedTab {
+                case 0:
+                    HomeView(homeViewModel: homeViewModel, hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
+                case 1:
                     MapView()
-                } else if selectedTab == 2 {
+                case 2:
                     MyPageView(hideTabBar: $hideTabBar)
+                default:
+                    HomeView(homeViewModel: homeViewModel, hideTabBar: $hideTabBar, showPicker: $showPicker, selectedCity: $selectedCity, selectedDistrict: $selectedDistrict)
                 }
 
                 VStack {
@@ -68,16 +58,17 @@ struct MainTabView: View {
                     VStack {
                         Spacer()
                         
-                        RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker
-                        ) {
-                            homeViewModel.loadMarkets(location: selectedDistrict)
+//                        print("picker에서 전달되는 도시 : \(selectedCity)")
+//                        print("picker에서 전달되는 자치구 : \(selectedDistrict)")
+                        RegionPickerView(selectedCity: $selectedCity, selectedDistrict: $selectedDistrict, isPresented: $showPicker) {
+                            homeViewModel.loadMarkets(location: "\(selectedCity) \(selectedDistrict)")
                         }
                             .frame(height: 265)
                             .background(Color.white)
                             .cornerRadius(20)
                             .shadow(radius: 10)
                             .transition(.move(edge: .bottom))
-                            .animation(.easeInOut, value: showPicker)
+                            .animation(.easeInOut(duration: 0.3))
                             .offset(y: 35)
                     }
                     .background(
@@ -93,6 +84,6 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
